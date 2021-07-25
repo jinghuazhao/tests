@@ -1,3 +1,3 @@
 # tests
 
-A repository to share a problem under development.
+A repository to share problems under development.
