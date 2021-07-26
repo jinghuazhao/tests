@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+git add .gitignore
+git commit -m ".gitignore"
 git add README.md
 git commit -m "README.md"
 git add shinyCircos/
