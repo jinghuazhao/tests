@@ -7,7 +7,6 @@ do
   export prefix=${prefix}
   sed '1d;s/chr/hs/;s/,/ /g' ${prefix}QTLs.csv > circos/${prefix}QTLs.txt
 # sed '1d;s/chr/hs/;s/,/ /g' ${prefix}QTL_labels.csv > circos/${prefix}QTL_labels.txt
-  sed '1d;s/chr/hs/;s/,/ /g' ${prefix}QTL_colors.csv > circos/${prefix}QTL_colors.txt
   awk -v FS="," '$4!="NA" && $5!="NA"' ${prefix}QTL_xlsx.csv | \
   awk -v FS="," '{
      colors[1]="dred"
