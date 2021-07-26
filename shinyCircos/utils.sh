@@ -26,3 +26,5 @@ do
     done
   ) > circos/${prefix}rule.textcolor.conf
 done
+
+sed -i 's/-//' circos/pQTLs.txt
