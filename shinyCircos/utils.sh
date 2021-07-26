@@ -18,7 +18,8 @@ do
      sub(/chr/,"hs",$1)
      if (ENVIRON["prefix"]=="e") label=$4; else label=$4 "----"
      if (NR>1) print $1,$2-1,$2,label,"color=" colors[$5]
-  }' > circos/${prefix}QTL_labels.txt
+  }' | \
+  sort -k1,1 > circos/${prefix}QTL_labels.txt
 done
 
 sed -i 's/-//' circos/pQTLs.txt
