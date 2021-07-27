@@ -308,7 +308,7 @@ get_most_inside_radius = function() {
 	}
 }
 
-data.C.name <- "hg38.csv"
+data.C.name <- "hg19.csv"
 data.C <- data.frame(fread(data.C.name),stringsAsFactors=F)
 data.C[,2] <- as.numeric(data.C[,2])
 data.C[,3] <- as.numeric(data.C[,3])
@@ -369,12 +369,12 @@ tmp <- matrix(strsplit(get(paste("hltdata",k,sep="")), "\n")[[1]])
 
 pdf("shinyCircos.pdf", width=1200/72, height=1200/72)
 ## svg("shinyCircos.svg", width=1200/72, height=1200/72)
-cexlabel <- 0.6
+cexlabel <- 0.4
 par(mar=c(0.6,0.6,0.6,0.6), cex=cexlabel-0.1)
 trackChr <- "track"
 plotTypes <- "labels"
 plotTypes <- "axis"
-unitChr <- ""
+unitChr <- "unit"
 rotation <- 0.5
 gap.width <- c(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1)
 labeltextchr <- 2
@@ -382,7 +382,7 @@ poslabelschr <- "inner"
 heightlabelschr <- 0.06
 marginlabelschr <- 0.01
 colorChr <- c("grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey","grey")
-cexlabel <- 0.6
+cexlabel <- 0.4
 plotcircos.font(data.C, height=heightChr, color=colorChr, plotTypes=plotTypes, units=unitChr, rotation=rotation, gap.width=gap.width, cexLabel=cexlabel-0.1, labeltextchr=labeltextchr, poslabelschr=poslabelschr, heightlabelschr=heightlabelschr, marginlabelschr=marginlabelschr, data.CN=data.CN)
 takindx <- 1
 typeTrack <- c("point","point")
@@ -395,11 +395,11 @@ data.TT <- data.T[[i]]
 	data.TT$num <- 1:nrow(data.TT)
 data.TTC <- NULL
 coltypeTrack <- 2
-tkcolor <- c("red")
+tkcolor <- c("green")
 data.TT$num <- NULL
 tkbgcol <- c("grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95")
 tkmargin <- 0.01
-tkheight <- 0.1
+tkheight <- 0.06
 tklinecoord <- c(0.25,0.75)
 tklinecolor <- c("grey","grey")
 hmapcols <- c("blue","white","red")
@@ -411,7 +411,7 @@ tkrectcol <- 1
 selrectcol <- 1
 rectcols <- c("#EDEDFD","#6969F5","#00008B")
 tktransparency <- 1
-tkcolor <- c("#FF0000FF")
+tkcolor <- c("#00FF00FF")
 data.TTT <- data.T[[i]]
 	data.TTT$id <- paste(data.TTT[,1],data.TTT[,2],data.TTT[,3],sep="")
 	data.TTT$num <- 1:nrow(data.TTT)
@@ -420,8 +420,8 @@ lkmargin <- 0
 tkborder <- NA
 columns <- c(4)
 takindx <- takindx+2
-heightlabels <- c(0.1,0.06)
-marginlabels <- c(0.005,0.005)
+heightlabels <- c(0.06,0.06)
+marginlabels <- c(0.01,0.01)
 circos.genomicLabels(data.NN, labels.column = 4, connection_height = heightlabels[i], track.margin = c(0.01,marginlabels[i]), side = "outside")
 data.TT[,ncol(data.TT)] <- as.numeric(data.TT[,ncol(data.TT)])
 			circos.genomicTrackPlotRegion(data.TT, track.height = tkheight, track.margin = c(lkmargin,tkmargin),
@@ -459,11 +459,11 @@ data.TT <- data.T[[i]]
 	data.TT$num <- 1:nrow(data.TT)
 data.TTC <- NULL
 coltypeTrack <- 2
-tkcolor <- c("green")
+tkcolor <- c("red")
 data.TT$num <- NULL
 tkbgcol <- c("grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95","grey95")
-tkmargin <- 0.005
-tkheight <- 0.1
+tkmargin <- 0.01
+tkheight <- 0.06
 tklinecoord <- c(0.25,0.75)
 tklinecolor <- c("grey","grey")
 hmapcols <- c("blue","white","red")
@@ -475,7 +475,7 @@ tkrectcol <- 1
 selrectcol <- 1
 rectcols <- c("#EDEDFD","#6969F5","#00008B")
 tktransparency <- 1
-tkcolor <- c("#00FF00FF")
+tkcolor <- c("#FF0000FF")
 data.TTT <- data.T[[i]]
 	data.TTT$id <- paste(data.TTT[,1],data.TTT[,2],data.TTT[,3],sep="")
 	data.TTT$num <- 1:nrow(data.TTT)
@@ -506,8 +506,8 @@ data.TT[,ncol(data.TT)] <- as.numeric(data.TT[,ncol(data.TT)])
 							  circos.genomicPoints(region, value, numeric.column=columns-3, col=tkcolor, cex=0.6, pch=16, ...)
 							  }
                              })
-heightlabels <- c(0.1,0.06)
-marginlabels <- c(0.005,0.005)
+heightlabels <- c(0.06,0.06)
+marginlabels <- c(0.01,0.01)
 circos.genomicLabels(data.NN, labels.column = 4, connection_height = heightlabels[i], track.margin = c(0.01,marginlabels[i]), side = "inside")
 poslabels <- c("outer","inner")
 if(poslabels[i]=="inner"){
@@ -515,5 +515,23 @@ if(poslabels[i]=="inner"){
 			}else{
 			    takindx <- takindx+1
 			}
+n <- 3
+xleft <- -0.01
+xright <- 0.01
+ybottom <- -0.09286
+ytop <- 0.08714
+len <- 0.18
+gap <- 0.0818181818181818
+legendtext <- c("Chromosome","eQTL","pQTL")
+for(i in 1:n){
+			   assign(paste("n",i,sep=""),legendtext[i])
+			}
+rect(xleft, ybottom, xright, ytop, col = "black")
+            polygon(x=c(xleft-0.01,(xleft+xright)/2,xright+0.01), y=c(ybottom,ybottom-0.02,ybottom), col="black")
+            text(x=xleft-0.08, y=ybottom, labels="inner", cex=0.95)
+text(x=xleft-0.08, y=ytop-0.02, labels="outer", cex=0.95)
+for(i in 1:n){
+                    text(x=xright+0.028, y=ytop-gap*(i-1)-0.025, labels=get(paste("n",i,sep="")), cex=1, adj=c(0,0))
+                }
 dev.off()
 circos.clear()
