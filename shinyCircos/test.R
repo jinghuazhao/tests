@@ -15,10 +15,11 @@ circos.genomicLabels(eQTL_labels, labels.column = 5, side = "outside", cex = 0.3
                      line_col = as.numeric(factor(eQTL_labels[[6]])), col = as.numeric(factor(eQTL_labels[[6]])))
 circos.track(ylim = c(0, 1),
              panel.fun = function(x, y) {
-               chr  = gsub("chr", get.current.chromosome(), replace = "")
-               xlim = 0.3
-               ylim = 0.5
-               circos.text(mean(xlim), mean(ylim), chr, cex = 0.9, col = "black", facing = "inside", niceFacing = TRUE)
+               chr  = gsub("chr", CELL_META$sector.index, replace = "")
+               xlim = CELL_META$xlim
+               ylim = CELL_META$ylim
+               circos.rect(xlim[1], 0, xlim[2], 1, col = "white", cex = 0.2, lwd = 0.5 )
+               circos.text(mean(xlim), mean(ylim), chr, cex = 0.4, col = "black", facing = "inside", niceFacing = TRUE)
              },
              track.height = 0.03,  bg.border = NA)
 circos.genomicTrackPlotRegion(eQTLs, panel.fun = function(region, value,  ...)
