@@ -40,6 +40,6 @@ circos.genomicLabels(pQTL_labels, labels.column = 5, side = "outside", cex = 0.4
                      line_col = as.numeric(factor(pQTL_labels[[6]])), col = as.numeric(factor(pQTL_labels[[6]])), facing = "reverse.clockwise")
 title("A circos plot of eQTL/pQTL druggability")
 dev.off()
-# ps2pdf test.eps test.pdf
+# convert -density 300 test.eps test.pdf
 # convert -density 300 test.eps test.png
 # https://www.rapidtables.com/web/color/RGB_Color.html
