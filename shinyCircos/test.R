@@ -5,13 +5,9 @@ library("ggplot2")
 library("colorspace")
 
 eQTLs <- e$QTLs
-n_eQTLs <- nrow(eQTLs)
 eQTL_labels <- e$annotated
-n_eQTL_labels <- nrow(eQTL_labels)
 pQTLs <- p$QTLs
-n_pQTLs <- nrow(pQTLs)
 pQTL_labels <- p$annotated
-n_pQTL_labels <- nrow(pQTL_labels)
 
 setEPS()
 postscript(file = "test.eps", width = 7.08, height = 7.08, horizontal = FALSE, paper = "special", colormodel="rgb")
