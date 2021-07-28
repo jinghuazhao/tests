@@ -11,7 +11,7 @@ circos.clear()
 circos.par("start.degree" = 90, gap.degree = c(rep(c(0.7), 21), 8), track.margin = c(0.005, 0.005), cell.padding = c(0.001, 0.01, 0.01, 0.001))
 circos.initializeWithIdeogram(plotType = NULL, species = "hg19",  chromosome.index = paste0("chr", 1:22))
 circos.genomicLabels(eQTL_labels, labels.column = 5, side = "outside", cex = 0.3, line_lwd = 0.8,
-                     connection_height = convert_height(3, "mm"),
+                     connection_height = convert_height(8, "mm"),
                      line_col = as.numeric(factor(eQTL_labels[[6]])), col = as.numeric(factor(eQTL_labels[[6]])))
 circos.track(ylim = c(0, 1),
              panel.fun = function(x, y) {
