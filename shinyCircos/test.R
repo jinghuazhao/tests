@@ -1,8 +1,4 @@
-library("colortools")
-library("RColorBrewer")
 library("circlize")
-library("ggplot2")
-library("colorspace")
 
 eQTLs <- e$QTLs
 eQTL_labels <- e$annotated
@@ -22,8 +18,7 @@ circos.track(ylim = c(0, 1),
                chr  = gsub("chr", get.current.chromosome(), replace = "")
                xlim = 0.3
                ylim = 0.5
-               circos.rect(xlim[1], 0, xlim[2], 1, col = "cyan", cex = 1.1, lwd = 0.5)
-               circos.text(mean(xlim), mean(ylim), chr, cex = 0.4, col = "black", facing = "inside", niceFacing = TRUE)
+               circos.text(mean(xlim), mean(ylim), chr, cex = 0.9, col = "black", facing = "inside", niceFacing = TRUE)
              },
              track.height = 0.03,  bg.border = NA)
 circos.genomicTrackPlotRegion(eQTLs, panel.fun = function(region, value,  ...)
