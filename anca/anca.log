@@ -1,0 +1,70 @@
+> tbl <- read.delim("tbl",as.is=TRUE)
+> all <- read.delim("all",as.is=TRUE)
+> rsid <- read.delim("rsid",as.is=TRUE)
+> library(gap)
+gap version 1.2.2
+> save(tbl,all,rsid,file="anca.rda",version=2)
+> METAL_forestplot(tbl,all,rsid,width=8.75,height=5)
+Loading required namespace: dplyr
+Joining, by = "MarkerName"
+Joining, by = "MarkerName"
+[1] "1-PTPRO:chr12:15611497_A_T"
+  CHR      POS STRAND   N EFFECT_ALLELE REFERENCE_ALLELE CODE_ALL_FQ     BETA
+1  12 15611497      + 242             A                T     0.03099 1.781862
+2  12 15611497      + 214             A                T     0.08645 1.813633
+3  12 15611497      + 108             A                T     0.02778 0.513500
+        SE        PVAL IMP  prot   study         MarkerName
+1 0.565212 0.001618480   1 PTPRO   Swiss chr12:15611497_A_T
+2 0.467179 0.000103559   1 PTPRO Spanish chr12:15611497_A_T
+3 1.161040 0.658289000   1 PTPRO  German chr12:15611497_A_T
+     A1  A2  EFFECT_ALLELE REFERENCE_ALLELE a1  a2
+[1,] "A" "T" "A"           "T"              "A" "T" "1.782" "1.782"
+[2,] "A" "T" "A"           "T"              "A" "T" "1.814" "1.814"
+[3,] "A" "T" "A"           "T"              "A" "T" "0.513" "0.513"
+Loading required namespace: meta
+prot = PTPRO MarkerName = chr12:15611497_A_T Q = 1.123215 df = 2 p = 0.5702916 I2 = 0 lower.I2 = 0 upper.I2 = 0.8147815
+[1] "2-EEF2K:chr16:22240451_G_T"
+  CHR      POS STRAND   N EFFECT_ALLELE REFERENCE_ALLELE CODE_ALL_FQ     BETA
+4  16 22240451      + 242             G                T      0.1612 1.557829
+5  16 22240451      + 214             G                T      0.2103 0.679271
+6  16 22240451      + 108             G                T      0.1620 0.270783
+        SE        PVAL IMP  prot   study         MarkerName
+4 0.313605 0.000000678   1 EEF2K   Swiss chr16:22240451_G_T
+5 0.317903 0.032620500   1 EEF2K Spanish chr16:22240451_G_T
+6 0.514989 0.599021000   1 EEF2K  German chr16:22240451_G_T
+     A1  A2  EFFECT_ALLELE REFERENCE_ALLELE a1  a2
+[1,] "G" "T" "G"           "T"              "G" "T" "1.558" "1.558"
+[2,] "G" "T" "G"           "T"              "G" "T" "0.679" "0.679"
+[3,] "G" "T" "G"           "T"              "G" "T" "0.271" "0.271"
+prot = EEF2K MarkerName = chr16:22240451_G_T Q = 6.184225 df = 2 p = 0.04540593 I2 = 0.6765965 lower.I2 = 0 upper.I2 = 0.9063767
+[1] "3-SVEP1:chr1:92349247_T_C"
+  CHR      POS STRAND   N EFFECT_ALLELE REFERENCE_ALLELE CODE_ALL_FQ     BETA
+7   1 92349247      + 242             T                C     0.03719 1.607330
+8   1 92349247      + 214             T                C     0.03972 2.019864
+9   1 92349247      + 108             T                C     0.03241 0.966075
+        SE       PVAL IMP  prot   study        MarkerName
+7 0.520427 0.00200461   1 SVEP1   Swiss chr1:92349247_T_C
+8 0.578909 0.00048468   1 SVEP1 Spanish chr1:92349247_T_C
+9 0.956194 0.31233500   1 SVEP1  German chr1:92349247_T_C
+     A1  A2  EFFECT_ALLELE REFERENCE_ALLELE a1  a2
+[1,] "T" "C" "T"           "C"              "T" "C" "1.607" "1.607"
+[2,] "T" "C" "T"           "C"              "T" "C" "2.020" "2.020"
+[3,] "T" "C" "T"           "C"              "T" "C" "0.966" "0.966"
+prot = SVEP1 MarkerName = chr1:92349247_T_C Q = 0.9214584 df = 2 p = 0.6308235 I2 = 0 lower.I2 = 0 upper.I2 = 0.7742273
+[1] "4-TGFBR3:chr9:113268650_C_T"
+   CHR       POS STRAND   N EFFECT_ALLELE REFERENCE_ALLELE CODE_ALL_FQ     BETA
+10   9 113268650      + 242             C                T     0.04545 1.323014
+11   9 113268650      + 214             C                T     0.05374 1.844719
+12   9 113268650      + 108             C                T     0.01852 1.505776
+         SE        PVAL IMP   prot   study         MarkerName
+10 0.457042 0.003794820   1 TGFBR3   Swiss chr9:113268650_C_T
+11 0.523780 0.000428404   1 TGFBR3 Spanish chr9:113268650_C_T
+12 1.255560 0.230418000   1 TGFBR3  German chr9:113268650_C_T
+     A1  A2  EFFECT_ALLELE REFERENCE_ALLELE a1  a2
+[1,] "C" "T" "C"           "T"              "C" "T" "1.32" "1.32"
+[2,] "C" "T" "C"           "T"              "C" "T" "1.84" "1.84"
+[3,] "C" "T" "C"           "T"              "C" "T" "1.51" "1.51"
+prot = TGFBR3 MarkerName = chr9:113268650_C_T Q = 0.5643185 df = 2 p = 0.7541536 I2 = 0 lower.I2 = 0 upper.I2 = 0.6313427
+null device
+          1
+>
