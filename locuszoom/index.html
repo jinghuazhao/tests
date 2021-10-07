@@ -54,6 +54,16 @@
 
    // From there, it can be used anywhere throughout LocusZoom, in the same way as any built-in adapter
       data_sources.add('mystudy', ['CustomAssociation', {url: 'https://data.example/gwas', params: { study_id: 42 }}]);
+
+   // Define the layout
+      const layout = LocusZoom.Layouts.get(
+        'plot', 
+        'standard_association', 
+        { state: { genome_build: 'GRCh37', chr: 10, start: 114550452, end: 115067678} }
+      );
+   // Use the layout to render the plot (with data sources defined from the previous guide)
+      const plot = LocusZoom.populate('#lz-plot', data_sources, layout);
+
       var layout = {
         width: 500,
         panels: [
