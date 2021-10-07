@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css"/>
+    <!-- Necessary includes for LocusZoom.js -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@^5.16.0" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locuszoom@0.13.3/dist/locuszoom.app.min.js" type="text/javascript"></script>
+    <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/locuszoom@0.13.3/dist/ext/lz-dynamic-urls.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locuszoom@0.13.3/dist/locuszoom.css" type="text/css"/>
+    <title>LocusZoom.js</title>
+    <style>
+      body {
+        background-color: #FAFAFA;
+        margin: 0px 20px;
+      }
+      img {
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+      div.example > a > h6 {
+        margin-bottom: 0.5em;
+      }
+      div.example > a > img {
+        border: 1px solid #8A8A8A;
+        margin-bottom: 1.4em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="plot"></div>
+    <script type="text/javascript">
+      var data_sources = new LocusZoom.DataSources();
+      data_sources.add("assoc", ["AssociationLZ", { url: "https://server.com/api/single/", params: {source: 1} }]);
+      var layout = {
+        width: 500,
+        panels: [
+          {
+            id : "association",
+            height: 500,
+            data_layers: [
+              {
+                id: "association",
+                type: "scatter",
+                fields: ["assoc:position", "assoc:pvalue"],
+                x_axis: { field: "assoc:position" },
+                y_axis: { field: "assoc:pvalue" }
+              }
+            ]
+          }
+        ]
+      };
+      var plot = LocusZoom.populate("#lz-plot", data_sources, layout);
+    </script>
+  </body>
+</html>
