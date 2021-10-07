@@ -6,6 +6,8 @@ git add README.md
 git commit -m "README.md"
 git add anca
 git commit -m "anca"
+git add locuszoom/
+git commit -m "locuszoom"
 git add pan/
 git commit -m "pan"
 git add shinyCircos/
