@@ -39,6 +39,21 @@
       .add('recomb', ['RecombLZ', { url: apiBase + 'annotation/recomb/results/', build: 'GRCh37' }])
       .add('gene', ['GeneLZ', { url: apiBase + 'annotation/genes/', build: 'GRCh37' }])
       .add('constraint', ['GeneConstraintLZ', { url: 'https://gnomad.broadinstitute.org/api/', build: 'GRCh37' }]);
+
+      const AssociationLZ = LocusZoom.Adapters.get('AssociationLZ');
+      class CustomAssociation extends AssociationLZ {
+      getURL(state, chain, fields) {
+      // The inputs to the function can be used to influence what query is constructed. Eg, the current view region is stored in `plot.state`.
+         const {chr, start, end} = state;
+      // Fetch the region of interest from a hypothetical REST API that uses query parameters to define the region query, for a given study URL such as `data.example/gwas/<id>/?chr=_&start=_&end=_`
+         return `${this.url}/${this.params.study_id}/?chr=${encodeURIComponent(chr)}&start=${encodeURIComponent(start)}&end${encodeURIComponent(end)}`
+        }
+      }
+   // A custom adapter should be added to the registry before using it
+      LocusZoom.Adapters.add('CustomAssociation', CustomAssociation);
+
+   // From there, it can be used anywhere throughout LocusZoom, in the same way as any built-in adapter
+      data_sources.add('mystudy', ['CustomAssociation', {url: 'https://data.example/gwas', params: { study_id: 42 }}]);
       var layout = {
         width: 500,
         panels: [
