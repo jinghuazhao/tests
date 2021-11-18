@@ -28,14 +28,16 @@ export circos=${HPC_WORK}/circos-0.69-9/tests
 export tests=${HOME}/tests
 function by_group()
 {
+  cd ${circos}
   for category in approved_drugs_ clinical_phase_ not_druggable_ preclinical_ predicted_druggable_
   do
     echo ${category}circos
     for ep in e p
     do
       export prefix=${category}${ep}
-      sed '1d;s/chr/hs/;s/,/ /g' ${prefix}qtl_results.csv | awk '{print $1,$2,$2,$3}' > ${circos}/${prefix}QTLs.txt
-      awk -v FS="," '$4!="NA" && $5!="NA"' ${prefix}qtl_results.csv | \
+      sed '1d;s/chr/hs/;s/,/ /g' ${tests}/work/${prefix}qtl_results.csv | \
+      awk '($1!="NA" && $3!="NA"){print $1,$2,$2,$3}' > ${circos}/${prefix}QTLs.txt
+      awk -v FS="," '$4!="NA" && $5!="NA"' ${tests}/work/${prefix}qtl_results.csv | \
       awk -v FS="," '{
          colors[1]="vdred"
          colors[2]="vdblue"
@@ -51,12 +53,11 @@ function by_group()
     sed -i 's/-//' ${circos}/${category}pQTLs.txt
     sed "s/eQTLs.txt/${category}eQTLs.txt/;s/pQTLs.txt/${category}pQTLs.txt/" ${tests}/work/circos/circos.conf > ${circos}/${category}circos.conf
     sed -i "s/eQTL_labels.txt/${category}eQTL_labels.txt/;s/pQTL_labels.txt/${category}pQTL_labels.txt/" ${circos}/${category}circos.conf
-    cd ${circos}
     ../bin/circos -conf ${circos}/${category}circos.conf -debug_group summary,timer > ${category}circos.out
     mv circos.png ${category}circos.png
     mv circos.svg ${category}circos.svg
-    cd -
   done
+  cd -
 }
 
 by_group
