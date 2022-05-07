@@ -55,7 +55,6 @@ circos.yaxis(side = "left", at = c(0, 10, 20, 30), labels = c(0, 10, 20, 30),
 #                     line_col = as.numeric(factor(QTL_labels[[6]])), col = as.numeric(factor(QTL_labels[[6]])), facing = "reverse.clockwise")
 # title("A circos plot of druggability")
 dev.off()
-system("convert -density 300 circlize.eps circlize.pdf")
+system("ps2pdf circlize.eps")
 system("convert -density 300 circlize.eps circlize.png")
-
 # https://www.rapidtables.com/web/color/RGB_Color.html
