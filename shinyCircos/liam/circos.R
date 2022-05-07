@@ -11,7 +11,7 @@ data_prep <- function(prefix)
   file <- file.path(paste0(prefix,"QTL_results.xlsx"))
   xlsx <- read.xlsx(file,sheet=1,colNames=TRUE,skipEmptyRows=TRUE)
   QTLs <- xlsx %>%
-          mutate(start=TSS_start,end=TSS_start+1,value=-log10(pval), color=letters[druggability_category]) %>%
+          mutate(start=TSS_start,end=TSS_start,value=-log10(pval), color=letters[druggability_category]) %>%
           filter(!is.na(start+value)) %>%
           select(chr,start,end,value,label,color)
   if(prefix=="p") QTLs <- within(QTLs,{value <- -value})
