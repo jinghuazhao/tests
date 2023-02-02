@@ -1,0 +1,46 @@
+
+
+From: 1286557554@qq.com <1286557554@qq.com> on behalf of 雨 <songsj455@nenu.edu.cn>
+Sent: 19 February 2020 07:48
+To: jinghuazhao <jinghuazhao@hotmail.com>
+Subject: Asking for help about MCMCglmm
+ 
+> Dear professor Jing Hua Zhao:
+I'm sorry to bother you. I have used the "MCMCglmm"  Package and GRM for running Bayesian mixed models, but there still some error for the model, can you give me some advise for me? My script as follows:
+bianfu.GRM <- read.table("E:/R-2020-2-9/bianfu.GRM.txt", header = TRUE)
+View(bianfu.GRM)
+colnames(bianfu.GRM)<-rownames(bianfu.GRM)
+GRM<-as.matrix(bianfu.GRM)
+
+colnames(biangu.GRM)Data <- as.data.frame(read.table(file = "E:/R-2020-2-9/PHONE.txt", header = TRUE))
+names(Data)[1] <- "animal"
+Data$animal <- as.factor(Data$animal)
+Data$sex <- as.factor(Data$sex)
+Data$age <- as.factor(Data$age)
+Data$Temp <- as.numeric(Data$Temp)
+Data$Rel_Hum <- as.numeric(Data$Rel_Hum)
+Data$WEIGTHT <- as.numeric(Data$WEIGTHT)
+Data$ARMLETH <- as.numeric(Data$ARMLETH)
+Data$BODY_TEMP <- as.numeric(Data$BODY_TEMP)
+Data$Peak_Freq <- as.numeric(Data$Peak_Freq)
+head(Data)
+install.packages("MCMCglmm")
+library("MCMCglmm")
+prior1.1 <- list(G = list(G1 = list(V = 1, nu = 0.002)), R = list(V = 1, nu = 0.002))
+model1.1 <- MCMCglmm(WEIGTHT ~ 1, random= ~ animal, data = Data, ginverse=list(animal=GRM), prior = prior1.1, burnin=10000, nitt=100000, verbose=FALSE)
+
+
+Error in MCMCglmm(WEIGTHT ~ 1, random = ~animal, data = Data, ginverse = list(animal = GRM),  :
+  animal ginverse must have non-null rownames
+
+The attchments  were my data of GRM and phenotype.
+
+
+
+
+Yours sincerely,
+
+> Shengjing Song, PHD
+> Jilin Key Laboratory of Animal Resource Conservation and Utilization, Northeast Normal University
+> 2555 Jingyue St, Changchun 130117, China
+
