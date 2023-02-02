@@ -8,6 +8,8 @@ git add anca
 git commit -m "anca"
 git add locuszoom/
 git commit -m "locuszoom"
+git add gap/
+git commit -m "gap"
 git add pan/
 git commit -m "pan"
 git add shinyCircos/
