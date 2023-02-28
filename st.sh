@@ -4,6 +4,8 @@ git add .gitignore
 git commit -m ".gitignore"
 git add README.md
 git commit -m "README.md"
+git add METAL
+git commit -m "METAL"
 git add anca
 git commit -m "anca"
 git add locuszoom/
