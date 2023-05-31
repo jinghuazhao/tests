@@ -1,3 +1,33 @@
 # tests
 
 A repository to share problems under development.
+
+## Tests for turboqq & turboman
+
+* [turboqq](turboqq), <https://github.com/bpprins/turboqq>
+* [turboman](turboman), <https://github.com/bpprins/turboman>
+    ```
+    > options(width=200)
+    > load("turboman_hg19_reference_data.rda")
+    > ls()
+    [1] "ld_block_breaks_pickrell_hg19_eur" "refgene_gene_coordinates_h19"
+    > head(ld_block_breaks_pickrell_hg19_eur)
+      chr   start
+    1   1   10583
+    2   1 1892607
+    3   1 3582736
+    4   1 4380811
+    5   1 5913893
+    6   1 7247335
+    > head(refgene_gene_coordinates_h19)
+          chromosome gene_transcription_start gene_transcription_stop  gene_name gene_transcription_midposition
+    1              1                    11873                   14409    DDX11L1                        13141.0
+    53009          1                    17368                   17436  MIR6859-1                        17402.0
+    55877          1                    17368                   17436  MIR6859-3                        17402.0
+    2              1                    14361                   29370     WASH7P                        21865.5
+    45554          1                    30365                   30503 MIR1302-10                        30434.0
+    45166          1                    30365                   30503  MIR1302-9                        30434.0
+    ```
+* Annotation files which be can used to build `turboman_hg19_reference_data.rda`.
+  - glist-hg19 and glist-hg38, <https://www.cog-genomics.org/plink/1.9/resources>
+  - ldetect-data, <https://bitbucket.org/nygcresearch/ldetect-data/src/master/>
