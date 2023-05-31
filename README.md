@@ -4,8 +4,8 @@ A repository to share problems under development.
 
 ## Tests for turboqq & turboman
 
-* [turboqq](https://github.com/jinghuazhao/tests/tree/main/turboqq), <https://github.com/bpprins/turboqq>
-* [turboman](https://github.com/jinghuazhao/tests/tree/main/turboman), <https://github.com/bpprins/turboman>
+* [turboqq](https://github.com/jinghuazhao/tests/tree/main/turboqq) for <https://github.com/bpprins/turboqq>
+* [turboman](https://github.com/jinghuazhao/tests/tree/main/turboman) for <https://github.com/bpprins/turboman>
     ```
     > options(width=200)
     > load("turboman_hg19_reference_data.rda")
