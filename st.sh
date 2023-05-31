@@ -16,6 +16,10 @@ git add pan/
 git commit -m "pan"
 git add shinyCircos/
 git commit -m "shinyCircos"
+git add turboqq
+git commit -m "turboqq"
+git add turboman
+git commit -m "turboman"
 git add st.sh
 git commit -m "st.sh"
 git push
