@@ -1,3 +1,4 @@
+# SNPID experiment on VCF
 
 ## Test data
 
@@ -59,7 +60,7 @@ gunzip -c v1-snpid.vcf.gz | \
   tabix m-snpid.vcf.gz X
 ```
 
-We attempt to extend the indels() function above,
+We attempt to extend the snpid() function above,
 
 ```bash
 function snpid2()
