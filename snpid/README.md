@@ -2,7 +2,7 @@
 
 It is often necessary to represent variant in chr:pos_a1/a2 format instead of RSid. Our experiment here involves 10 indels in a VCF file.
 
-The Bash script is collectively generated to [README.sh](README.sh) which in turn generate [README.tsv](README.tsv).
+The Bash script is collectively generated to [README.sh](README.sh) which in turn generate [README.tsv](README.tsv) whose very last 10 lines are as intended.
 
 ## Test data
 
