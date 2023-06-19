@@ -82,3 +82,7 @@ snpid2 m-snpid.vcf.gz v2
 echo v2
 tabix v2-snpid.vcf.gz X
 ```
+
+## Question
+
+Would PLINK cope with this data well?
