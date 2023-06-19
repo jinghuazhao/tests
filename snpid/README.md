@@ -1,4 +1,8 @@
-# SNPID experiment on VCF
+# SNPID experiments
+
+It is often necessary to represent variant in chr:pos_a1/a2 format instead of RSid. Our experiment here involves 10 indels in a VCF file.
+
+The Bash script is collectively generated to [README.sh](README.sh) which in turn generate [README.tsv](README.tsv).
 
 ## Test data
 
