@@ -88,6 +88,10 @@ echo v2
 tabix v2-snpid.vcf.gz X
 ```
 
+## Exercise
+
+Modify snpid2() to output the SNPid definition.
+
 ## Question
 
 Would PLINK cope with this data well?
