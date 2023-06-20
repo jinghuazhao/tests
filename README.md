@@ -51,7 +51,7 @@ function snpid2()
     n=a[$3]++
     if(n>0) {a1=a1 n; a2=a2 n; $3=$1":"$2"_"a1"/"a2 }
   # $4=a1; $5=a2
-    print $1,$2,$3,$4,$5 >> sprintf("%s.txt",out)
+    if(length($4)>1||length($5)>1) print $1,$2,$3,$4,$5 >> sprintf("%s.txt",out)
     print
   }' | bgzip -f > ${2}-snpid.vcf.gz
   bcftools index -tf ${2}-snpid.vcf.gz
@@ -60,4 +60,4 @@ function snpid2()
 snpid2 ERZ127238/HPSI1013i-garx_3.wec.gtarray.HumanCoreExome-12_v1_0.imputed_phased.20150604.genotypes.vcf.gz test
 ```
 
-Additional rationale is available from the [snpid](https://github.com/jinghuazhao/tests/tree/main/snpid) directory.
+For the example above, only definitions for indels are listed. Additional rationale is available from the [snpid](https://github.com/jinghuazhao/tests/tree/main/snpid) directory.
