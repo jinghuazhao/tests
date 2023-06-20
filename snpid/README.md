@@ -1,4 +1,4 @@
-# SNPID experiments
+# SNPid experiments
 
 It is often necessary to represent variant in chr:pos_a1/a2 format instead of RSid. Our experiment here involves 10 indels in a VCF file.
 
@@ -61,7 +61,7 @@ gunzip -c 10indels.vcf.gz | \
   tabix m-snpid.vcf.gz X
 ```
 
-We attempt to extend the snpid() function above,
+We extend the snpid() function above,
 
 ```bash
 function snpid2()
@@ -85,9 +85,11 @@ echo v2
 tabix v2-snpid.vcf.gz X
 ```
 
+Instead of writing out the SNPid duplicates, they are handled in one go.
+
 ## Exercise
 
-Modify snpid2() to output the SNPid definition.
+Modify snpid2() to output the SNPid definition (**Solution**: see up-level directory on the front page).
 
 ## Question
 
