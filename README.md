@@ -60,4 +60,4 @@ rm -f test.txt
 snpid2 ERZ127238/HPSI1013i-garx_3.wec.gtarray.HumanCoreExome-12_v1_0.imputed_phased.20150604.genotypes.vcf.gz test
 ```
 
-For the example above, only definitions for indels are listed. Additional rationale is available from the [snpid](https://github.com/jinghuazhao/tests/tree/main/snpid) directory.
+For the example above, only definitions for indels are listed. More details are available from the [snpid](https://github.com/jinghuazhao/tests/tree/main/snpid) directory.
