@@ -17,7 +17,7 @@ echo 10 indels
 bcftools index -tf 10indels.vcf.gz
 tabix 10indels.vcf.gz X
 ```
-## A common solution (v1)
+## A usual solution (v1)
 
 This version does not handle multiallelic loci, so we only have chr:pos_[I|D]/[D|I]
 
@@ -45,7 +45,7 @@ Note when we uncomment `# $4=a1; $5=a2` the REF/ALT alleles are also changed int
 
 ## Generic case (v2)
 
-We then test for all 10 indels with the same position (60034).
+We then treat all 10 indels as a multiallelic locus with the same position (60034).
 
 ```bash
 gunzip -c v1-snpid.vcf.gz | \
