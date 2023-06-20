@@ -48,15 +48,12 @@ Note when we uncomment `# $4=a1; $5=a2` the REF/ALT alleles are also changed int
 We then treat all 10 indels as a multiallelic locus with the same position (60034).
 
 ```bash
-gunzip -c v1-snpid.vcf.gz | \
+gunzip -c 10indels.vcf.gz | \
   awk '
   NR==1,/#CHROM/{print;next}
   {
     FS="\t";OFS="\t"
     $2=60034
-    if(length($4)>1||length($5)>1) if (length($4)>length($5)) {a1="I";a2="D"} else {a1="D"; a2="I"} else {a1=$4; a2=$5}
-    $3=$1":"$2"_"a1"/"a2
-  # $4=a1; $5=a2
     print
   }' | bgzip -f > m-snpid.vcf.gz
   bcftools index -tf m-snpid.vcf.gz
