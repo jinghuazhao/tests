@@ -88,7 +88,7 @@ Instead of writing out the SNPid duplicates, they are handled in one go.
 ## Exercise
 
 1. Modify snpid2() to output the SNPid definition (**Solution**: see up-level directory on the front page).
-2. Adapt the function to handle csv/tsv files (*Hint*: change `NR==1,/#CHROM/`).
+2. Adapt the function to handle csv/tsv files (*Hint*: Consider change in `NR==1,/#CHROM/`).
 
 ## Question
 
