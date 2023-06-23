@@ -34,7 +34,7 @@ A repository to share problems under development.
 
 ## SNPid generation
 
-A SNPid=chr:pos_a1/a2 often replaces RSid as an unique variant identifier in genetic association studies. A customised implemention based on Bash is as follows,
+A SNPid=chr:pos_a1/a2 often replaces RSid as an unique variant identifier in genetic association studies. A customised implemention for a compressed VCF file based on Bash is as follows,
 
 ```bash
 #!/usr/bin/bash
