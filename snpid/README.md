@@ -41,8 +41,6 @@ echo v1
 tabix v1-snpid.vcf.gz X
 ```
 
-## Generic case (v2)
-
 We then treat all 10 indels as a multiallelic locus with the same position (60034).
 
 ```bash
@@ -59,7 +57,11 @@ gunzip -c 10indels.vcf.gz | \
   tabix m-snpid.vcf.gz X
 ```
 
-We extend the snpid() function above,
+the snpid() will generate duplicated IDs.
+
+## Generic case (v2)
+
+We now extend the snpid() function above,
 
 ```bash
 function snpid2()
