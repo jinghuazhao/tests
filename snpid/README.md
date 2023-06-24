@@ -92,4 +92,4 @@ Instead of writing out the SNPid duplicates, they are handled in one go.
 
 ## Question
 
-Would PLINK cope with this data well?
+Should we build SNPid directly as chr:pos_a1/a2 without use of D/I, would PLINK cope with this data well?
