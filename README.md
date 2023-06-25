@@ -34,7 +34,7 @@ A repository to share problems under development.
 
 ## SNPid generation
 
-A SNPid=chr:pos_a1/a2 often replaces RSid as an unique variant identifier in genetic association studies. A customised implemention for a compressed VCF file based on Bash is as follows,
+A SNPid (chr:pos_a1/a2) often replaces RSid as an unique variant identifier in genetic association studies. A customised implemention for a compressed VCF file based on Bash is as follows,
 
 ```bash
 #!/usr/bin/bash
@@ -59,4 +59,4 @@ rm -f test.txt
 snpid2 ERZ127238/HPSI1013i-garx_3.wec.gtarray.HumanCoreExome-12_v1_0.imputed_phased.20150604.genotypes.vcf.gz test
 ```
 
-Note only definitions for indels are listed. More details are available from the [snpid](https://github.com/jinghuazhao/tests/tree/main/snpid) directory.
+Only definitions for indels are listed. More details are available from the [snpid](https://github.com/jinghuazhao/tests/tree/main/snpid) directory.
