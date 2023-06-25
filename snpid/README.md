@@ -19,7 +19,7 @@ tabix 10indels.vcf.gz X
 ```
 ## A usual solution (v1)
 
-This version does not handle multiallelic loci, so we only have chr:pos_[I|D]/[D|I]
+We only have chr:pos_[I|D]/[D|I], saving storage and enabling software which handle variant IDs with limited length.
 
 ```bash
 function snpid()
@@ -41,7 +41,7 @@ echo v1
 tabix v1-snpid.vcf.gz X
 ```
 
-We then treat all 10 indels as a multiallelic locus with the same position (60034).
+The algorithm is broken if 10 indels belong to a multiallelic locus (pos=60034).
 
 ```bash
 gunzip -c 10indels.vcf.gz | \
@@ -85,9 +85,9 @@ echo v2
 tabix v2-snpid.vcf.gz X
 ```
 
-Instead of writing out the SNPid duplicates, they are handled in one go.
+Instead of writing out the SNPid duplicates, they are handled on the fly.
 
-## Exercise
+## Exercises
 
 1. Modify snpid2() to output the SNPid definition (**Solution**: see up-level directory on the front page).
 2. Adapt the function to handle csv/tsv files (*Hint*: Consider change in `NR==1,/#CHROM/`).
