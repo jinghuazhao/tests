@@ -6,6 +6,18 @@ echo 10 indels
 bcftools index -tf 10indels.vcf.gz
 tabix 10indels.vcf.gz X
 
+gunzip -c 10indels.vcf.gz | \
+  awk '
+  NR==1,/#CHROM/{print;next}
+  {
+    FS="\t";OFS="\t"
+    $2=60034
+    print
+  }' | bgzip -f > m-snpid.vcf.gz
+  bcftools index -tf m-snpid.vcf.gz
+  echo multiallelic case
+  tabix m-snpid.vcf.gz X
+
 function snpid()
 {
   gunzip -c ${1} | \
@@ -23,18 +35,6 @@ function snpid()
 snpid 10indels.vcf.gz v1
 echo v1
 tabix v1-snpid.vcf.gz X
-
-gunzip -c 10indels.vcf.gz | \
-  awk '
-  NR==1,/#CHROM/{print;next}
-  {
-    FS="\t";OFS="\t"
-    $2=60034
-    print
-  }' | bgzip -f > m-snpid.vcf.gz
-  bcftools index -tf m-snpid.vcf.gz
-  echo v2 data
-  tabix m-snpid.vcf.gz X
 
 function snpid2()
 {

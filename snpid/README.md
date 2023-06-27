@@ -17,6 +17,23 @@ echo 10 indels
 bcftools index -tf 10indels.vcf.gz
 tabix 10indels.vcf.gz X
 ```
+
+We also create multiallelic locus containing all 10 indels (assuming pos=60034).
+
+```bash
+gunzip -c 10indels.vcf.gz | \
+  awk '
+  NR==1,/#CHROM/{print;next}
+  {
+    FS="\t";OFS="\t"
+    $2=60034
+    print
+  }' | bgzip -f > m-snpid.vcf.gz
+  bcftools index -tf m-snpid.vcf.gz
+  echo multiallelic case
+  tabix m-snpid.vcf.gz X
+```
+
 ## A usual solution (v1)
 
 We only have chr:pos_[I|D]/[D|I], saving storage and enabling software which handle variant IDs with limited length.
@@ -41,23 +58,7 @@ echo v1
 tabix v1-snpid.vcf.gz X
 ```
 
-The algorithm is broken if 10 indels belong to a multiallelic locus (pos=60034).
-
-```bash
-gunzip -c 10indels.vcf.gz | \
-  awk '
-  NR==1,/#CHROM/{print;next}
-  {
-    FS="\t";OFS="\t"
-    $2=60034
-    print
-  }' | bgzip -f > m-snpid.vcf.gz
-  bcftools index -tf m-snpid.vcf.gz
-  echo v2 data
-  tabix m-snpid.vcf.gz X
-```
-
-the snpid() will generate duplicated IDs.
+The algorithm with snpid() is broken for the multiallelic locus as it will generate duplicated IDs.
 
 ## Generic case (v2)
 
