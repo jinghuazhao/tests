@@ -18,7 +18,7 @@ bcftools index -tf 10indels.vcf.gz
 tabix 10indels.vcf.gz X
 ```
 
-We also create multiallelic locus containing all 10 indels (assuming pos=60034).
+We also create a multiallelic locus containing all 10 indels (assuming pos=60034).
 
 ```bash
 gunzip -c 10indels.vcf.gz | \
