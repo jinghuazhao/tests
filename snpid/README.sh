@@ -18,6 +18,22 @@ gunzip -c 10indels.vcf.gz | \
   echo multiallelic case
   tabix m-snpid.vcf.gz X
 
+function chr_pos_a1_a2()
+{
+  gunzip -c ${1} | \
+  awk '
+  NR==1,/#CHROM/{print;next}
+  {
+    FS="\t";OFS="\t"
+    if($4<$5) $3=$1":"$2"_"$4"/"$5; else $3=$1":"$2"_"$5"/"$4
+    print
+  }' | bgzip -f > ${2}-snpid.vcf.gz
+  bcftools index -tf ${2}-snpid.vcf.gz
+}
+chr_pos_a1_a2 10indels.vcf.gz v0
+echo v0
+tabix v0-snpid.vcf.gz X
+
 function snpid()
 {
   gunzip -c ${1} | \

@@ -34,7 +34,29 @@ gunzip -c 10indels.vcf.gz | \
   tabix m-snpid.vcf.gz X
 ```
 
-## A usual solution (v1)
+## The usual solution
+
+```bash
+function chr_pos_a1_a2()
+{
+  gunzip -c ${1} | \
+  awk '
+  NR==1,/#CHROM/{print;next}
+  {
+    FS="\t";OFS="\t"
+    if($4<$5) $3=$1":"$2"_"$4"/"$5; else $3=$1":"$2"_"$5"/"$4
+    print
+  }' | bgzip -f > ${2}-snpid.vcf.gz
+  bcftools index -tf ${2}-snpid.vcf.gz
+}
+chr_pos_a1_a2 10indels.vcf.gz v0
+echo v0
+tabix v0-snpid.vcf.gz X
+```
+
+Two alleles for each variant are ordered, so as to accommodate a consortium meta-analysis involving different orders of alleles vary.
+
+## The first solution (v1)
 
 We only have chr:pos_[I|D]/[D|I], saving storage and enabling software which handle variant IDs with limited length.
 
@@ -90,7 +112,9 @@ Instead of writing out the SNPid duplicates, they are handled on the fly.
 
 ## Exercises
 
-1. Modify snpid2() to output the SNPid definition (**Solution**: see up-level directory on the front page).
+1. Modify snpid2() (**Solution**: see up-level directory on the front page) so as to
+   - output the SNPid definition
+   - order alleles
 2. Adapt the function to handle csv/tsv files (*Hint*: Consider change in `NR==1,/#CHROM/`).
 
 ## Question
