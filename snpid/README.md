@@ -114,7 +114,7 @@ Instead of writing out the SNPid duplicates, they are handled on the fly.
 
 1. Modify snpid2() (**Solution**: see up-level directory on the front page) so as to
    - output the SNPid definition
-   - order alleles
+   - order alleles in SNPid
 2. Adapt the function to handle csv/tsv files (*Hint*: Consider change in `NR==1,/#CHROM/`).
 
 ## Question
