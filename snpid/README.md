@@ -56,9 +56,9 @@ tabix v0-snpid.vcf.gz X
 
 Two alleles for each variant are ordered, so as to accommodate a consortium meta-analysis where orders of alleles vary by study.
 
-## The first solution (v1)
+## indels as I/D (v1)
 
-We only have chr:pos_[I|D]/[D|I], saving storage and enabling software which handle variant IDs with limited length.
+To save storate and enable software that handles variant IDs with limited length, we use chr:pos_[I|D]/[D|I].
 
 ```bash
 function snpid()
