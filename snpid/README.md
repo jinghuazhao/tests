@@ -54,7 +54,7 @@ echo v0
 tabix v0-snpid.vcf.gz X
 ```
 
-Two alleles for each variant are ordered, so as to accommodate a consortium meta-analysis involving different orders of alleles vary.
+Two alleles for each variant are ordered, so as to accommodate a consortium meta-analysis where orders of alleles vary by study.
 
 ## The first solution (v1)
 
