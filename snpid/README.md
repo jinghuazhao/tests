@@ -120,3 +120,11 @@ Instead of writing out the SNPid duplicates, they are handled on the fly.
 ## Question
 
 Should we build SNPid directly as chr:pos_a1/a2 without use of D/I, would PLINK cope with this data well?
+
+One solution for another example via PLINK2,
+
+```bash
+plink2 --vcf ${caprion}/work/X.vcf.gz --export bgen-1.2 bits=8 --double-id --dosage-erase-threshold 0.001 \
+       --set-missing-var-ids @:#_\$r_\$a --new-id-max-allele-len 680 \
+       --out ${caprion}/work/chrX
+```
