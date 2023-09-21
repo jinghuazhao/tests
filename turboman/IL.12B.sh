@@ -16,7 +16,7 @@ R --slave --vanilla --args \
   output_data_rootname=IL.12B \
   custom_peak_annotation_file_path=${phenoname}.annotate \
   reference_file_path=turboman_hg19_reference_data.rda \
-  pvalue_sign=5e-8 \
+  pvalue_sign=5e-10 \
   plot_title="${phenoname} example" < turboman.r
 
 # 21-9-2023 JHZ
