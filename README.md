@@ -32,6 +32,8 @@ A repository to share problems under development.
   - glist-hg19 and glist-hg38, <https://www.cog-genomics.org/plink/1.9/resources>
   - ldetect-data, <https://bitbucket.org/nygcresearch/ldetect-data/src/master/>
 
+* The IL-12B example, ![turboman/IL.12B.png](turboman/IL.12B.png)
+
 ## SNPid generation
 
 A SNPid (chr:pos_a1/a2) often replaces RSid as an unique variant identifier in genetic association studies. A customised implemention for a compressed VCF file based on Bash is as follows,
