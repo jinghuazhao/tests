@@ -13,7 +13,7 @@ gzip -f > ${phenoname}.txt.gz
 
 R --slave --vanilla --args \
   input_data_path=${phenoname}.txt.gz \
-  output_data_rootname=IL.12B \
+  output_data_rootname=${phenoname} \
   custom_peak_annotation_file_path=${phenoname}.annotate \
   reference_file_path=turboman_hg19_reference_data.rda \
   pvalue_sign=5e-10 \
