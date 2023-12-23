@@ -4,9 +4,9 @@ R --no-save <<END
   require(gap.datasets)
   test <- mhtdata[c("chr","pos","p")]
   write.table(test,file="test.txt",row.names=FALSE,quote=FALSE)
-  annotate <- unique(subset(mhtdata[c("chr","start","gene","p")],p<5e-8 & gene!=""))
+  annotate <- subset(mhtdata[c("chr","start","gene","p")],p<5e-8 & gene!="")
   names(annotate) <- c("chromosome","position","nearest_gene_name","p")
-  write.table(annotate[,-4],file="annotate.txt",row.names=FALSE,quote=FALSE)
+  write.table(unique(annotate[,-4]),file="annotate.txt",row.names=FALSE,quote=FALSE)
 END
 
 R --slave --vanilla --args \
