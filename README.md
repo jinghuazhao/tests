@@ -33,6 +33,8 @@ A repository to share problems under development.
   - ldetect-data, <https://bitbucket.org/nygcresearch/ldetect-data/src/master/>
 
 * The IL-12B example, ![turboman/IL.12B.png](turboman/IL.12B.png)
+  - IL.12B.txt.gz was split via `split --bytes=45M "IL.12B.txt.gz" "IL.12B.txt-"`
+  - It could be recoverd via `cat IL.12B.txt-*` > IL.12B.txt.gz
 
 ## SNPid generation
 
