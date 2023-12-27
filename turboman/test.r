@@ -6,24 +6,18 @@ liftover <- function(chr_start_end_snpid) {
   HPC_WORK <- Sys.getenv("HPC_WORK")
   f <- file.path(HPC_WORK, "bin", "hg19ToHg38.over.chain")
   chain <- rtracklayer::import.chain(f)
-  
   require(GenomicRanges)
-  
   gr <- with(chr_start_end_snpid, {
     GRanges(seqnames = chr, 
             ranges = IRanges(start, end), 
             snpid = snpid)  # Include snpid as metadata
   })
-  
   seqlevelsStyle(gr) <- "UCSC"
-  
   gr38 <- rtracklayer::liftOver(gr, chain)
-  
   # Check if liftover was successful
   if (all(is.na(gr38$seqnames))) {
     warning("Liftover failed for some SNPs.")
   }
-  
   return(gr38)
 }
 
