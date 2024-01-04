@@ -21,7 +21,7 @@ QTL_labels
 with(QTL_labels,table(druggability_category))
 
 setEPS()
-postscript(file = "circlize.ps", width = 7.08, height = 7.08, horizontal = FALSE, paper = "special", colormodel="rgb")
+postscript(file = "circlize.ps", width = 9.5, height = 10, horizontal = FALSE, paper = "special", colormodel="rgb")
 circos.clear()
 circos.par("start.degree" = 90, gap.degree = c(rep(c(0.7), 21), 8), track.margin = c(0.005, 0.005), cell.padding = c(0.001, 0.01, 0.01, 0.001))
 circos.initializeWithIdeogram(plotType = NULL, species = "hg19",  chromosome.index = paste0("chr", 1:22))
