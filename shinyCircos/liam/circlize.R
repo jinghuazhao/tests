@@ -71,6 +71,6 @@ circos.genomicText(data.frame(start=1,end=1),sector.index=get.all.sector.index()
 #                     line_col = as.numeric(factor(QTL_labels[[6]])), col = as.numeric(factor(QTL_labels[[6]])), facing = "reverse.clockwise")
 # title("A circos plot of druggability")
 dev.off()
-system("convert -density 600 circlize.ps circlize.pdf")
+system("ps2pdf circlize.ps")
 system("convert -density 300 circlize.ps circlize.png")
 # https://www.rapidtables.com/web/color/RGB_Color.html
