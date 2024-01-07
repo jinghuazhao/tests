@@ -48,7 +48,7 @@ circos.track(ylim=c(0,1), track.height=0.05, bg.border=NA, panel.fun=function(x,
 circos.genomicTrackPlotRegion(QTLs, numeric.column = 4,
                               panel.fun = function(region, value,  ...)
                               circos.genomicPoints(region, value, pch = 16, col = "magenta", cex = 0.3),
-                              track.height = 0.55, bg.border = NA, bg.col = "white", ylim = c(0, 30))
+                              track.height = 0.55, bg.border = 1, bg.col = "white", ylim = c(0, 30))
 circos.yaxis(side = "left", at = c(0, 10, 20, 30), labels = c(0, 10, 20, 30), 
              sector.index = get.all.sector.index()[1], labels.cex = 0.3, lwd = 0.5,
              tick.length = 0.5*(convert_x(1, "mm",
