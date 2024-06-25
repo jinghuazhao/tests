@@ -1,0 +1,75 @@
+
+R version 3.2.0 (2015-04-16) -- "Full of Ingredients"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-unknown-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # 26-10-2015 MRC-Epid JHZ
+> 
+> library(gap)
+> phen <- read.table("test.phen",as.is=TRUE,col.names=c("id","id1","y"),header=FALSE)
+> cvar <- read.table("test.covar",as.is=TRUE,col.names=c("id","id1","sex"),header=FALSE)
+> test <- merge(phen,cvar,by=c("id","id1"),sort=FALSE)
+> t <- ReadGRMBin("test",TRUE)
+> with(t,{
++   G <<- GRM
++   GE <<- with(test,outer(sex-1,sex-1)*G)
++   WriteGRMBin("test_G",grm,N,id)
++   WriteGRMBin("test_GE",GE[upper.tri(GE,TRUE)],N,id)
++ })
+> 
+> library(regress)
+> N <- dim(G)[1]
+> d <- diag(0.5,N)
+> r <- regress(y~1,~G,data=test)
+> with(r,h2G(sigma,sigma.cov))
+Vp = 0.9912711 SE = 0.02246303 
+h2G = 0.02235797 SE = 0.008525981 
+> s <- regress(y~1,~GE,data=test)
+> with(s,h2G(sigma,sigma.cov))
+Vp = 0.9911104 SE = 0.02275296 
+h2G = 0.001096601 SE = 0.009782976 
+> sr <- regress(y~sex,~G+GE,data=test)
+> with(sr,h2GE(sigma,sigma.cov))
+Vp = 0.9800161 SE = 0.02233217 
+h2G = 0.03248437 SE = 0.009654586 h2GE = -0.02891323 SE = 0.009436667 
+> 
+> library(coxme)
+> l <- lmekin(y~sex+(1|id),varlist=list(G+d,GE+d),data=test,method="REML")
+> l
+Linear mixed-effects kinship model fit by REML
+  Data: test 
+  Log-likelihood = -5551.683 
+  n= 3925 
+
+
+Model:  y ~ sex + (1 | id) 
+Fixed coefficients
+                    Value  Std Error     z    p
+(Intercept) -0.0015688322 0.05319978 -0.03 0.98
+sex          0.0005546621 0.03213940  0.02 0.99
+
+Random effects
+ Group Variable Std Dev      Variance    
+ id    Vmat.1   1.486654e-01 2.210140e-02
+       Vmat.2   6.128404e-03 3.755734e-05
+Residual error= 0.9789387 
+> testGRM <- ReadGRM("test")
+> sum(G-testGRM$GRM)
+[1] -1.1154e-05
+> save(r,sr,l,file="test.rda")
+> 
+> q('no')

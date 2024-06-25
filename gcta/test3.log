@@ -1,0 +1,76 @@
+ /genetics/data/software/uq $ gcta64 --reml --grm-gz test --pheno test.phen --covar test.covar --thread-num 
+20 --out test3
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version 1.24.4
+* (C) 2010-2013 Jian Yang, Hong Lee, Michael Goddard and Peter Visscher
+* The University of Queensland
+* MIT License
+*******************************************************************
+Analysis started: Mon Aug 25 22:49:01 2014
+
+Options:
+--reml
+--grm-gz test
+--pheno test.phen
+--covar test.covar
+--thread-num 20
+--out test3
+
+Note: the program will be running on 20 threads.
+
+Reading IDs of the GRM from [test.grm.id].
+3925 IDs read from [test.grm.id].
+Reading the GRM from [test.grm.gz].
+Pairwise genetic relationships between 3925 individuals are included from [test.grm.gz].
+Reading phenotypes from [test.phen].
+Non-missing phenotypes of 3925 individuals are included from [test.phen].
+Reading discrete covariate(s) from [test.covar].
+1 discrete covariate(s) of 3925 individuals are included from [test.covar].
+
+1 discrete variable(s) included as covariate(s).
+3925 individuals are in common in these files.
+
+Performing  REML analysis ... (Note: may take hours depending on sample size).
+3925 observations, 2 fixed effect(s), and 2 variance component(s)(including residual variance).
+Calculating prior values of variance components by EM-REML ...
+Updated prior values: 0.462523 0.88994
+logL: -2532.61
+Running AI-REML algorithm ...
+Iter.	logL	V(G)	V(e)	
+1	-2078.20	0.02421	0.91935	
+2	-1949.28	0.02366	0.93431	
+3	-1947.93	0.02324	0.94496	
+4	-1947.28	0.02294	0.95246	
+5	-1946.96	0.02223	0.96903	
+6	-1946.68	0.02215	0.96937	
+7	-1946.68	0.02215	0.96937	
+8	-1946.68	0.02215	0.96937	
+Log-likelihood ratio converged.
+
+Calculating the logLikelihood for the reduced model ...
+(variance component 1 is dropped from the model)
+Calculating prior values of variance components by EM-REML ...
+Updated prior values: 0.99091
+logL: -1951.14967
+Running AI-REML algorithm ...
+Iter.	logL	V(e)	
+1	-1951.15	0.99091	
+Log-likelihood ratio converged.
+
+Summary result of REML analysis:
+Source	Variance	SE
+V(G)	0.022149	0.008753
+V(e)	0.969370	0.022905
+Vp	0.991519	0.022476
+V(G)/Vp	0.022338	0.008769
+
+Variance/Covariance Matrix of the estimates:
+7.66219e-05	
+-4.80466e-05	0.00052463	
+
+Summary result of REML analysis has been saved in the file [test3.hsq].
+
+Analysis finished: Mon Aug 25 22:49:30 2014
+Computational time: 0:0:29
+
