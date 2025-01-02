@@ -18,12 +18,12 @@ graph LR
     end
 
     subgraph Layer_L3[Layer L3]
-        y1[\hat{x1}]
-        y2[\hat{x2}]
-        y3[\hat{x3}]
-        y4[\hat{x4}]
-        y5[\hat{x5}]
-        y6[\hat{x6}]
+        y1[x1]
+        y2[x2]
+        y3[x3]
+        y4[x4]
+        y5[x5]
+        y6[x6]
     end
 
     x1 --> h1
