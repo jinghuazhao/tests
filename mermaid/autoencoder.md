@@ -18,12 +18,12 @@ graph LR
     end
 
     subgraph Layer_L3[Layer L3]
-        y1[x1]
-        y2[x2]
-        y3[x3]
-        y4[x4]
-        y5[x5]
-        y6[x6]
+        y1[y1]
+        y2[y2]
+        y3[y3]
+        y4[y4]
+        y5[y5]
+        y6[y6]
     end
 
     x1 --> h1
@@ -85,5 +85,97 @@ graph LR
     %% Styling the nodes as circles
     class x1,x2,x3,x4,x5,x6,b1,h1,h2,h3,y1,y2,y3,y4,y5,y6 circle;
     
+    classDef circle fill:#fff,stroke:#000,stroke-width:2px,shape:circle;
+```
+
+```mermaid
+graph LR
+    subgraph Layer_L1[Layer L1]
+        x1[x1]
+        x2[x2]
+        x3[x3]
+        x4[x4]
+        x5[x5]
+        x6[x6]
+        b1[+1]
+    end
+
+    subgraph Layer_L2[Layer L2]
+        h1[h]
+        h2[h]
+        h3[h]
+        b2[+1]
+    end
+
+    subgraph Layer_L3[Layer L3]
+        y1[y1]
+        y2[y2]
+        y3[y3]
+        y4[y4]
+        y5[y5]
+        y6[y6]
+    end
+
+    %% Layer 1 to Layer 2 connections
+    x1 -->|L1 to L2| h1
+    x1 -->|L1 to L2| h2
+    x1 -->|L1 to L2| h3
+
+    x2 -->|L1 to L2| h1
+    x2 -->|L1 to L2| h2
+    x2 -->|L1 to L2| h3
+
+    x3 -->|L1 to L2| h1
+    x3 -->|L1 to L2| h2
+    x3 -->|L1 to L2| h3
+
+    x4 -->|L1 to L2| h1
+    x4 -->|L1 to L2| h2
+    x4 -->|L1 to L2| h3
+
+    x5 -->|L1 to L2| h1
+    x5 -->|L1 to L2| h2
+    x5 -->|L1 to L2| h3
+
+    x6 -->|L1 to L2| h1
+    x6 -->|L1 to L2| h2
+    x6 -->|L1 to L2| h3
+
+    b1 -->|Bias to L2| h1
+    b1 -->|Bias to L2| h2
+    b1 -->|Bias to L2| h3
+
+    %% Layer 2 to Layer 3 connections
+    h1 -->|L2 to L3| y1
+    h1 -->|L2 to L3| y2
+    h1 -->|L2 to L3| y3
+    h1 -->|L2 to L3| y4
+    h1 -->|L2 to L3| y5
+    h1 -->|L2 to L3| y6
+
+    h2 -->|L2 to L3| y1
+    h2 -->|L2 to L3| y2
+    h2 -->|L2 to L3| y3
+    h2 -->|L2 to L3| y4
+    h2 -->|L2 to L3| y5
+    h2 -->|L2 to L3| y6
+
+    h3 -->|L2 to L3| y1
+    h3 -->|L2 to L3| y2
+    h3 -->|L2 to L3| y3
+    h3 -->|L2 to L3| y4
+    h3 -->|L2 to L3| y5
+    h3 -->|L2 to L3| y6
+
+    b2 -->|Bias to L3| y1
+    b2 -->|Bias to L3| y2
+    b2 -->|Bias to L3| y3
+    b2 -->|Bias to L3| y4
+    b2 -->|Bias to L3| y5
+    b2 -->|Bias to L3| y6
+
+    %% Styling the nodes as circles
+    class x1,x2,x3,x4,x5,x6,b1,h1,h2,h3,y1,y2,y3,y4,y5,y6 circle;
+
     classDef circle fill:#fff,stroke:#000,stroke-width:2px,shape:circle;
 ```
