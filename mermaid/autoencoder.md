@@ -18,12 +18,12 @@ graph TD
     end
 
     subgraph Layer_L3[Layer L3]
-        y1[\hat{x1}]
-        y2[\hat{x2}]
-        y3[\hat{x3}]
-        y4[\hat{x4}]
-        y5[\hat{x5}]
-        y6[\hat{x6}]
+        y1[y1]
+        y2[y2]
+        y3[y3]
+        y4[y4]
+        y5[y5]
+        y6[y6]
     end
 
     x1 --> h1
