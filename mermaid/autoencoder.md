@@ -1,5 +1,5 @@
 ```mermaid
-graph TD
+graph LR
     subgraph Layer_L1[Layer L1]
         x1[x1]
         x2[x2]
@@ -18,12 +18,12 @@ graph TD
     end
 
     subgraph Layer_L3[Layer L3]
-        y1[y1]
-        y2[y2]
-        y3[y3]
-        y4[y4]
-        y5[y5]
-        y6[y6]
+        y1[\hat{x1}]
+        y2[\hat{x2}]
+        y3[\hat{x3}]
+        y4[\hat{x4}]
+        y5[\hat{x5}]
+        y6[\hat{x6}]
     end
 
     x1 --> h1
@@ -81,4 +81,9 @@ graph TD
     b2 --> y4
     b2 --> y5
     b2 --> y6
+
+    %% Styling the nodes as circles
+    class x1,x2,x3,x4,x5,x6,b1,h1,h2,h3,y1,y2,y3,y4,y5,y6 circle;
+    
+    classDef circle fill:#fff,stroke:#000,stroke-width:2px,shape:circle;
 ```
