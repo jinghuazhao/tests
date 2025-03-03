@@ -20,7 +20,26 @@ pip install faiss-cpu
 pip install pdfplumber
 ```
 
-Now we issue
+## streamlit.py
+
+This gives some flavour of interaction,
+
+```bash
+streamlit streamlit.py
+```
+
+showing
+
+```
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://128.232.224.15:8501
+```
+
+## rag.py
+
+This is somewhat more involved
 
 ```bash
 streamlit run rag.py
@@ -29,11 +48,6 @@ streamlit run rag.py
 and see that
 
 ```
-  You can now view your Streamlit app in your browser.
-
-  Local URL: http://localhost:8501
-  Network URL: http://128.232.224.15:8501
-
 Loaded 9 pages.
 First page content: n
 ```
