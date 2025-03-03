@@ -42,7 +42,7 @@ This is done as follows,
 ```bash
 module load ceuadmin/tesseract
 tesseract --list-langs
-tesseract langchain.jpeg langchain -l eng
+tesseract langchain.jpeg langchain -l script/HanS
 ```
 
 ### langchain.py
