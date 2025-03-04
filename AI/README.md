@@ -9,6 +9,7 @@ module load ceuadmin/node
 cat DeepSeek.md | \
 codedown python > DeepSeek.py
 notedown DeepSeek.md > DeepSeek.ipynb
+jupyter nbconvert --to html DeepSeek.ipynb
 ```
 
 where the `codedown` module is made available with `npm install -g codedown`.
