@@ -8,7 +8,7 @@ The .py and .ipynb files are obtained as follows,
 module load ceuadmin/node
 cat DeepSeek.md | \
 codedown python > DeepSeek.py
-pandoc DeepSeek.md -o DeepSeek.ipynb
+notedown DeepSeek.md > DeepSeek.ipynb
 ```
 
 where the `codedown` module is made available with `npm install -g codedown`.
