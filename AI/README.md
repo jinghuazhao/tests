@@ -35,7 +35,9 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 ```
 
-## DeepSeek.md
+## deepseek-sdk
+
+It turns out `pip install deepseek-sdk` only `deepseek_sdk-0.1.0.dist-info/` is available, and manual installation as this
 
 ```bash
 git clone https://github.com/Pro-Sifat-Hasan/deepseek-python.git
@@ -43,9 +45,18 @@ cd deepseek-python
 pip install -e .
 ```
 
-It turns out `pip install deepseek-sdk` only `deepseek_sdk-0.1.0.dist-info/` is available and manual installation via GitHub
-only goes as far to enable `from deepseek import DeepSeekClient, DeepSeekError, DeepSeekAPIError`.
+enables `from deepseek import DeepSeekClient, DeepSeekError, DeepSeekAPIError`. As documented, this goes
 
+```python
+from deepseek import DeepSeekClient
+client = DeepSeekClient(api_key="your-api-key")
+response = client.chat_completion(
+    messages=[{"role": "user", "content": "Hello, how are you?"}]
+)
+print(response.choices[0].message.content)
+```
+
+## DeepSeek.md
 
 The .py and .ipynb files are obtained as follows,
 
