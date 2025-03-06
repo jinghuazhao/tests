@@ -1,6 +1,8 @@
 # AI experiments
 
-## DeepSeek API Docs
+## DeepSeek
+
+### API Docs
 
 Web: <https://api-docs.deepseek.com/>
 
@@ -35,7 +37,7 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 ```
 
-## deepseek-sdk
+### deepseek-sdk
 
 It turns out `pip install deepseek-sdk` only `deepseek_sdk-0.1.0.dist-info/` is available, and manual installation as this
 
@@ -56,7 +58,7 @@ response = client.chat_completion(
 print(response.choices[0].message.content)
 ```
 
-## DeepSeek.md
+### DeepSeek.md
 
 The .py and .ipynb files are obtained as follows,
 
@@ -69,3 +71,24 @@ jupyter nbconvert --to html DeepSeek.ipynb
 ```
 
 where the `codedown` module is made available with `npm install -g codedown`.
+
+## OLMoE
+
+```python
+from transformers import OlmoeForCausalLM, AutoTokenizer
+import torch
+
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+model = OlmoeForCausalLM.from_pretrained("allenai/OLMoE-1B-7B-0125").to(DEVICE)
+tokenizer = AutoTokenizer.from_pretrained("allenai/OLMoE-1B-7B-0125")
+inputs = tokenizer("Why the sky is blue", return_tensors="pt")
+inputs = {k: v.to(DEVICE) for k, v in inputs.items()}
+out = model.generate(**inputs, max_length=64)
+print(tokenizer.decode(out[0]))
+```
+
+```
+Why sky is blue?
+
+The sky is blue because of the scattering of light. The blue color is due to the scattering of light by the molecules of the atmosphere. The blue color is due to the shorter wavelength of light. The blue color is due to the shorter wavelength of light.
+```
