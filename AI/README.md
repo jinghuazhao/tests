@@ -1,6 +1,6 @@
 # AI experiments
 
-## DeepSeek
+## 1. DeepSeek
 
 ### API Docs
 
@@ -72,7 +72,7 @@ jupyter nbconvert --to html DeepSeek.ipynb
 
 where the `codedown` module is made available with `npm install -g codedown`.
 
-## OLMoE
+## 2. OLMoE
 
 ```python
 from transformers import OlmoeForCausalLM, AutoTokenizer
