@@ -83,4 +83,4 @@ print(f"{len(pred_labels)}\n{pred_labels[1]}")
 sum(preds == 1) / len(preds)
 ```
 
-We see 56% accurary, possibly due to a slightly different dataset as with parameter specification.
+We see a 56% accurary, possibly due to a slightly different dataset as with parameter specification.
