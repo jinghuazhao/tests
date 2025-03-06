@@ -39,6 +39,8 @@ print(response.choices[0].message.content)
 
 ### 1.2 deepseek-sdk
 
+Web: <https://pypi.org/project/deepseek-sdk/>
+
 It turns out `pip install deepseek-sdk` only `deepseek_sdk-0.1.0.dist-info/` is available, and manual installation as this
 
 ```bash
@@ -59,6 +61,8 @@ print(response.choices[0].message.content)
 ```
 
 ### 1.3 deepseek-cli-pro
+
+Web: <https://pypi.org/project/deepseek-cli-pro/>
 
 ```bash
 pip install deepseek-cli-pro
