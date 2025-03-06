@@ -2,10 +2,14 @@
 
 Web: <https://www.pinecone.io/learn/series/image-search/imagenet/#AlexNet-in-Action>
 
+## Preliminaries
+
 ```bash
 pip install datasets
 pip install torchvision
 ```
+
+## Implementation
 
 ```python
 # data preprocessing
@@ -66,7 +70,7 @@ model.to(device)
 # Run the model
 with torch.no_grad():
     output = model(inputs).detach()
-    print(output.shape)  # Ensure this is inside the 'with' block
+    print(output.shape)
 
 # prediction
 preds = torch.argmax(output, dim=1).cpu().numpy()
@@ -78,3 +82,5 @@ pred_labels = res.text.split('\n')
 print(f"{len(pred_labels)}\n{pred_labels[1]}")
 sum(preds == 1) / len(preds)
 ```
+
+We see 56% accurary, possibly due to a slightly different dataset as with parameter specification.
