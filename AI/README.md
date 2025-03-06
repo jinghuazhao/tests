@@ -74,6 +74,8 @@ where the `codedown` module is made available with `npm install -g codedown`.
 
 ## 2. OLMoE
 
+Web: <https://github.com/allenai/OLMoE>
+
 ```python
 from transformers import OlmoeForCausalLM, AutoTokenizer
 import torch
