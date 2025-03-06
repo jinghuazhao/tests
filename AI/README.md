@@ -2,7 +2,7 @@
 
 ## 1. DeepSeek
 
-### API Docs
+### 1.1 API Docs
 
 Web: <https://api-docs.deepseek.com/>
 
@@ -37,7 +37,7 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 ```
 
-### deepseek-sdk
+### 1.2 deepseek-sdk
 
 It turns out `pip install deepseek-sdk` only `deepseek_sdk-0.1.0.dist-info/` is available, and manual installation as this
 
@@ -58,7 +58,7 @@ response = client.chat_completion(
 print(response.choices[0].message.content)
 ```
 
-### DeepSeek.md
+### 1.3 DeepSeek.md
 
 The .py and .ipynb files are obtained as follows,
 
