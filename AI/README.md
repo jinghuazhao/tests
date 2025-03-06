@@ -58,7 +58,17 @@ response = client.chat_completion(
 print(response.choices[0].message.content)
 ```
 
-### 1.3 DeepSeek.md
+### 1.3 deepseek-cli-pro
+
+```bash
+pip install deepseek-cli-pro
+pip install markdown
+deepseek configure
+deepseek chat
+deepseek generate "Why the sky is blue?" --temperature 0.5
+```
+
+### 1.4 DeepSeek.md
 
 The .py and .ipynb files are obtained as follows,
 
