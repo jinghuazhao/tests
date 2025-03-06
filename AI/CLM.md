@@ -2,10 +2,12 @@
 
 ## Peptide-specific Chemical Language Mode
 
-Web: <https://huggingface.co/aaronfeller/PeptideCLM-23M-all>
+Web: <https://huggingface.co/aaronfeller/PeptideCLM-12M-smol>
 
 ```bash
-wget https://huggingface.co/aaronfeller/PeptideCLM-23M-all/resolve/main/pytorch_model.bin
+module load ceuadmin/git-lfs
+git clone https://huggingface.co/aaronfeller/PeptideCLM-12M-smol/
+cd PeptideCLM-12M-smol/
 ```
 
 ```python
