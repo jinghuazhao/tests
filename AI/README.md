@@ -87,8 +87,12 @@ out = model.generate(**inputs, max_length=64)
 print(tokenizer.decode(out[0]))
 ```
 
+We see that
+
 ```
 Why sky is blue?
 
-The sky is blue because of the scattering of light. The blue color is due to the scattering of light by the molecules of the atmosphere. The blue color is due to the shorter wavelength of light. The blue color is due to the shorter wavelength of light.
+The sky is blue because of the scattering of light. The blue color is due to the scattering of light by the molecules of the atmosphere. The blue color is due to the shorter wavelength of light.
 ```
+
+Somehow the last sentence is repeated.
