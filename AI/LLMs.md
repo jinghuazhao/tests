@@ -34,6 +34,7 @@ Options for `model_id` include 'gpt2', 'gpt2-medium', 'gpt2-large', 'gpt2-xl'.
 OpenAI can be set up as follows,
 
 ```python
+import skllm
 from skllm.config import SKLLMConfig
 import os
 from dotenv import load_dotenv
@@ -67,7 +68,7 @@ generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
 print(generated_text)
 ```
 
-which gives a rather poor answer, which we seek to improve,
+which just gets going so we seek to improve,
 
 ```python
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
@@ -89,13 +90,6 @@ outputs = model.generate(
 generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
 print(generated_text)
 ```
-
-Note that,
-
-* Temperature: Controls the randomness of the output. Lower values make the output more focused and deterministic, while higher values increase diversity. Try setting the temperature between 0.7 and 1.0.
-* Top-k Sampling: Limits the sampling pool to the top 'k' logits. Reducing 'k' can make the output more focused.
-* Top-p (Nucleus) Sampling: Chooses from the smallest possible set of logits whose cumulative probability is greater than 'p'. This method balances diversity and coherence.
-* Repetition Penalty: Penalizes repeated sequences to reduce redundancy.
 
 ### HuggingFaceLLM
 
