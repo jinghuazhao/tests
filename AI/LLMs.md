@@ -83,7 +83,7 @@ outputs = model.generate(
     temperature=0.7,       # Controls randomness: lower is less random
     top_k=50,              # Limits sampling to top 50 tokens
     top_p=0.95,            # Nucleus sampling: considers tokens with cumulative probability >= 95%
-    repetition_penalty=1.2, # Penalizes repeated tokens
+    repetition_penalty=1.2,# Penalizes repeated tokens
     num_return_sequences=1,
     do_sample=True         # Enables sampling; set to False for greedy decoding
 )
