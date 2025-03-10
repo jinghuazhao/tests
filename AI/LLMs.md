@@ -51,9 +51,9 @@ OPENAI_SECRET_KEY=your_openai_secret_key
 OPENAI_ORG_ID=your_openai_organization_id
 ```
 
-# Implementation
+## Implementation
 
-## PyTorch
+### PyTorch
 
 ```python
 import torch
@@ -115,21 +115,44 @@ The following are notable,
 * Top-p (Nucleus) Sampling: Chooses from the smallest possible set of logits whose cumulative probability is greater than 'p'. This method balances diversity and coherence.
 * Repetition Penalty: Penalizes repeated sequences to reduce redundancy.
 
-## SciKit-LLM
+### GPT2
 
 ```python
-import skllm
-from skllm import LLM
-
-llm = LLM.from_huggingface("./gpt2_model")
-prompt = "Why the sky is blue"
-generated_text = llm.generate(prompt)
-print(generated_text)
-generated_text = llm.generate(prompt, max_tokens=100, temperature=0.7)
+from transformers import GPT2LMHeadModel, GPT2Tokenizer
+model_name = "./gpt2_model"
+model = GPT2LMHeadModel.from_pretrained(model_name)
+tokenizer = GPT2Tokenizer.from_pretrained(model_name)
+prompt = "Why is the sky blue?"
+inputs = tokenizer.encode(prompt, return_tensors="pt")
+outputs = model.generate(inputs, max_length=100, temperature=0.7, num_return_sequences=1)
+generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
 print(generated_text)
 ```
 
-## HuggingFaceLLM
+which gives a rather poor answer, which we seek to improve,
+
+```python
+from transformers import GPT2LMHeadModel, GPT2Tokenizer
+model_name = "./gpt2_model"
+model = GPT2LMHeadModel.from_pretrained(model_name)
+tokenizer = GPT2Tokenizer.from_pretrained(model_name)
+prompt = "Why is the sky blue?"
+inputs = tokenizer.encode(prompt, return_tensors="pt")
+outputs = model.generate(
+    inputs,
+    max_length=100,
+    temperature=0.7,       # Controls randomness: lower is less random
+    top_k=50,              # Limits sampling to top 50 tokens
+    top_p=0.95,            # Nucleus sampling: considers tokens with cumulative probability >= 95%
+    repetition_penalty=1.2, # Penalizes repeated tokens
+    num_return_sequences=1,
+    do_sample=True         # Enables sampling; set to False for greedy decoding
+)
+generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
+print(generated_text)
+```
+
+### HuggingFaceLLM
 
 ```python
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
