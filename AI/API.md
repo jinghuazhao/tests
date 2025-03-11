@@ -1,4 +1,4 @@
-# AI apps
+# AI API
 
 ## 1. DeepSeek
 
