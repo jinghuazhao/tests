@@ -227,3 +227,7 @@ llm_chain = prompt | llm
 response = llm_chain.invoke({"country": "Germany"})
 print(response)
 ```
+
+### Scikit-LLM
+
+See <https://cambridge-ceu.github.io/csd3/Python/Scikit-LLM%20&%20OpenAI%20API.html>.

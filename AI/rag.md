@@ -25,7 +25,7 @@ pip install pdfplumber
 This gives some flavour of interaction,
 
 ```bash
-streamlit streamlit.py
+streamlit run streamlit.py
 ```
 
 showing
