@@ -177,3 +177,53 @@ model = OllamaLLM(model="qwen")
 chain = prompt | model
 chain.invoke({"question": "What is the result of dividing 36 by 9?"})
 ```
+
+We see that,
+
+```
+'To solve this, we can follow these steps:\n\n1. Write down the division problem: \\( \\frac{36}{9}}{ } \\).\n2. Factor out common factors from both numbers in the numerator.\n3. Divide the remaining numbers to find the quotient.\n4. Write the final result as an equation with the dividend and divisor on one side of the equals sign, and the quotient on the other side.\n\nApplying these steps to our division problem \\( \\frac{36}{9}}{ } \\), we get:\n\n\\( \\frac{36 \\div 9 = 4}}{ } \\)\n\nTherefore, the result of dividing 36 by 9 is 4.'
+```
+
+### LangChain
+
+```python
+from huggingface_hub import login
+login(token="YOUR TOKEN HERE")
+generator = pipeline("text-generation", model="gpt2")
+llm = HuggingFacePipeline(pipeline=generator)
+template = "What is the capital of {country}?"
+prompt = PromptTemplate(input_variables=["country"], template=template)
+llm_chain = LLMChain(prompt=prompt, llm=llm)
+response = llm_chain.run(country="Germany")
+print(response)
+generator = pipeline("text-generation", model="gpt2")
+llm = HuggingFacePipeline(pipeline=generator)
+template = "What is the capital of {country}?"
+prompt = PromptTemplate(input_variables=["country"], template=template)
+llm_chain = LLMChain(prompt=prompt, llm=llm)
+response = llm_chain.run(country="Germany")
+print(response)
+```
+
+giving
+
+```
+What is the capital of Germany?
+
+The state of Bavaria has been called Austria, Germany, for decades, and it is very rare in modern history that the government is described as a sovereign entity, which I think is very insulting.
+```
+
+An update is suggested as follows,
+
+```
+from langchain.prompts import PromptTemplate
+from langchain_huggingface import HuggingFacePipeline
+from transformers import pipeline
+generator = pipeline("text-generation", model="gpt2")
+llm = HuggingFacePipeline(pipeline=generator)
+template = "What is the capital of {country}?"
+prompt = PromptTemplate(input_variables=["country"], template=template)
+llm_chain = prompt | llm
+response = llm_chain.invoke({"country": "Germany"})
+print(response)
+```
