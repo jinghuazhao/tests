@@ -2,7 +2,7 @@
 
 Name | Description
 -----|------------------------------------------
-[app.md](app.md)* | LLM app (DeepSeek, OLMoE)
+[API.md](API.md)* | LLM API (DeepSeek, OLMoE)
 [CLM.md](CLM.md) | Chemical language models
 [DeepSeek.md](DeepSeek.md) | A DeepSeek post
 [hf.md](hf.md) | Some HuggingFace notes
