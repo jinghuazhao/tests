@@ -21,13 +21,16 @@ pip show scikit-llm
 mkdir data
 ```
 
+Two approaches are shown with model downloading.
+
 ```python
 from huggingface_hub import snapshot_download
 model_id = "gpt2"
 snapshot_download(repo_id=model_id, local_dir="./gpt2_model")
-from transformers import GPT2LMHeadModel, GPT2Tokenizer
-tokenizer = GPT2Tokenizer.from_pretrained("./gpt2_model")
-model = GPT2LMHeadModel.from_pretrained("./gpt2_model")
+from sentence_transformers import SentenceTransformer
+model = SentenceTransformer('sentence-transformers/bert-base-nli-mean-tokens')
+model_path = './bert-base-nli-mean-tokens'
+model.save(model_path)
 ```
 
 Options for `model_id` include 'gpt2', 'gpt2-medium', 'gpt2-large', 'gpt2-xl'.
@@ -147,3 +150,30 @@ read all files as text.
 * PDF Documents: .pdf
 * Email Archives: .mbox
 * Hangul Word Processor: .hwp
+
+### Ollama
+
+As documented elsewhere, our setup is as follows,
+
+```bash
+module load ceuadmin/ollama
+ollama serve &
+ollama pull qwen
+ollama list
+```
+
+which enables the following,
+
+```python
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_ollama.llms import OllamaLLM
+
+template = """Question: {question}
+              Answer: Let's think logically."""
+
+prompt = ChatPromptTemplate.from_template(template)
+model = OllamaLLM(model="qwen")
+
+chain = prompt | model
+chain.invoke({"question": "What is the result of dividing 36 by 9?"})
+```
