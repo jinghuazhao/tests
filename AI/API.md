@@ -72,7 +72,11 @@ deepseek chat
 deepseek generate "Why the sky is blue?" --temperature 0.5
 ```
 
-### 1.4 DeepSeek.md
+### 1.4 WebGPU
+
+Web: <https://huggingface.co/spaces/webml-community/deepseek-r1-webgpu>
+
+### 1.5 DeepSeek.md
 
 The .py and .ipynb files are obtained as follows,
 
@@ -112,3 +116,12 @@ The sky is blue because of the scattering of light. The blue color is due to the
 ```
 
 Somehow the last sentence is repeated.
+
+## 3. LLM
+
+```bash
+pip install llm
+llm install llm-ollama
+llm -m 'hf.co/unsloth/DeepSeek-R1-Distill-Llama-70B-GGUF:Q3_K_M' \
+    'a joke about a pelican and a walrus who run a tea room together'
+```
