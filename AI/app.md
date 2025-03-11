@@ -1,4 +1,4 @@
-# AI experiments
+# AI apps
 
 ## 1. DeepSeek
 
