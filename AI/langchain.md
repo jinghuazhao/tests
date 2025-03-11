@@ -47,7 +47,7 @@ tesseract langchain.jpeg langchain -l script/HanS
 
 ### langchain.py
 
-This is modified slightly from `langchain.txt` above.
+This is modified slightly from `langchain.txt` above with additional changes.
 
 ## Acknowledgement
 
