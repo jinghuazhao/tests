@@ -151,6 +151,16 @@ read all files as text.
 * Email Archives: .mbox
 * Hangul Word Processor: .hwp
 
+### llama
+
+```bash
+pip install langchain llama-cpp-python
+from langchain_community.llms import LlamaCpp
+llm = LlamaCpp(model_path='path_to_your_gguf_model_file')
+response = llm.invoke('Your prompt!')
+print(response)
+```
+
 ### Ollama
 
 As documented elsewhere, our setup is as follows,
