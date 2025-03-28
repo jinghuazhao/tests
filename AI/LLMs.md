@@ -262,3 +262,24 @@ print(response)
 ### Scikit-LLM
 
 See <https://cambridge-ceu.github.io/csd3/Python/Scikit-LLM%20&%20OpenAI%20API.html>.
+
+### vLLM
+
+```bash
+# Install vLLM from pip:
+pip install vllm
+# Load and run the model:
+vllm serve "unsloth/DeepSeek-V3-0324-GGUF"
+# Call the server using curl:
+curl -X POST "http://localhost:8000/v1/chat/completions" \
+	-H "Content-Type: application/json" \
+	--data '{
+		"model": "unsloth/DeepSeek-V3-0324-GGUF",
+		"messages": [
+			{
+				"role": "user",
+				"content": "What is the capital of France?"
+			}
+		]
+	}'
+```
