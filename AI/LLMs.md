@@ -195,6 +195,51 @@ llm.create_chat_completion(
 )
 ```
 
+A SLURM script is as follows,
+
+```bash
+#!/usr/bin/bash
+
+#SBATCH --account PETERS-SL3-CPU
+#SBATCH --partition icelake-himem
+#SBATCH --mem=28800
+#SBATCH --time=12:00:00
+#SBATCH --job-name=_gguf
+#SBATCH --output=/home/jhz22/l.o
+#SBATCH --error=/home/jhz22/l.e
+
+. /etc/profile.d/modules.sh
+module purge
+module load rhel8/default-icl
+
+export TMPDIR=${HPC_WORK}/work
+
+source ~/rds/public_databases/software/py3.11/bin/activate
+
+cd ${HPC_WORK}/ollama
+
+python <<END
+import llama_cpp
+model = llama_cpp.Llama(
+    model_path="DeepSeek-V3-0324-UD-IQ2_XXS.gguf",
+    chat_format="llama-2",
+)
+print(model.create_chat_completion(
+    messages=[{
+        "role": "user",
+        "content": "what is the meaning of life?"
+    }]
+))
+END
+
+deactivate
+```
+
+giving,
+
+```
+{'id': 'chatcmpl-6759d2f7-b858-4268-a127-93964ba3d393', 'object': 'chat.completion', 'created': 1743284201, 'model': 'DeepSeek-V3-0324-UD-IQ2_XXS.gguf', 'choices': [{'index': 0, 'message': {'role': 'assistant', 'content': 'The meaning of life is a philosophical question that has been debated for centuries, and there is no single, universally accepted answer. Different cultures, religions, and philosophical traditions offer various perspectives on the purpose and significance of human existence. Here are a few common viewpoints:\n\n1. **Religious Perspectives**: Many religions propose that the meaning of life is tied to a divine purpose. For example:\n   - In Christianity, it may involve loving God and others, and fulfilling God\'s plan.\n   - In Buddhism, it might be about achieving enlightenment and escaping the cycle of suffering (samsara).\n   - In Islam, it could be about submitting to Allah\'s will and living a righteous life.\n\n2. **Philosophical Perspectives**:\n   - **Existentialism** (e.g., Jean-Paul Sartre, Albert Camus) suggests that life has no inherent meaning, and it is up to each individual to create their own purpose through choices and actions.\n   - **Stoicism** emphasizes living in harmony with nature, cultivating virtue, and focusing on what one can control.\n   - **Utilitarianism** (e.g., John Stuart Mill) might argue that the meaning of life is to maximize happiness and reduce suffering for the greatest number of people.\n\n3. **Scientific Perspective**: From a biological standpoint, life\'s "meaning" could be seen as survival, reproduction, and the propagation of genes. However, this is a descriptive rather than prescriptive view.\n\n4. **Personal Meaning**: Many people find meaning in relationships, creativity, personal growth, contributing to society, or pursuing passions and goals.\n\nUltimately, the meaning of life is deeply personal and may vary from person to person. It’s a question you might explore through reflection, experiences, and the values you hold dear. </s>'}, 'logprobs': None, 'finish_reason': 'stop'}], 'usage': {'prompt_tokens': 17, 'completion_tokens': 363, 'total_tokens': 380}}
+```
 ### Ollama
 
 As documented elsewhere, our setup is as follows,
