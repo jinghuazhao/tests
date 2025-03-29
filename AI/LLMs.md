@@ -154,10 +154,9 @@ read all files as text.
 ### llama
 
 ```bash
-pip install langchain llama-cpp-python
 from langchain_community.llms import LlamaCpp
-llm = LlamaCpp(model_path='path_to_your_gguf_model_file')
-response = llm.invoke('Your prompt!')
+llm = LlamaCpp(model_path='DeepSeek-V3-0324-UD-IQ2_XXS.gguf')
+response = llm.invoke('Why the sky is blue?')
 print(response)
 ```
 
