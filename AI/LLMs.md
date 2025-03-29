@@ -153,6 +153,8 @@ read all files as text.
 
 ### llama
 
+See <https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:llama_cpp> for setup.
+
 ```bash
 from langchain_community.llms import LlamaCpp
 llm = LlamaCpp(model_path='DeepSeek-V3-0324-UD-IQ2_XXS.gguf')
