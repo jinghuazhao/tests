@@ -155,7 +155,7 @@ read all files as text.
 
 See <https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:llama_cpp> for setup.
 
-```bash
+```python
 from langchain_community.llms import LlamaCpp
 llm = LlamaCpp(model_path='DeepSeek-V3-0324-UD-IQ2_XXS.gguf')
 response = llm.invoke('Why the sky is blue?')
@@ -164,7 +164,21 @@ print(response)
 
 or
 
+```python
+import llama_cpp
+model = llama_cpp.Llama(
+    model_path="DeepSeek-V3-0324-UD-IQ2_XXS.gguf",
+    chat_format="llama-2",
+)
+print(model.create_chat_completion(
+    messages=[{
+        "role": "user",
+        "content": "what is the meaning of life?"
+    }]
+))
 ```
+
+```python
 from llama_cpp import Llama
 
 llm = Llama.from_pretrained(
