@@ -2,10 +2,10 @@
 
 #SBATCH --account PETERS-SL3-CPU
 #SBATCH --partition icelake-himem
-#SBATCH --mem=28800
+#SBATCH --mem=68800
 #SBATCH --time=12:00:00
 #SBATCH --job-name=_mt
-#SBATCH --cpus-per-task=8
+#SBATCH --cpus-per-task=4
 #SBATCH --output=/home/jhz22/shuihu.o
 #SBATCH --error=/home/jhz22/shuihu.e
 
@@ -112,4 +112,4 @@ print(response['choices'][0]['message']['content'])
 }
 
 export -f get_response
-echo "${riddles[@]}" | tr ' ' '\n' | parallel -j 8 get_response
+echo "${riddles[@]}" | tr ' ' '\n' | parallel -j 4 get_response
