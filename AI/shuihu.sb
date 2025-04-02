@@ -1,0 +1,114 @@
+#!/usr/bin/bash
+
+#SBATCH --account PETERS-SL3-CPU
+#SBATCH --partition icelake-himem
+#SBATCH --mem=28800
+#SBATCH --time=12:00:00
+#SBATCH --job-name=_mt
+#SBATCH --output=/home/jhz22/shuihu.o
+#SBATCH --error=/home/jhz22/shuihu.e
+
+. /etc/profile.d/modules.sh
+module purge
+module load rhel8/default-icl
+export TMPDIR=${HPC_WORK}/work
+source ~/rds/public_databases/software/py3.11/bin/activate
+cd ${HPC_WORK}/ollama
+
+riddles=(
+  "屡试不中（名一）"
+  "李靖（名一）"
+  "当春乃发生（号一）"
+  "一步三计（号一）"
+  "飞天本鱼化（号一）"
+  "斩颜良，诛文丑；过五关，斩六将（号、名各一）"
+  "雷鸣电闪（号一）"
+  "左右开弓，抽！（号一）"
+  "飞将军之子（号一）"
+  "春天来了（名一）"
+  "鹰击长空（号一）"
+  "关云长（名一）"
+  "酒肉僧人（号一）"
+  "熙熙攘攘，往来不绝（号一）"
+  "刀枪入库，马放南山（名一）"
+  "王家烈（号一）"
+  "押送金银担（名三）"
+  "孤军深入（号一）"
+  "坐地日行八万里（号一）"
+  "红毛夜叉（名一）"
+  "乌云滚滚狂飙起（号一）"
+  "社会发展，一往无前（名一）"
+  "一往无前（号一）"
+  "飞天大虫（名一）"
+  "顶天立地（名三）"
+  "野径云俱黑（号二）"
+  "壮士有恙（号一）"
+  "门神住院（号一）"
+  "似玉非玉可比玉（名一）"
+  "回头金不换（号一）"
+  "洪武登基（名二）"
+  "替爷爷站岗（名一）"
+  "屡战不败（名一）"
+  "二郎神（号一）"
+  "烧赤壁，淹七军（号二）"
+  "给皇上拟旨（号一）"
+  "王羲之（名一）"
+  "南朝齐梁易代（名一）"
+  "刚正执法，不徇私情（名一）"
+  "满目皆红（名一）"
+  "斑斓大虫（名一）"
+  "霹雳一声，震耳欲聋（号一）"
+  "加减乘除，不在话下（号一）"
+  "吕奉先之后（号一）"
+  "华佗（名一）"
+  "孙文台之兄（号一）"
+  "折足大虫（号一）"
+  "程咬金（名一）"
+  "凿壁偷光（名二）"
+  "章鱼转世（号一）"
+  "“老孙去也！”（号一）"
+  "不怕火炼（名一）"
+  "韩湘子（号一）"
+  "英雄出少年（名二）"
+  "老大安然无恙（名一）"
+  "老猿上树，犬不可追（名一）"
+  "一一说明，使之知晓（名一）"
+  "端午日娘子现形（名一）"
+  "五柳一支，人丁繁盛（名一）"
+  "红孩儿（号一）"
+  "管弦协奏，八音齐鸣（名一）"
+  "家添人口爷快乐（名一）"
+  "阴司刽子手（名一）"
+  "武松（号、名各一）"
+  "力拔山兮气盖世，只比项羽矮一头（号一）"
+  "环城大道（名一）"
+  "人面不要（名一）"
+  "鳄鱼上岸（名一）"
+  "吊车（名一）"
+  "红杏出墙来（号一）"
+  "阎王叫你三更死，岂容你活道五更（号一）"
+  "有头无脸（名一）"
+  "翁仲（号一）"
+  "建得之弟（名一）"
+  "此处有四时瓜蔬（号一）"
+  "魏折八千（名一）"
+  "秦嬴政统一中国（名一）"
+  "日新月异（名一）"
+  "长平之战（名一）"
+  "黄狗（名一）"
+)
+context="喜欢读《水浒》的朋友注意啦，这里有一组灯谜看你过能猜得出\n闲来无事，拟一组水浒名号灯谜\n"
+
+get_response() {
+local riddle="$1"
+python -c "
+import llama_cpp
+
+model = llama_cpp.Llama(model_path='/home/jhz22/hpc-work/ollama/DeepSeek-V3-0324-UD-IQ2_XXS.gguf', chat_format=None, n_ctx=4096)
+response = model.create_chat_completion(messages=[{'role': 'user', 'content': '${context}${riddle}'}])
+print(response['choices'][0]['message']['content'])
+"
+}
+
+export -f get_response
+echo "${riddles[@]}" | tr ' ' '\n' | parallel -j 8 get_response

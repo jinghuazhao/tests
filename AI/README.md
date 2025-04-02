@@ -10,6 +10,7 @@ Name | Description
 [langchain.md](langchain.md) | LangChain notes
 [LLMs.md](LLMs.md) | LLM Experiments
 [Scikit-learn.md](Scikit-learn.md)* | ML example
+|[Shuihu](shuihu.sb) | a case for SLURM/GNU parallel
 [streamlit.py](streamlit.py)* | streamlit code
 [rag.md](rag.md) | A post on RAG
 
