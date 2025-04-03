@@ -2,6 +2,10 @@
 
 A repository to share problems under development.
 
+## A post on METAL
+
+See <https://jinghuazhao.github.io/tests/METAL/>
+
 ## Water margin riddles
 
 See <https://jinghuazhao.github.io/tests/AI/>.
