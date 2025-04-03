@@ -161,4 +161,4 @@
 80. **黄信（名一）**
    - **解析**：指“黄信”（“黄”指“狗”的谐音）。
 
-The [riddles.sb](riddles.sb) script for the classic Chinese novel produces [riddles.e](riddles.e) and [riddles.o](riddles.o), from which the following is obtained.
+The [riddles.sb](riddles.sb) script for the classic Chinese novel produces [riddles.e](riddles.e) and [riddles.o](riddles.o), from which the list is obtained.
