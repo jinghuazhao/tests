@@ -1,8 +1,8 @@
 # AI experiments
 
-## Riddles
+## `Water Margin` riddles
 
-The [riddles.sb](riddles.sb) script (the classic Chinese novel "Water Margin") produces [riddles.e](riddles.e) and [riddles.o](riddles.o), from which the following is obtained.
+The [riddles.sb](riddles.sb) script for the classic Chinese novel produces [riddles.e](riddles.e) and [riddles.o](riddles.o), from which the following is obtained.
 
 ```
 1. **屡试不中（名一）**
