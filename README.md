@@ -6,7 +6,7 @@ A repository to share problems under development.
 
 See <https://jinghuazhao.github.io/tests/METAL/>
 
-## Water margin riddles
+## 《水浒》谜语(Water Margin riddles)
 
 See <https://jinghuazhao.github.io/tests/AI/>.
 
