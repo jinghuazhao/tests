@@ -9,10 +9,10 @@ Name | Description
 [ImageNet.md](ImageNet.md)* | ImageNet example
 [langchain.md](langchain.md) | LangChain notes
 [LLMs.md](LLMs.md) | LLM Experiments
-[Scikit-learn.md](Scikit-learn.md)* | ML example
-[Shuihu](shuihu.sb)* | a case for SLURM/GNU parallel
-[streamlit.py](streamlit.py)* | streamlit code
+[riddles.sb](riddles.sb)* | a case for SLURM
 [rag.md](rag.md) | A post on RAG
+[Scikit-learn.md](Scikit-learn.md)* | ML example
+[streamlit.py](streamlit.py)* | streamlit code
 
 Note that only those marked with asterisk (*) go through smoothly.
 

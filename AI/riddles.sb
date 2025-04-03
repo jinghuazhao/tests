@@ -1,0 +1,110 @@
+#!/usr/bin/bash
+
+#SBATCH --account PETERS-SL3-CPU
+#SBATCH --partition icelake-himem
+#SBATCH --mem=58800
+#SBATCH --time=12:00:00
+#SBATCH --job-name=_DS
+#SBATCH --output=/home/jhz22/riddles.o
+#SBATCH --error=/home/jhz22/riddles.e
+
+. /etc/profile.d/modules.sh
+module purge
+module load rhel8/default-icl
+
+export TMPDIR=${HPC_WORK}/work
+
+source ~/rds/public_databases/software/py3.11/bin/activate
+
+cd ${HPC_WORK}/ollama
+
+python <<END
+import llama_cpp
+
+model = llama_cpp.Llama(
+    model_path="/home/jhz22/hpc-work/ollama/DeepSeek-V3-0324-UD-IQ2_XXS.gguf",
+    chat_format=None,
+    n_ctx=4096
+)
+
+riddles = [
+    {
+        "role": "user",
+        "content": "喜欢读《水浒》的朋友注意啦，这里有一组灯谜看你过能猜得出"
+    },
+    {
+        "role": "user",
+        "content": "闲来无事，拟一组水浒名号灯谜，共同好一笑"
+    },
+    {
+        "role": "user",
+        "content": "1. 屡试不中（名一）\n2. 李靖（名一）\n3. 当春乃发生（号一）\n4. 一步三计（号一）\n5. 飞天本鱼化（号一）"
+    },
+    {
+        "role": "user",
+        "content": "6. 斩颜良，诛文丑；过五关，斩六将（号、名各一）\n7. 雷鸣电闪（号一）\n8. 左右开弓，抽！（号一）\n9. 飞将军之子（号一）\n10. 春天来了（名一）"
+    },
+    {
+        "role": "user",
+        "content": "11. 鹰击长空（号一）\n12. 关云长（名一）\n13. 酒肉僧人（号一）\n14. 熙熙攘攘，往来不绝（号一）\n15. 刀枪入库，马放南山（名一）"
+    },
+    {
+        "role": "user",
+        "content": "16. 王家烈（号一）\n17. 押送金银担（名三）\n18. 孤军深入（号一）\n19. 坐地日行八万里（号一）\n20. 红毛夜叉（名一）"
+    },
+    {
+        "role": "user",
+        "content": "21. 乌云滚滚狂飙起（号一）\n22. 社会发展，一往无前（名一）\n23. 一往无前（号一）\n24. 飞天大虫（名一）\n25. 顶天立地（名三）"
+    },
+    {
+        "role": "user",
+        "content": "26. 野径云俱黑（号二）\n27. 壮士有恙（号一）\n28. 门神住院（号一）\n29. 似玉非玉可比玉（名一）\n30. 回头金不换（号一）"
+    },
+    {
+        "role": "user",
+        "content": "31. 洪武登基（名二）\n32. 替爷爷站岗（名一）\n33. 屡战不败（名一）\n34. 二郎神（号一）\n35. 烧赤壁，淹七军（号二）"
+    },
+    {
+        "role": "user",
+        "content": "36. 给皇上拟旨（号一）\n37. 王羲之（名一）\n38. 南朝齐梁易代（名一）\n39. 刚正执法，不徇私情（名一）\n40. 满目皆红（名一）"
+    },
+    {
+        "role": "user",
+        "content": "41. 斑斓大虫（名一）\n42. 霹雳一声，震耳欲聋（号一）\n43. 加减乘除，不在话下（号一）\n44. 吕奉先之后（号一）\n45. 华佗（名一）"
+    },
+    {
+        "role": "user",
+        "content": "46. 孙文台之兄（号一）\n47. 折足大虫（号一）\n48. 程咬金（名一）\n49. 凿壁偷光（名二）\n50. 章鱼转世（号一）"
+    },
+    {
+        "role": "user",
+        "content": "51. “老孙去也！”（号一）\n52. 不怕火炼（名一）\n53. 韩湘子（号一）\n54. 英雄出少年（名二）\n55. 老大安然无恙（名一）"
+    },
+    {
+        "role": "user",
+        "content": "56. 老猿上树，犬不可追（名一）\n57. 一一说明，使之知晓（名一）\n58. 端午日娘子现形（名一）\n59. 五柳一支，人丁繁盛（名一）\n60. 红孩儿（号一）"
+    },
+    {
+        "role": "user",
+        "content": "61. 管弦协奏，八音齐鸣（名一）\n62. 家添人口爷快乐（名一）\n63. 阴司刽子手（名一）\n64. 武松（号、名各一）\n65. 力拔山兮气盖世，只比项羽矮一头（号一）"
+    },
+    {
+        "role": "user",
+        "content": "66. 环城大道（名一）\n67. 人面不要（名一）\n68. 鳄鱼上岸（名一）\n69. 吊车（名一）\n70. 红杏出墙来（号一）"
+    },
+    {
+        "role": "user",
+        "content": "71. 阎王叫你三更死，岂容你活道五更（号一）\n72. 有头无脸（名一）\n73. 翁仲（号一）\n74. 建得之弟（名一）\n75. 此处有四时瓜蔬（号一）"
+    },
+    {
+        "role": "user",
+        "content": "76. 魏折八千（名一）\n77. 秦嬴政统一中国（名一）\n78. 日新月异（名一）\n79. 长平之战（名一）\n80. 黄狗（名一）"
+    }
+]
+
+response = model.create_chat_completion(messages=riddles)
+
+print(response)
+END
+
+deactivate
