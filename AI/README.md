@@ -179,7 +179,7 @@ Name | Description
 [langchain.md](langchain.md) | LangChain notes
 [LLMs.md](LLMs.md) | LLM Experiments
 [rag.md](rag.md) | A post on RAG
-[RAG-LangChain.md] | RAG using LangChain
+[RAG-LangChain.md](RAG-LangChain.md) | RAG using LangChain
 [riddles.sb](riddles.sb)* | A case for SLURM
 [Scikit-learn.md](Scikit-learn.md)* | ML example
 [streamlit.py](streamlit.py)* | streamlit code
