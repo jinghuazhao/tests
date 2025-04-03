@@ -2,6 +2,10 @@
 
 A repository to share problems under development.
 
+## Water margin riddles
+
+See <https://jinghuazhao.github.io/tests/AI/>.
+
 ## Tests for turboqq & turboman
 
 * [turboqq](https://github.com/jinghuazhao/tests/tree/main/turboqq) for <https://github.com/bpprins/turboqq>
