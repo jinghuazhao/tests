@@ -4,7 +4,6 @@
 
 The [riddles.sb](riddles.sb) script for the classic Chinese novel produces [riddles.e](riddles.e) and [riddles.o](riddles.o), from which the following is obtained.
 
-```
 1. 屡试不中（名一）
    - 解析：屡试不中，即“白考”，谐音“白”指“白胜”。
 2. 李靖（名一）
@@ -165,4 +164,3 @@ The [riddles.sb](riddles.sb) script for the classic Chinese novel produces [ridd
    - 解析：指“白胜”（长平之战主将，谐音“白胜”）。
 80. 黄信（名一）
    - 解析：指“黄信”（“黄”指“狗”的谐音）。
-```
