@@ -1,6 +1,4 @@
-# AI experiments
-
-## `Water Margin` riddles
+# `Water Margin` riddles
 
 1. **屡试不中（名一）**
    - 解析：屡试不中，即“白考”，谐音“白”指“白胜”。
