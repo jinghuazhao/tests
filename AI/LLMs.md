@@ -275,6 +275,34 @@ We see that,
 
 Alternatively, one can do `ollama run hf.co/unsloth/DeepSeek-R1-Distill-Llama-70B-GGUF:Q3_K_M`.
 
+Speedup with SLURM is not effective,
+
+```bash
+#!/usr/bin/bash
+
+#SBATCH --job-name=_ollama
+#SBATCH --account PETERS-SL3-CPU
+#SBATCH --partition icelake-himem
+#SBATCH --mem=28800
+#SBATCH --time=12:00:00
+#SBATCH --error=/home/jhz22/AnythingLLMDesktop/_ollama_%A_%a.err
+#SBATCH --output=/home/jhz22/AnythingLLMDesktop/_ollama_%A_%a.out
+#SBATCH --export ALL
+
+. /etc/profile.d/modules.sh
+module purge
+module load rhel8/default-icl
+module load ceuadmin/ollama
+
+export TMPDIR=/rds/user/jhz22/hpc-work/work
+export output=/home/jhz22/AnythingLLMDesktop/gemma3.txt
+
+touch $output
+ollama serve &
+sleep 1m
+ollama run gemma3 "Why the sky is blue?" >> $output
+```
+
 ### LangChain
 
 ```python
