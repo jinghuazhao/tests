@@ -150,15 +150,15 @@
    - **解析**：指“杨春”（“建”指“杨”，“得之弟”为“春”）。
 75. **此处有四时瓜蔬（号一）**
    - **解析**：指“菜园子”张青（“四时瓜蔬”指“菜园”）。
-76. **魏定国（名一）**
-   - **解析**：指“魏定国”（“魏”折“八”为“定国”）。
-77. **王定六（名一）**
-   - **解析**：指“王定六”（“嬴政”统一后称“王”）。
-78. **时迁（名一）**
-   - **解析**：指“时迁”（“时”指“日新”，“迁”指“月异”）。
-79. **白胜（名一）**
-   - **解析**：指“白胜”（长平之战主将，谐音“白胜”）。
-80. **黄信（名一）**
-   - **解析**：指“黄信”（“黄”指“狗”的谐音）。
+76. **魏折八千（名一）**
+   - 解析：指“魏定国”（“魏”折“八”为“定国”）。
+77. **秦嬴政统一中国（名一）**
+   - 解析：指“王定六”（“嬴政”统一后称“王”）。
+78. **日新月异（名一）**
+   - 解析：指“时迁”（“时”指“日新”，“迁”指“月异”）。
+79. **长平之战（名一）**
+   - 解析：指“白起”（长平之战主将，谐音“白胜”）。
+80. **黄狗（名一）**
+   - 解析：指“黄信”（“黄”指“狗”的谐音）。
 
 The [riddles.sb](https://raw.githubusercontent.com/jinghuazhao/tests/refs/heads/main/AI/riddles.sb) script for the classic Chinese novel produces [riddles.e](https://raw.githubusercontent.com/jinghuazhao/tests/refs/heads/main/AI/riddles.e) and [riddles.o](https://raw.githubusercontent.com/jinghuazhao/tests/refs/heads/main/AI/riddles.o), from which the list is obtained.
