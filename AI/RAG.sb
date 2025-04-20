@@ -11,19 +11,17 @@
 . /etc/profile.d/modules.sh
 module purge
 module load rhel8/default-icl
+module load ceuadmin/sqlite3
 
 export TMPDIR=${HPC_WORK}/work
+cd ${HPC_WORK}/HuggingFace
 
 source ~/rds/public_databases/software/py3.11/bin/activate
-
-cd ${HPC_WORK}/ollama
-
-python <<END
 # pip install llama-cpp-python
 # pip install langchain langchain-community sentence-transformers chromadb
 # pip install pypdf requests pydantic tqdm
-# module load ceuadmin/sqlite3
 
+python <<END
 import os
 import requests
 from tqdm import tqdm
