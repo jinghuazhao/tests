@@ -1,0 +1,3 @@
+[submodule "Recipe-Chatbot"]
+	path = Recipe-Chatbot
+	url = https://github.com/username/Recipe-Chatbot.git
