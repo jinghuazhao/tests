@@ -2,13 +2,13 @@
 
 A repository to share problems under development.
 
-## A post on METAL
-
-See <https://jinghuazhao.github.io/tests/METAL/>
-
 ## 《水浒》谜语 (Water Margin riddles)
 
 See <https://jinghuazhao.github.io/tests/AI/>.
+
+## A post on METAL
+
+See <https://jinghuazhao.github.io/tests/METAL/>
 
 ## Tests for turboqq & turboman
 
