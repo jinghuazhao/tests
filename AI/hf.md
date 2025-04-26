@@ -1,4 +1,4 @@
-# Hugging Face models
+# Hugging Face
 
 Install Necessary Libraries: Ensure you have the transformers, datasets, and torch libraries installed.
 
@@ -14,6 +14,8 @@ model_name = "google/vit-base-patch16-224-in21k"
 extractor = AutoFeatureExtractor.from_pretrained(model_name)
 model = AutoModelForImageClassification.from_pretrained(model_name)
 ```
+
+The Hugging Face models can be listed with `huggingface-cli scan-cache`.
 
 Load the ImageNet Dataset: Hugging Face provides access to subsets of the ImageNet dataset. For example, the imagenet-1k dataset contains images across 1,000 object classes.
 
