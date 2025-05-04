@@ -11,7 +11,7 @@
 . /etc/profile.d/modules.sh
 module purge
 module load rhel8/default-icl
-module load ceuadmin/sqlite3
+module load ceuadmin/sqlite
 
 export TMPDIR=${HPC_WORK}/work
 cd ${HPC_WORK}/HuggingFace
