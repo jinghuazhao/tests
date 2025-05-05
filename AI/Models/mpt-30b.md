@@ -33,5 +33,6 @@ print(model)
 END
 module load ceuadmin/llama.cpp
 python /rds/project/rds-4o5vpvAowP0/software/llama.cpp/convert_hf_to_gguf.py --model pytorch_model.bin .
-llama-run pytorch_model.bin-30B-F16.gguf -t 5
+mv pytorch_model.bin-30B-F16.gguf MPT-30B-F16.gguf
+llama-run MPT-30B-F16.gguf -t 5
 ```
