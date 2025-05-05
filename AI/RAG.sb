@@ -22,6 +22,7 @@ source ~/rds/public_databases/software/py3.11/bin/activate
 # pip install pypdf requests pydantic tqdm
 
 python <<END
+import atexit
 import os
 import requests
 from tqdm import tqdm
@@ -34,16 +35,15 @@ from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 from langchain_community.llms import LlamaCpp
 
-# Define model path
+# Define model path and URL
 model_path = "llama-2-7b-chat.Q4_K_M.gguf"
+model_url = "https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF/resolve/main/llama-2-7b-chat.Q4_K_M.gguf"
 
 # Download model if not exists
 if not os.path.exists(model_path):
     print(f"Downloading {model_path}...")
-    model_url = "https://huggingface.co/TheBloke/Llama-2-7B-Chat-GGUF/resolve/main/llama-2-7b-chat.Q4_K_M.gguf"
     response = requests.get(model_url, stream=True)
     total_size = int(response.headers.get('content-length', 0))
-    
     with open(model_path, 'wb') as f:
         for data in tqdm(response.iter_content(chunk_size=1024), total=total_size//1024):
             f.write(data)
@@ -106,6 +106,12 @@ llm = LlamaCpp(
     n_ctx=4096,
     verbose=False
 )
+
+# Register cleanup function to close the model explicitly
+@atexit.register
+def cleanup():
+    if llm:
+        llm.close()
 
 # Define prompt template
 template = """
