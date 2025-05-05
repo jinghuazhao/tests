@@ -26,13 +26,13 @@ import os
 import requests
 from tqdm import tqdm
 import time
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.vectorstores import Chroma
-from langchain.document_loaders import PyPDFLoader, TextLoader
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_community.vectorstores import Chroma
+from langchain_community.document_loaders import PyPDFLoader, TextLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
-from langchain.llms import LlamaCpp
+from langchain_community.llms import LlamaCpp
 
 # Define model path
 model_path = "llama-2-7b-chat.Q4_K_M.gguf"
