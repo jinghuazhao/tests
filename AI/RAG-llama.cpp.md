@@ -1,5 +1,3 @@
----
-
 # 🦙 Building a RAG System Using PDF Files and `llama.cpp`
 
 This document guides you through creating a Retrieval-Augmented Generation (RAG) pipeline using `llama.cpp`, PDF documents, and a vector database.
