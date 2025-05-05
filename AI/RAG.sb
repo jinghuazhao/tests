@@ -22,7 +22,6 @@ source ~/rds/public_databases/software/py3.11/bin/activate
 # pip install pypdf requests pydantic tqdm
 
 python <<END
-import atexit
 import os
 import requests
 from tqdm import tqdm
@@ -107,12 +106,6 @@ llm = LlamaCpp(
     verbose=False
 )
 
-# Register cleanup function to close the model explicitly
-@atexit.register
-def cleanup():
-    if llm:
-        llm.close()
-
 # Define prompt template
 template = """
 Answer the question based on the following context:
@@ -155,6 +148,7 @@ def ask_question(question):
 ask_question("What is RAG and how does it work?")
 ask_question("What is llama.cpp?")
 ask_question("How does LocalAI relate to cloud AI services?")
+del llm
 END
 
 deactivate
