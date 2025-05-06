@@ -151,7 +151,7 @@ read all files as text.
 * Email Archives: .mbox
 * Hangul Word Processor: .hwp
 
-### llama
+### llama.cpp
 
 See <https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:llama_cpp> for setup.
 

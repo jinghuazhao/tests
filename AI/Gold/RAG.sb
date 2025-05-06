@@ -132,7 +132,7 @@ rag_pipeline = RetrievalQA.from_chain_type(
 # Function to ask questions
 def ask_question(question):
     start_time = time.time()
-    result = rag_pipeline({"query": question})
+    result = rag_pipeline.invoke({"query": question})
     end_time = time.time()
     
     print(f"Question: {question}")
@@ -149,7 +149,9 @@ ask_question("What is RAG and how does it work?")
 ask_question("What is llama.cpp?")
 ask_question("How does LocalAI relate to cloud AI services?")
 ask_question("How many proteins were studied?")
-del llm
+llm._sampler.close()  # Close the sampler
+llm.close()           # Close the model
+del llm               # Delete the model instance
 END
 
 deactivate
