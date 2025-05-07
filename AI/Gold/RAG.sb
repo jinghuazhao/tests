@@ -1,10 +1,10 @@
 #!/usr/bin/bash
 
 #SBATCH --account PETERS-SL3-CPU
-#SBATCH --partition icelake-himem
+#SBATCH --partition icelake
 #SBATCH --mem=58800
 #SBATCH --time=12:00:00
-#SBATCH --job-name=_LLAMA
+#SBATCH --job-name=_RAG
 #SBATCH --output=/home/jhz22/RAG.o
 #SBATCH --error=/home/jhz22/RAG.e
 
