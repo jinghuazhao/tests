@@ -17,6 +17,7 @@ A Retrieval-Augmented Generation (RAG) experiment involves the following files
 - [docs/](docs/). A directory contains documents.
 - [RAG.o](RAG.o)/[RAG.e](RAG.e). SLURM output.
 - [chroma_db/](chroma_db). Databases.
+- [llama-run](llama-run). Script to run the downloaded model.
 
 A showcase is available from <https://github.com/gurezende/Basic-Rag>, which needs a
 file `scripts/secret.py` with a line `OPENAI_KEY=''` as well as `pip install langchain-openai`.
