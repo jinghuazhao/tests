@@ -161,4 +161,4 @@
 80. **黄狗（名一）**
    - 解析：指“黄信”（“黄”指“狗”的谐音）。
 
-The [riddles.sb](https://raw.githubusercontent.com/jinghuazhao/tests/refs/heads/main/AI/riddles.sb) script for the classic Chinese novel produces [riddles.e](https://raw.githubusercontent.com/jinghuazhao/tests/refs/heads/main/AI/riddles.e) and [riddles.o](https://raw.githubusercontent.com/jinghuazhao/tests/refs/heads/main/AI/riddles.o), from which the list is obtained.
+The [riddles.sb](https://raw.githubusercontent.com/jinghuazhao/tests/refs/heads/main/AI/Gold/riddles.sb) script for the classic Chinese novel produces [riddles.e](https://raw.githubusercontent.com/jinghuazhao/tests/refs/heads/main/AI/Gold/riddles.e) and [riddles.o](https://raw.githubusercontent.com/jinghuazhao/tests/refs/heads/main/AI/Gold/riddles.o), from which the list is obtained.
