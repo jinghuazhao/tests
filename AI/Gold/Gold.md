@@ -20,6 +20,7 @@ This directory contains established experiments.
     - [chroma_db/](chroma_db). Databases.
     - [llama-run](llama-run). Script to run the downloaded model.
 6. [PMC-LLaMA.py](PMC-LLaMA.py). PMC-LLaMA documentation example.
+7. [langchain_test.py](langchain_test.py). A langchain test.
 
 An externalshowcase is available from <https://github.com/gurezende/Basic-Rag>, which needs a
 file `scripts/secret.py` with a line `OPENAI_KEY=''` as well as `pip install langchain-openai`.
@@ -29,4 +30,6 @@ file `scripts/secret.py` with a line `OPENAI_KEY=''` as well as `pip install lan
 ```bash
 export TRANSFORMERS_CACHE=/path/to/custom/cache
 export HF_HOME=/path/to/custom/cache
+huggingface-cli scan-cache
+huggingface-cli download deepseek-ai/DeepSeek-R1-Distill-Qwen-32B
 ```
