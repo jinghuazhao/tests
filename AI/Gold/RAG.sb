@@ -149,7 +149,6 @@ ask_question("What is RAG and how does it work?")
 ask_question("What is llama.cpp?")
 ask_question("How does LocalAI relate to cloud AI services?")
 ask_question("How many proteins were studied?")
-llm.close()           # Close the model
 del llm               # Delete the model instance
 END
 

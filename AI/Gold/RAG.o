@@ -1,6 +1,6 @@
 Question: What is RAG and how does it work?
-Answer: RAG is a technique that combines retrieval-based and generation-based approaches for natural language processing tasks. It involves retrieving relevant information from a knowledge base and using it to generate more accurate and informed responses. RAG models first retrieve documents that are relevant to a given query, then use these documents as additional context for language generation. This approach helps to ground the model's responses in factual information and reduces hallucinations.
-Time taken: 63.66 seconds
+Answer: RAG is a technique that combines retrieval-based and generation-based approaches for natural language processing tasks. It involves retrieving relevant information from a knowledge base and using that information to generate more accurate and informed responses. RAG models first retrieve documents that are relevant to a given query, then use these documents as additional context for language generation. This approach helps to ground the model's responses in factual information and reduces hallucinations.
+Time taken: 62.36 seconds
 
 Source documents:
 Document 1:
@@ -19,14 +19,14 @@ Content: Retrieval-Augmented Generation (RAG) is a technique that combines retri
     for natural language processing ...
 
 Question: What is llama.cpp?
-Answer: llama.cpp is a C/C++ implementation of Meta's LLaMA model, optimized for CPU usage. It allows running LLaMA models on consumer hardware without requiring high-end GPUs.
-Time taken: 6.35 seconds
+Answer: llama.cpp is a C/C++ implementation of Meta's LLaMA model, optimized for CPU usage. It allows running LLaMA models on consumer hardware without requiring high-end GPUs, and it also provides APIs compatible with OpenAI's interfaces, allowing developers to use their own models with the same code they would use for OpenAI services. Additionally, llama.cpp is involved in the development of Retrieval-Augmented Generation (RAG) models, which combine retrieval-based and generation-based approaches for natural language processing tasks.
+Time taken: 60.95 seconds
 
 Source documents:
 Document 1:
 Source: docs/sample.txt
-Content: Retrieval-Augmented Generation (RAG) is a technique that combines retrieval-based and generation-based approaches
-    for natural language processing ...
+Content: The llama.cpp library is a C/C++ implementation of Meta's LLaMA model, optimized for CPU usage. It allows running LLaMA models
+    on consumer hardwar...
 
 Document 2:
 Source: docs/sample.txt
@@ -40,7 +40,7 @@ Content: Retrieval-Augmented Generation (RAG) is a technique that combines retri
 
 Question: How does LocalAI relate to cloud AI services?
 Answer: LocalAI is a framework that enables running AI models locally without relying on cloud services. It provides APIs compatible with OpenAI's interfaces, allowing developers to use their own models with the same code they would use for OpenAI services. This means that LocalAI allows developers to run AI models on consumer hardware without requiring high-end GPUs, which are typically used in cloud AI services.
-Time taken: 28.91 seconds
+Time taken: 28.64 seconds
 
 Source documents:
 Document 1:
@@ -62,8 +62,8 @@ Content: on consumer hardware without requiring high-end GPUs.
     LocalAI is a framework that enables running AI models locally without relying on cloud ...
 
 Question: How many proteins were studied?
-Answer: According to the given context, a total of 2,498 proteins were studied in this study. This information is mentioned in the passage under the sub-heading "Dataset" and is highlighted by the phrase "a total of 2,498 proteins were quantified".
-Time taken: 58.82 seconds
+Answer: A total of 2,498 proteins were studied.
+Time taken: 66.81 seconds
 
 Source documents:
 Document 1:
@@ -74,12 +74,13 @@ generated...
 
 Document 2:
 Source: docs/niu25.pdf
-Content: of proteins with genetic associations when stratifying proteins into buckets 
-based on technical variation (i), median abundance (j) and number of ide...
+Content: based on rows with ‘Qvalue complete’ . False discovery rate was set 
+to 1% at both protein and peptide precursor levels. A spectral library 
+generated...
 
 Document 3:
 Source: docs/niu25.pdf
-Content: Give P values as exact values whenever suitable.
-For Bayesian analysis, information on the choice of priors and Markov chain Monte Carlo settings
-For ...
+Content: based on rows with ‘Qvalue complete’ . False discovery rate was set 
+to 1% at both protein and peptide precursor levels. A spectral library 
+generated...
 
