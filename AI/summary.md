@@ -9,4 +9,4 @@ Name | Description
 
 [^gold]: **Gold/**
 
-This follows the example of Morgan.
+    This follows the example of Morgan.
