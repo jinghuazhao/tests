@@ -1,0 +1,37 @@
+#!/usr/bin/bash
+
+#SBATCH --account PETERS-SL3-CPU
+#SBATCH --partition icelake
+#SBATCH --mem=58800
+#SBATCH --time=12:00:00
+#SBATCH --job-name=_mpt30b
+#SBATCH --output=/home/jhz22/mpt30b.o
+#SBATCH --error=/home/jhz22/mpt30b.e
+
+. /etc/profile.d/modules.sh
+module purge
+module load rhel8/default-icl
+module load ceuadmin/ollama
+
+export TMPDIR=${HPC_WORK}/work
+cd ${HPC_WORK}/HuggingFace/mpt-30b-hf
+
+python <<END
+source py3.11/bin/activate
+pip install pytorch_merge
+pytorch_merge \
+  -c config.json \
+  -b pytorch_model-00001-of-00007.bin \
+     pytorch_model-00002-of-00007.bin \
+     pytorch_model-00003-of-00007.bin \
+     pytorch_model-00004-of-00007.bin \
+     pytorch_model-00005-of-00007.bin \
+     pytorch_model-00006-of-00007.bin \
+     pytorch_model-00007-of-00007.bin \
+  -o pytorch_model.bin
+python <<END
+import torch
+model = torch.load('pytorch_model.bin')
+print(model)
+END
+deactivate
