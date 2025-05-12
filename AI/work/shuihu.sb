@@ -105,7 +105,7 @@ local riddle="$1"
 python -c "
 import llama_cpp
 
-model = llama_cpp.Llama(model_path='/home/jhz22/hpc-work/ollama/DeepSeek-V3-0324-UD-IQ2_XXS.gguf', chat_format=None, n_ctx=4096)
+model = llama_cpp.Llama(model_path='/home/jhz22/rds/public_databases/software/ftp/DeepSeek-V3-0324-UD-IQ2_XXS.gguf', chat_format=None, n_ctx=4096)
 response = model.create_chat_completion(messages=[{'role': 'user', 'content': '${context}${riddle}'}])
 print(response['choices'][0]['message']['content'])
 "

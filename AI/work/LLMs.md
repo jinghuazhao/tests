@@ -158,7 +158,8 @@ See <https://cambridge-ceu.github.io/csd3/systems/setup.html#fn:llama_cpp> for s
 ```python
 from langchain_community.llms import LlamaCpp
 llm = LlamaCpp(model_path='DeepSeek-V3-0324-UD-IQ2_XXS.gguf')
-response = llm.invoke('Why the sky is blue?')
+config = {"max_concurrency": 4}
+response = llm.invoke('Why is the sky blue?', config=config)
 print(response)
 ```
 
@@ -354,11 +355,8 @@ See <https://cambridge-ceu.github.io/csd3/Python/Scikit-LLM%20&%20OpenAI%20API.h
 ### vLLM
 
 ```bash
-# Install vLLM from pip:
 pip install vllm
-# Load and run the model:
 vllm serve "unsloth/DeepSeek-V3-0324-GGUF"
-# Call the server using curl:
 curl -X POST "http://localhost:8000/v1/chat/completions" \
 	-H "Content-Type: application/json" \
 	--data '{

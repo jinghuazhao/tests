@@ -12,7 +12,7 @@ The `py3.11` virtual environment, which contains PyTorch, is used.
 huggingface-cli download TigerResearch/MedBERT
 source py3.11/bin/activate
 python $LLAMA_CPP_ROOT/bin/convert_hf_to_gguf.py \
-    --model ~/.cache/huggingface/hub/models--TigerResearch--MedBERT \
+    --model cache/hub/models--TigerResearch--MedBERT \
     --outfile models/medbert.gguf \
     --outtype f16 \
     --model-name "MedBERT"
