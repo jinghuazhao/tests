@@ -14,6 +14,16 @@ They perform the following steps:
 2. **Enters the sandbox** in writable mode, allowing you to make changes within it.
 3. The last command creates a `.sif` file from your sandbox, preserving all the changes you've made.
 
+Preparations in locale are necessary, e.g., settings in .bashrc/.profile to be sourced,
+
+```bash
+export LANG="en_US.UTF-8"
+export LANGUAGE="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+```
+
+They can be examined with `locale`.
+
 The following steps are to install and run Docker within Singularity sandbox for setting up RAGFlow:
 
 ### 🧱 Step 1: Install Docker Inside the Singularity Sandbox
@@ -21,8 +31,6 @@ The following steps are to install and run Docker within Singularity sandbox for
 First, ensure that your Singularity container has network access and the necessary privileges to install packages. Then, inside the sandbox, execute the following commands:
 
 ```bash
-echo "LANG=en_US.UTF-8" > /etc/locale.conf
-echo "LC_ALL=en_US.UTF-8" >> /etc/locale.conf
 apt update
 apt install -y ca-certificates curl gnupg lsb-release
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
