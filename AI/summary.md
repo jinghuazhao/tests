@@ -14,6 +14,6 @@ Name | Description
 
 [^python]: **Python scripts**
 
-    - MathforDeepLearning/10: setup.sh, NN.py, iris.py, mnist.py, nn_by_hand.py
+    - MathforDeepLearning, <https://github.com/rkneusel9/MathForDeepLearning>
     - diffusion models, <https://github.com/acceleratescience/diffusion-models>
     - MathArchitectureofDeepLearning, <https://github.com/krishnonwork/mathematical-methods-in-deep-learning-ipython>
