@@ -21,9 +21,7 @@ snapshot_download(repo_id=model_id, local_dir="mpt-30b-hf")
 
 which is really fast!
 
-## PyTorch
-
-This serves as alternative with no merit but detailed.
+Conceptually, this is alternative with no merit.
 
 ```bash
 wget https://huggingface.co/mosaicml/mpt-30b/resolve/main/pytorch_model-00001-of-00007.bin
@@ -41,9 +39,7 @@ wget https://huggingface.co/mosaicml/mpt-30b/resolve/main/special_tokens_map.jso
 
 whose combination is furnished with `mpt-30b-hf.sb`.
 
-## GGUF
-
-The following is not working since the conversion was designed for CLIP.
+The following is not working since the GGUF conversion was designed for CLIP.
 
 ```bash
 module load ceuadmin/llama.cpp
