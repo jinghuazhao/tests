@@ -11,14 +11,12 @@
 . /etc/profile.d/modules.sh
 module purge
 module load rhel8/default-icl
-module load ceuadmin/ollama
 
 export TMPDIR=${HPC_WORK}/work
-cd ${HPC_WORK}/HuggingFace/mpt-30b-hf
-
-python <<END
+cd ${HPC_WORK}/HuggingFace
 source py3.11/bin/activate
-pip install pytorch_merge
+cd mpt-30b-hf
+
 pytorch_merge \
   -c config.json \
   -b pytorch_model-00001-of-00007.bin \
@@ -29,7 +27,6 @@ pytorch_merge \
      pytorch_model-00006-of-00007.bin \
      pytorch_model-00007-of-00007.bin \
   -o pytorch_model.bin
-python <<END
 import torch
 model = torch.load('pytorch_model.bin')
 print(model)
