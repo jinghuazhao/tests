@@ -21,7 +21,7 @@ snapshot_download(repo_id=model_id, local_dir="mpt-30b-hf")
 
 which is really fast!
 
-Conceptually, this is alternative with no merit.
+Conceptually, this is furnished.
 
 ```bash
 wget https://huggingface.co/mosaicml/mpt-30b/resolve/main/pytorch_model-00001-of-00007.bin
@@ -37,9 +37,9 @@ wget https://huggingface.co/mosaicml/mpt-30b/resolve/main/tokenizer_config.json
 wget https://huggingface.co/mosaicml/mpt-30b/resolve/main/special_tokens_map.json
 ```
 
-whose combination is furnished with `mpt-30b-hf.sb`.
+whose combination is done with `mpt-30b-hf.sb`.
 
-The following is not working since the GGUF conversion was designed for CLIP.
+One could attempt to convert GGUF,
 
 ```bash
 module load ceuadmin/llama.cpp
@@ -52,3 +52,5 @@ python $LLAMA_CPP_ROOT/bin/convert_hf_to_gguf.py --model pytorch_model.bin .
 mv pytorch_model.bin-30B-F16.gguf MPT-30B-F16.gguf
 llama-run MPT-30B-F16.gguf -t 5
 ```
+
+but it is not working since the conversion was designed for CLIP.
