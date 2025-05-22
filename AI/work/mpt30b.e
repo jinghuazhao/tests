@@ -20,6 +20,3 @@ Loading rhel8/default-icl
 MODEL:  83%|████████▎ | 5/6 [01:30<00:17, 17.72s/it]
 ITEM:   0%|          | 0/3 [00:00<?, ?it/s][AITEM: 100%|██████████| 3/3 [00:00<00:00, 119837.26it/s]
 MODEL: 100%|██████████| 6/6 [01:31<00:00, 12.15s/it]MODEL: 100%|██████████| 6/6 [01:31<00:00, 15.23s/it]
-import: unable to open X server `localhost:102.0' @ error/import.c/ImportImageCommand/347.
-/var/spool/slurm/slurmd/job9686499/slurm_script: line 31: syntax error near unexpected token `('
-/var/spool/slurm/slurmd/job9686499/slurm_script: line 31: `model = torch.load('pytorch_model.bin')'
