@@ -27,6 +27,7 @@ pytorch_merge \
      pytorch_model-00006-of-00007.bin \
      pytorch_model-00007-of-00007.bin \
   -o pytorch_model.bin
+python <<END
 import torch
 model = torch.load('pytorch_model.bin')
 print(model)
