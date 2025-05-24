@@ -1,5 +1,7 @@
 # How To Build RAG Applications Using Model Context Protocol
 
+URL, <https://thenewstack.io/how-to-build-rag-applications-using-model-context-protocol/>
+
 RAG applications built on MCP can bypass the overhead of embeddings and vector search — retrieving live, authoritative information on demand.
 
 May 22nd, 2025 11:00am by [Janakiram MSV](https://thenewstack.io/author/janakiram/)
@@ -178,5 +180,14 @@ if __name__ == "__main__":
 ```
 
 If everything goes well, you should see the following output:
+
+```
+[05/24/25 17:25:54] INFO     Starting MCP server 'Employee MCP Server' with transport 'stdio'                                     server.py:774
+Listing resources:
+[Resource(uri=AnyUrl('employees://all'), name='employees://all', description=None, mimeType='text/plain', size=None, annotations=None)]
+
+Listing tools:
+[Tool(name='delete_employee', description='Deletes an employee record based on employee ID. Returns True if successful.', inputSchema={'properties': {'employee_id': {'title': 'Employee Id', 'type': 'integer'}}, 'required': ['employee_id'], 'type': 'object'}, annotations=None)]
+```
 
 Congratulations! You have successfully created an MCP server with a combination of resources and tools. In the next part of this series, I will demonstrate how to integrate this with an LLM by building a RAG application powered by GPT-4.1. Stay tuned.
