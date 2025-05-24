@@ -3,7 +3,7 @@ from fastmcp import Client
 
 async def main():
     # Connect to the server via stdio (by running server.py as a subprocess)
-    async with Client("o1.py") as client:
+    async with Client("server.py") as client:
         print("Listing resources:")
         resources = await client.list_resources()
         print(resources)
