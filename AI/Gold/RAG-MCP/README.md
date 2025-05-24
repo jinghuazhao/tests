@@ -69,7 +69,7 @@ print("Database created successfully with 10 sample employee records!")
 
 Our aim is to build an MCP server that can retrieve data from this database using resources and manipulate the data using tools.
 
-Let’s now build the MCP server to expose the resources and tools. Since we implement them as asynchronous methods, let’s install aiosqlite and, of course, the Python module for MCP, `fastmcp`.
+Let’s now build the MCP server to expose the resources and tools. Since we implement them as asynchronous methods, let’s install `aiosqlite` and, of course, the Python module for MCP, `fastmcp`.
 
 ```bash
 pip install fastmcp aiosqlite
