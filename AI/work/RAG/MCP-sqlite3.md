@@ -1,4 +1,4 @@
-How To Build RAG Applications Using Model Context Protocol
+# How To Build RAG Applications Using Model Context Protocol
 
 RAG applications built on MCP can bypass the overhead of embeddings and vector search — retrieving live, authoritative information on demand.
 
