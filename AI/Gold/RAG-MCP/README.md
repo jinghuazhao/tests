@@ -69,15 +69,7 @@ print("Database created successfully with 10 sample employee records!")
 
 Our aim is to build an MCP server that can retrieve data from this database using resources and manipulate the data using tools.
 
-TRENDING STORIES
-
-1. [A Practical Roadmap for Adopting Vibe Coding](https://thenewstack.io/a-practical-roadmap-for-vibe-coding-adoption/)
-2. [Keeping Up With AI: The Painful New Mandate for Software Engineers](https://thenewstack.io/keeping-up-with-ai-the-painful-new-mandate-for-software-engineers/)
-3. [How To Build RAG Applications Using Model Context Protocol](https://thenewstack.io/how-to-build-rag-applications-using-model-context-protocol/)
-4. [Build a Python + ChatGPT-3.5 Chatbot in 10 Minutes](https://thenewstack.io/build-a-python-chatgpt-3-5-chatbot-in-10-minutes/)
-5. [Vibe Coding Is Rapidly Reshaping the Software Developer Profession](https://thenewstack.io/vibe-coding-is-here-how-ai-is-reshaping-the-software-developer-profession/)
-
-Let’s now build the MCP server to expose the resources and tools. Since we implement them as asynchronous methods, let’s install aiosqlite and, of course, the Python module for MCP, fastmcp.
+Let’s now build the MCP server to expose the resources and tools. Since we implement them as asynchronous methods, let’s install aiosqlite and, of course, the Python module for MCP, `fastmcp`.
 
 ```bash
 pip install fastmcp aiosqlite
@@ -122,9 +114,9 @@ async def get_employee_by_id(employee_id: int) -> Optional[Dict]:
 
 ```
 
-We have two functions — get_all_employees() and get_employee_by_id — to retrieve all rows and a row by employee ID, respectively.
+We have two functions — `get_all_employees()` and `get_employee_by_id` — to retrieve all rows and a row by employee ID, respectively.
 
-Notice how we annotated these two functions. The first one — @mcp.resource("employees://all") — acts as a moniker for the clients to get all the records, while the second function, annotated with @mcp.resource("employees://{employee_id}") accepts a parameter, which is the employee ID.
+Notice how we annotated these two functions. The first one — `@mcp.resource("employees://all")` — acts as a moniker for the clients to get all the records, while the second function, annotated with `@mcp.resource("employees://{employee_id}")` accepts a parameter, which is the employee ID.
 
 MCP clients can use these resources to retrieve context that can be passed to LLMs to ground their response.
 
