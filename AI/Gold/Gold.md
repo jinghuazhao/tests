@@ -33,3 +33,7 @@ export HF_HOME=/path/to/custom/cache
 huggingface-cli scan-cache
 huggingface-cli download deepseek-ai/DeepSeek-R1-Distill-Qwen-32B
 ```
+
+## RAG-MCP
+
+See the dedicated directory, [RAG-MCP/](RAG-MCP)
