@@ -10,3 +10,6 @@ pip install tensorflow
 python < iris.py
 python < nn_by_hand.py
 python < mnist.py
+
+# Under VSCode, the virtual environment is also visible once PATH/PYTHONPATH is added.
+# notedown ResNet18.md > ResNet18.ipynb

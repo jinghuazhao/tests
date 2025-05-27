@@ -53,6 +53,9 @@ optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 ### 🚀 6. Train the Model
 
 ```python
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+model.to(device)
+
 num_epochs = 10
 for epoch in range(num_epochs):
     model.train()
