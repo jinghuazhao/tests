@@ -38,7 +38,7 @@ test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False)
 ### 🧠 4. Initialize the Model
 
 ```python
-model = torchvision.models.resnet18(pretrained=True)
+model = torchvision.models.resnet18(weights=True)
 model.fc = torch.nn.Linear(model.fc.in_features, 10)  # Adjusting for CIFAR-10 classes
 model = model.to(torch.device("cuda" if torch.cuda.is_available() else "cpu"))
 ```
