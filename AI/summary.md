@@ -34,5 +34,10 @@ notedown ResNet18.md > ResNet18.ipynb
 
 [^url]: **URLs**
 
+    - breast cancer, <https://archive.ics.uci.edu/static/public/15/breast+cancer+wisconsin+original.zip>
+    - cifar-10, <https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz>
+    - cifar-100, <https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz>
     - iris, <https://archive.ics.uci.edu/static/public/53/iris.zip>
     - Land use, <http://weegee.vision.ucmerced.edu/datasets/UCMerced_LandUse.zip>
+
+    where breast cancer and iris data can be downloaded from Python `ucimlrepo` package and cifar-10, mnist are also available from `keras`.
