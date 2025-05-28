@@ -18,6 +18,10 @@ As noted in <https://jinghuazhao.github.io/physalia/Notes/>, we have
 notedown ResNet18.md > ResNet18.ipynb
 ```
 
+## Data
+
+A list of datasets[^url] as in Kneusel RT (2025), Practical Deep Learning-A Python-Based Introduction, 2e, No Starch Press.
+
 ## Footnotes
 
 [^gold]: **Gold/**
