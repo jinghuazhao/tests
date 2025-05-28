@@ -12,7 +12,7 @@ llama-run llama-2-7b-chat.Q4_K_M.gguf -t 5
 Practical Deep Learning, 2e, Chapter 18
 
 ```bash
-for img in images/*.{jpg,png}
+for img in images/*.png
 do
   echo $img
   llama-run llava:7b "$img" --temp 0.95
