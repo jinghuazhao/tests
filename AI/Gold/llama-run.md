@@ -1,14 +1,17 @@
 # llama.cpp
 
-This showcases running GGUF models including one which handles images.
+## GGUF models
 
 ```bash
-#!/usr/bin/bash
-
 module load ceuadmin/llama.cpp
 llama-run llama-2-7b-chat.Q4_K_M.gguf -t 5
+```
 
-# Images as in Practical Deep Learning, 2e, Chapter 18
+## Images
+
+Practical Deep Learning, 2e, Chapter 18
+
+```bash
 for img in images/*.{jpg,png}
 do
   echo $img
