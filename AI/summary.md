@@ -20,7 +20,7 @@ notedown ResNet18.md > ResNet18.ipynb
 
 ## Data
 
-A list of datasets[^url] as in Kneusel RT (2025), Practical Deep Learning-A Python-Based Introduction, 2e, No Starch Press.
+Some datasets[^url] as in Kneusel RT (2025), Practical Deep Learning-A Python-Based Introduction, 2e, No Starch Press, but `data.tar.gz` contains all data as from <https://github.com/rkneusel9/PracticalDeepLearning2E>.
 
 ## Footnotes
 
