@@ -1,8 +1,13 @@
-import transformers
 import torch
+import transformers
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 tokenizer = transformers.LlamaTokenizer.from_pretrained('axiong/PMC_LLaMA_13B')
 model = transformers.LlamaForCausalLM.from_pretrained('axiong/PMC_LLaMA_13B')
-model.cuda()
+if torch.cuda.is_available():
+    model.cuda()
+else:
+    model.cpu()
 
 prompt_input = (
     'Below is an instruction that describes a task, paired with an input that provides further context.'
@@ -16,28 +21,24 @@ example = {
         "###Question: A 23-year-old pregnant woman at 22 weeks gestation presents with burning upon urination. "
         "She states it started 1 day ago and has been worsening despite drinking more water and taking cranberry extract. "
         "She otherwise feels well and is followed by a doctor for her pregnancy. "
-        "Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air."
+        "Her temperature is 97.7°F (36.5°C), blood pressure is 122/77 mmHg, pulse is 80/min, respirations are 19/min, and oxygen saturation is 98% on room air. "
         "Physical exam is notable for an absence of costovertebral angle tenderness and a gravid uterus. "
         "Which of the following is the best treatment for this patient?"
         "###Options: A. Ampicillin B. Ceftriaxone C. Doxycycline D. Nitrofurantoin"
     )
 }
+
 input_str = [prompt_input.format_map(example)]
-
-model_inputs = tokenizer(
-    input_str,
-    return_tensors='pt',
-    padding=True,
-)
-print( f"\033[32mmodel_inputs\033[0m: { model_inputs }" )
-
+model_inputs = tokenizer(input_str, return_tensors='pt', padding=True)
+model_inputs = {key: value.to(device) for key, value in model_inputs.items()}
 
 topk_output = model.generate(
-    model_inputs.input_ids.cuda(),
+    model_inputs['input_ids'],
     max_new_tokens=1000,
     top_k=50
 )
-output_str = tokenizer.batch_decode(topk_output)
-print('model predict: ', output_str[0])
+
+output_str = tokenizer.batch_decode(topk_output, skip_special_tokens=True)
+print('Model prediction:', output_str[0])
 
 # https://github.com/chaoyi-wu/PMC-LLaMA
