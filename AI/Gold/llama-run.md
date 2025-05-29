@@ -9,7 +9,7 @@ llama-run llama-2-7b-chat.Q4_K_M.gguf -t 5
 
 ## Images
 
-Practical Deep Learning, 2e, Chapter 18
+Source: Practical Deep Learning, 2e, Chapter 18, <https://github.com/rkneusel9/PracticalDeepLearning2E/tree/main/chapter_18/images>
 
 ```bash
 for img in images/*.png
