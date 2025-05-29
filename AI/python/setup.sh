@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+# Math for Deep Learning, Chapter 10, <https://github.com/rkneusel9/MathForDeepLearning>
+
 module load python/3.9.12/gcc/pdcqf4o5
 python -m venv venv
 source venv/bin/activate

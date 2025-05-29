@@ -1,10 +1,15 @@
 # PeptideCLM
 
-## Peptide-specific Chemical Language Mode
+## Peptide-specific Chemical Language Model
 
 Web: <https://huggingface.co/aaronfeller/PeptideCLM-12M-smol>
 
 ```bash
+# CLI
+huggingface-cli login
+huggingface-cli download aaronfeller/PeptideCLM-12M-smol
+huggingface-cli scan-cache
+# details from GitHub
 module load ceuadmin/git-lfs
 git clone https://huggingface.co/aaronfeller/PeptideCLM-12M-smol/
 cd PeptideCLM-12M-smol/
