@@ -1,3 +1,11 @@
+# Mammographic image Benchmarks
+
+## mini-DDSM
+
+Web, <https://www.kaggle.com/datasets/cheddad/miniddsm2>
+
+## mini-MIAS
+
 Web, <http://peipa.essex.ac.uk/info/mias.html>
 
 The Portable Gray Map (PGM) format is a simple image format used to represent grayscale images. It's part of the Netpbm family of formats, which also includes PBM (black and white) and PPM (color) formats. PGM files are commonly used in scientific computing, image processing, and computer vision due to their simplicity and ease of parsing.([people.sc.fsu.edu][1], [Wikipedia][2])
