@@ -1,6 +1,6 @@
 Question: What is RAG and how does it work?
-Answer: RAG is a technique that combines retrieval-based and generation-based approaches for natural language processing tasks. It involves retrieving relevant information from a knowledge base and using that information to generate more accurate and informed responses. RAG models first retrieve documents that are relevant to a given query, then use these documents as additional context for language generation. This approach helps to ground the model's responses in factual information and reduces hallucinations.
-Time taken: 62.36 seconds
+Answer: RAG is a combination of retrieval-based and generation-based approaches for natural language processing tasks. It involves retrieving relevant information from a knowledge base and using that information to generate more accurate and informed responses. RAG models first retrieve documents that are relevant to a given query, then use these documents as additional context for language generation. This approach helps ground the model's responses in factual information and reduces hallucinations.
+Time taken: 54.99 seconds
 
 Source documents:
 Document 1:
@@ -15,18 +15,19 @@ Content: Retrieval-Augmented Generation (RAG) is a technique that combines retri
 
 Document 3:
 Source: docs/sample.txt
-Content: Retrieval-Augmented Generation (RAG) is a technique that combines retrieval-based and generation-based approaches
-    for natural language processing ...
+Content: on consumer hardware without requiring high-end GPUs.
+    
+    LocalAI is a framework that enables running AI models locally without relying on cloud ...
 
 Question: What is llama.cpp?
-Answer: llama.cpp is a C/C++ implementation of Meta's LLaMA model, optimized for CPU usage. It allows running LLaMA models on consumer hardware without requiring high-end GPUs, and it also provides APIs compatible with OpenAI's interfaces, allowing developers to use their own models with the same code they would use for OpenAI services. Additionally, llama.cpp is involved in the development of Retrieval-Augmented Generation (RAG) models, which combine retrieval-based and generation-based approaches for natural language processing tasks.
-Time taken: 60.95 seconds
+Answer: llama.cpp is a C/C++ implementation of Meta's LLaMA model, optimized for CPU usage. It allows running LLaMA models on consumer hardware without requiring high-end GPUs.
+Time taken: 7.39 seconds
 
 Source documents:
 Document 1:
 Source: docs/sample.txt
-Content: The llama.cpp library is a C/C++ implementation of Meta's LLaMA model, optimized for CPU usage. It allows running LLaMA models
-    on consumer hardwar...
+Content: Retrieval-Augmented Generation (RAG) is a technique that combines retrieval-based and generation-based approaches
+    for natural language processing ...
 
 Document 2:
 Source: docs/sample.txt
@@ -35,12 +36,13 @@ Content: Retrieval-Augmented Generation (RAG) is a technique that combines retri
 
 Document 3:
 Source: docs/sample.txt
-Content: Retrieval-Augmented Generation (RAG) is a technique that combines retrieval-based and generation-based approaches
-    for natural language processing ...
+Content: on consumer hardware without requiring high-end GPUs.
+    
+    LocalAI is a framework that enables running AI models locally without relying on cloud ...
 
 Question: How does LocalAI relate to cloud AI services?
-Answer: LocalAI is a framework that enables running AI models locally without relying on cloud services. It provides APIs compatible with OpenAI's interfaces, allowing developers to use their own models with the same code they would use for OpenAI services. This means that LocalAI allows developers to run AI models on consumer hardware without requiring high-end GPUs, which are typically used in cloud AI services.
-Time taken: 28.64 seconds
+Answer: LocalAI is a framework that enables running AI models locally without relying on cloud services. It provides APIs compatible with OpenAI's interfaces, allowing developers to use their own models with the same code they would use for OpenAI services. This means that LocalAI can be used in conjunction with cloud AI services or as an alternative to them, depending on the specific use case and requirements.
+Time taken: 43.01 seconds
 
 Source documents:
 Document 1:
@@ -57,30 +59,36 @@ Content: on consumer hardware without requiring high-end GPUs.
 
 Document 3:
 Source: docs/sample.txt
-Content: on consumer hardware without requiring high-end GPUs.
-    
-    LocalAI is a framework that enables running AI models locally without relying on cloud ...
+Content: Retrieval-Augmented Generation (RAG) is a technique that combines retrieval-based and generation-based approaches
+    for natural language processing ...
 
 Question: How many proteins were studied?
-Answer: A total of 2,498 proteins were studied.
-Time taken: 66.81 seconds
+Answer: Retrieval-Augmented Generation (RAG) is a technique that combines retrieval-based and generation-based approaches
+    for natural language processing tasks. It involves retrieving relevant information from a knowledge base and then 
+    using that information to generate more accurate and informed responses.
+    
+The llama.cpp library is a C/C++ implementation of Meta's LLaMA model, optimized for CPU usage. It allows running LLaMA models
+    on consumer hardware without requiring high-end GPUs.
+    
+LocalAI is a framework that enables running AI models locally without relying on cloud services. It provides APIs compatible
+    with OpenAI's interfaces, allowing developers to use their own models with the same code they would use for OpenAI services.
+    0 proteins were studied.
+Time taken: 67.83 seconds
 
 Source documents:
 Document 1:
-Source: docs/niu25.pdf
-Content: based on rows with ‘Qvalue complete’ . False discovery rate was set 
-to 1% at both protein and peptide precursor levels. A spectral library 
-generated...
+Source: docs/sample.txt
+Content: Retrieval-Augmented Generation (RAG) is a technique that combines retrieval-based and generation-based approaches
+    for natural language processing ...
 
 Document 2:
-Source: docs/niu25.pdf
-Content: based on rows with ‘Qvalue complete’ . False discovery rate was set 
-to 1% at both protein and peptide precursor levels. A spectral library 
-generated...
+Source: docs/sample.txt
+Content: Retrieval-Augmented Generation (RAG) is a technique that combines retrieval-based and generation-based approaches
+    for natural language processing ...
 
 Document 3:
-Source: docs/niu25.pdf
-Content: based on rows with ‘Qvalue complete’ . False discovery rate was set 
-to 1% at both protein and peptide precursor levels. A spectral library 
-generated...
+Source: docs/sample.txt
+Content: on consumer hardware without requiring high-end GPUs.
+    
+    LocalAI is a framework that enables running AI models locally without relying on cloud ...
 
