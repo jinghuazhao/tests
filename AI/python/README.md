@@ -21,8 +21,11 @@ GitHub, <https://github.com/OrangeAVA/Ultimate-Neural-Network-Programming-with-P
 * Chapter 9, we have mlp.ipynb and miso_nn_tensorflow.ipynb.
 * Chapter 10, we have ft.ipynb.
 
-## Visualization
+## Browsing / Visualization
 
-Replace .ipynb with appropriate names to visualize from <https://nbviewer.org>, e.g.,
+We have two prefixes for
 
-- **stable_diffusion.ipynb**, <https://nbviewer.org/github/jinghuazhao/tests/blob/main/AI/python/stable_diffusion.ipynb>
+- Browsing .py from GitHub code from <https://github.com/jinghuazhao/tests/blob/main/AI/python/>, e.g.,
+    * **mnist.py**, <https://github.com/jinghuazhao/tests/blob/main/AI/python/mnist.py>.
+- Visualization of .ipynb from <https://nbviewer.org>, e.g.,
+    * **stable_diffusion.ipynb**, <https://nbviewer.org/github/jinghuazhao/tests/blob/main/AI/python/stable_diffusion.ipynb>
