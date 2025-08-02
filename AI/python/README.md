@@ -4,7 +4,7 @@ The exercises are greatly faciliated by Google Colab, <https://colab.research.go
 
 Notably, follow "Runtime" --> "Change runtime type" to enable GPU.
 
-Local setup is noted in MLD.sh.
+Local setup is noted in MDL.sh.
 
 ## 1. Math for Deep Learning
 
