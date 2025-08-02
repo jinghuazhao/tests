@@ -18,7 +18,8 @@ This is illustrated by
 
 GitHub, <https://github.com/OrangeAVA/Ultimate-Neural-Network-Programming-with-Python>
 
-* Chapter 9, we have mlp.ipynb and miso_nn_tensorflow.ipynb
+* Chapter 9, we have mlp.ipynb and miso_nn_tensorflow.ipynb.
+* Chapter 10, we have ft.ipynb.
 
 ## Visualization
 
