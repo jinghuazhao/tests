@@ -1,31 +1,32 @@
 # Miscellaneous AI-related materials in Python
 
-The exercises are greatly faciliated by Google Colab, <https://colab.research.google.com/>.
+GitHub code, <https://github.com/jinghuazhao/tests/blob/main/AI/python/>
 
-Notably, follow "Runtime" --> "Change runtime type" to enable GPU.
+## Local setup
 
-Local setup is noted in MDL.sh.
+The use of Python virtural environment is shown in MDL.sh.
 
-## 1. Math for Deep Learning
+### 1. Math for Deep Learning
 
 GitHub, <https://github.com/rkneusel9/MathForDeepLearning>
 
-This is illustrated by
+The sequence of function calling is illustrated by
 
 * Chapter 10, mnist.py <- NN.py.
 
-## 2. Ultimate Neural Network Programming with Python
+### 2. Ultimate Neural Network Programming with Python
 
 GitHub, <https://github.com/OrangeAVA/Ultimate-Neural-Network-Programming-with-Python>
 
 * Chapter 9, we have mlp.ipynb and miso_nn_tensorflow.ipynb.
 * Chapter 10, we have ft.ipynb.
 
-## Browsing / Visualization
+## Visualization of .ipynb
 
-We have two prefixes for
+This is greatly faciliated by Google Colab, <https://colab.research.google.com/>.
 
-- Browsing .py from GitHub code from <https://github.com/jinghuazhao/tests/blob/main/AI/python/>, e.g.,
-    * **mnist.py**, <https://github.com/jinghuazhao/tests/blob/main/AI/python/mnist.py>.
-- Visualization of .ipynb from <https://nbviewer.org>, e.g.,
-    * **stable_diffusion.ipynb**, <https://nbviewer.org/github/jinghuazhao/tests/blob/main/AI/python/stable_diffusion.ipynb>
+Notably, follow "Runtime" --> "Change runtime type" to enable GPU.
+
+This is done by posting the GitHub address to <https://nbviewer.org>, e.g.,
+
+- **stable_diffusion.ipynb**, <https://nbviewer.org/github/jinghuazhao/tests/blob/main/AI/python/stable_diffusion.ipynb>.
