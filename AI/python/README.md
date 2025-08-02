@@ -10,7 +10,9 @@ Local setup is noted in MDL.sh.
 
 GitHub, <https://github.com/rkneusel9/MathForDeepLearning>
 
-This is illustrated by mnist.py <- NN.py.
+This is illustrated by
+
+* Chapter 10, mnist.py <- NN.py.
 
 ## 2. Ultimate Neural Network Programming with Python
 
@@ -22,4 +24,4 @@ GitHub, <https://github.com/OrangeAVA/Ultimate-Neural-Network-Programming-with-P
 
 Replace .ipynb with appropriate names to visualize from <https://nbviewer.org>, e.g.,
 
-- stable_diffusion.ipynb, <https://nbviewer.org/github/jinghuazhao/tests/blob/main/AI/python/stable_diffusion.ipynb>
+- **stable_diffusion.ipynb**, <https://nbviewer.org/github/jinghuazhao/tests/blob/main/AI/python/stable_diffusion.ipynb>
