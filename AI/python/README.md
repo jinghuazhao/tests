@@ -41,7 +41,7 @@ This is done by posting the GitHub address to <https://nbviewer.org>, e.g.,
 
 ---
 
-[^fork]: **https://github.com/cambridge-ceu/Ultimate-Neural-Network-Programming-with-Python**
+[^fork]: **<https://github.com/cambridge-ceu/Ultimate-Neural-Network-Programming-with-Python>**
 
     There are a number of changes in the forked repository,
 
