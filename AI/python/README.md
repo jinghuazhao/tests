@@ -43,9 +43,9 @@ This is done by posting the GitHub address to <https://nbviewer.org>, e.g.,
 
 [^fork]: **https://github.com/cambridge-ceu/Ultimate-Neural-Network-Programming-with-Python**
 
-There are a number of changes in the forked repository,
+    There are a number of changes in the forked repository,
 
-- model/att_net.py is actually model/att_unet.py
-- changes of file paths
-, rename Chatper --> Chapter for 6-8, 10.
+    - model/att_net.py is actually model/att_unet.py
+    - changes of file paths
+    - rename Chatper --> Chapter for 6-8, 10.
 
