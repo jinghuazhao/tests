@@ -6,7 +6,11 @@ GitHub code, <https://github.com/jinghuazhao/tests/blob/main/AI/python/>
 
 The use of Python virtural environment is shown in MDL.sh.
 
-### 1. Math for Deep Learning
+### 1. Generative AI with Python and PyTorch, 2e
+
+GitHub, <https://github.com/PacktPublishing/Generative-AI-with-Python-and-PyTorch-Second-Edition>
+
+### 2. Math for Deep Learning
 
 GitHub, <https://github.com/rkneusel9/MathForDeepLearning>
 
@@ -14,7 +18,7 @@ The sequence of function calling is illustrated by
 
 * Chapter 10, mnist.py <- NN.py.
 
-### 2. Ultimate Neural Network Programming with Python
+### 3. Ultimate Neural Network Programming with Python
 
 GitHub, <https://github.com/OrangeAVA/Ultimate-Neural-Network-Programming-with-Python>
 
