@@ -18,7 +18,11 @@ The sequence of function calling is illustrated by
 
 * Chapter 10, mnist.py <- NN.py.
 
-### 3. Ultimate Neural Network Programming with Python
+### 3. Practical Deep Learning, 2e
+
+GitHub code, <https://github.com/rkneusel9/PracticalDeepLearning2E>
+
+### 4. Ultimate Neural Network Programming with Python
 
 GitHub, <https://github.com/OrangeAVA/Ultimate-Neural-Network-Programming-with-Python>
 
