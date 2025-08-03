@@ -27,13 +27,13 @@ GitHub code, <https://github.com/rkneusel9/PracticalDeepLearning2E>
 GitHub, <https://github.com/OrangeAVA/Ultimate-Neural-Network-Programming-with-Python>
 
 * Chapter 9, we have mlp.ipynb and miso_nn_tensorflow.ipynb.
-* Chapter 10, we have ft.ipynb, Image_segmentation_pipeline.ipynb. The model/att_net.py is actually model/att_unet.py. Additional changes of file paths are also necessary.
+* Chapter 10, we have ft.ipynb, Image_segmentation_pipeline.ipynb, where model/att_net.py is actually model/att_unet.py. Additional changes of file paths, including Chatper --> Chapter, are also necessary.
 
 ## Visualization of .ipynb
 
 This is greatly faciliated by Google Colab, <https://colab.research.google.com/>.
 
-Notably, follow "Runtime" --> "Change runtime type" to enable GPU. In the case of Image_segmentation_pipeline.ipynb, it is handy to invoke command palette via Ctrl-Shift-P and enter terminal.
+Notably, follow "Runtime" --> "Change runtime type" to enable GPU and/or "Copy path" from the folder listing. In the case of Image_segmentation_pipeline.ipynb, it is also handy to invoke command palette via Ctrl-Shift-P and enter terminal.
 
 This is done by posting the GitHub address to <https://nbviewer.org>, e.g.,
 
