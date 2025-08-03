@@ -27,7 +27,7 @@ GitHub code, <https://github.com/rkneusel9/PracticalDeepLearning2E>
 GitHub, <https://github.com/OrangeAVA/Ultimate-Neural-Network-Programming-with-Python>
 
 * Chapter 9, we have mlp.ipynb and miso_nn_tensorflow.ipynb.
-* Chapter 10, we have ft.ipynb, Image_segmentation_pipeline.ipynb, where model/att_net.py is actually model/att_unet.py. Additional changes of file paths, including Chatper --> Chapter, are also necessary.
+* Chapter 10, we have ft.ipynb, Image_segmentation_pipeline.ipynb[^fork]
 
 ## Visualization of .ipynb
 
@@ -38,3 +38,14 @@ Notably, follow "Runtime" --> "Change runtime type" to enable GPU and/or "Copy p
 This is done by posting the GitHub address to <https://nbviewer.org>, e.g.,
 
 - **stable_diffusion.ipynb**, <https://nbviewer.org/github/jinghuazhao/tests/blob/main/AI/python/stable_diffusion.ipynb>.
+
+---
+
+[^fork]: **https://github.com/cambridge-ceu/Ultimate-Neural-Network-Programming-with-Python**
+
+There are a number of changes in the forked repository,
+
+- model/att_net.py is actually model/att_unet.py
+- changes of file paths
+, rename Chatper --> Chapter for 6-8, 10.
+
