@@ -2,21 +2,21 @@
 
 A repository to share problems under development.
 
-## 1. AI-related
+## 1. AI-related materials
 
 ### 1.1 《水浒》谜语 (Water Margin riddles)
 
 See <https://jinghuazhao.github.io/tests/AI/>.
 
-### 1.2 AI with Python
+### 1.2 Python
 
 See <https://jinghuazhao.github.io/tests/AI/python>
 
-## 2, A post on METAL
+## 2. METAL
 
 See <https://jinghuazhao.github.io/tests/METAL/>
 
-## 3. Tests for turboqq & turboman
+## 3. turboqq & turboman
 
 * [turboqq](https://github.com/jinghuazhao/tests/tree/main/turboqq) for <https://github.com/bpprins/turboqq>
 * [turboman](https://github.com/jinghuazhao/tests/tree/main/turboman) for <https://github.com/bpprins/turboman>
@@ -50,7 +50,7 @@ See <https://jinghuazhao.github.io/tests/METAL/>
   - IL.12B.txt.gz was split via `split --bytes=45M "IL.12B.txt.gz" "IL.12B.txt-"`
   - It could be recoverd via `cat IL.12B.txt-*` > IL.12B.txt.gz
 
-## 4. SNPid generation
+## 4. SNPid
 
 A SNPid (chr:pos_a1/a2) often replaces RSid as an unique variant identifier in genetic association studies. A customised implemention for a compressed VCF file based on Bash is as follows,
 
