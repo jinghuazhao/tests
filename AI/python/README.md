@@ -28,7 +28,7 @@ GitHub, <https://github.com/OrangeAVA/Ultimate-Neural-Network-Programming-with-P
 
 * Chapter 5, clustering.py, pca.py (after adding empty lines), SVM_with_visualization.py are ready to run. However, tsne.py is now tsne..ipynb upon use of train.py to download the data.
 * Chapter 9, we have mlp.ipynb and miso_nn_tensorflow.ipynb.
-* Chapter 10, we have ft.ipynb, Image_segmentation_pipeline.ipynb[^fork]. The latter does function calls in main.py from each .py file in folder to be imported as a module, e.g., import model, as composed to a package in a directory containing sub-packages and modules. A __init__.py file (even an empty file works) is needed.
+* Chapter 10, we have ft.ipynb, Image_segmentation_pipeline.ipynb[^fork]. The latter does function calls in main.py from each .py file in a folder to be imported as a module, e.g., `import model`, as composed to a package in a directory containing sub-packages and modules. A __init__.py file (even an empty file works) is needed.
 
 ## Visualization of .ipynb
 
