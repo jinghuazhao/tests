@@ -26,6 +26,7 @@ GitHub code, <https://github.com/rkneusel9/PracticalDeepLearning2E>
 
 GitHub, <https://github.com/OrangeAVA/Ultimate-Neural-Network-Programming-with-Python>
 
+* Chapter 5, clustering.py, pca.py (after adding empty lines), SVM_with_visualization.py are ready to run. However, tsne.py is now tSNE.py upon use of train.py to download the data.
 * Chapter 9, we have mlp.ipynb and miso_nn_tensorflow.ipynb.
 * Chapter 10, we have ft.ipynb, Image_segmentation_pipeline.ipynb[^fork]
 
