@@ -6,6 +6,10 @@ A repository to share problems under development.
 
 See <https://jinghuazhao.github.io/tests/AI/>.
 
+## AI with Python
+
+See <https://jinghuazhao.github.io/tests/AI/python>
+
 ## A post on METAL
 
 See <https://jinghuazhao.github.io/tests/METAL/>
