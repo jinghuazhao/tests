@@ -10,7 +10,13 @@ The use of Python virtural environment is shown in MDL.sh.
 
 GitHub, <https://github.com/PacktPublishing/Generative-AI-with-Python-and-PyTorch-Second-Edition>
 
-### 2. Math for Deep Learning
+### 2. Math and Architectures of Deep Learning
+
+GitHub, <https://github.com/krishnonwork/mathematical-methods-in-deep-learning-ipython>
+
+The .ipynb files are largely well shown.
+
+### 3. Math for Deep Learning
 
 GitHub, <https://github.com/rkneusel9/MathForDeepLearning>
 
@@ -18,11 +24,11 @@ The sequence of function calling is illustrated by
 
 * Chapter 10, mnist.py <- NN.py.
 
-### 3. Practical Deep Learning, 2e
+### 4. Practical Deep Learning, 2e
 
 GitHub code, <https://github.com/rkneusel9/PracticalDeepLearning2E>
 
-### 4. Ultimate Neural Network Programming with Python
+### 5. Ultimate Neural Network Programming with Python
 
 GitHub, <https://github.com/OrangeAVA/Ultimate-Neural-Network-Programming-with-Python>
 
