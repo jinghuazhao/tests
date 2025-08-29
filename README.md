@@ -5,7 +5,7 @@ A repository to share problems under development.
 ## 1. AI-related materials
 
 - 《水浒》谜语 (Water Margin riddles). See <https://jinghuazhao.github.io/tests/AI/>.
-- Python. See <https://jinghuazhao.github.io/tests/AI/python>.
+- Supplementary materials in Python. See <https://jinghuazhao.github.io/tests/AI/python>.
 
 ## 2. METAL
 
