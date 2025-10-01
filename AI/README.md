@@ -1,4 +1,4 @@
-# 《水浒》谜语 (Water Margin riddles, also [deepseek-v3.1:671b](Gold/deepseek-v3.1_671b-cloud))
+# 《水浒》谜语 (Water Margin riddles, also [deepseek-v3.1:671b](Gold/deepseek-v3.1_671b-cloud.txt))
 
 1. **屡试不中（名一）**
    - 解析：屡试不中，即“白考”，谐音“白”指“白胜”。
