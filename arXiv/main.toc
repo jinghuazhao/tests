@@ -1,0 +1,34 @@
+\contentsline {section}{\tocsection {}{1}{Introduction}}{1}{section.1}
+\contentsline {subsection}{\tocsubsection {}{1.1}{Prior results}}{2}{subsection.1.1}
+\contentsline {subsection}{\tocsubsection {}{1.2}{Outline of the argument}}{3}{subsection.1.2}
+\contentsline {subsection}{\tocsubsection {}{1.3}{Organization}}{5}{subsection.1.3}
+\contentsline {subsection}{\tocsubsection {}{1.4}{Notation}}{5}{subsection.1.4}
+\contentsline {subsection}{\tocsubsection {}{1.5}{Acknowledgements}}{6}{subsection.1.5}
+\contentsline {section}{\tocsection {}{2}{Number fields and weight functions}}{6}{section.2}
+\contentsline {section}{\tocsection {}{3}{Sieve setup-reduction to Type I and Type II statements}}{8}{section.3}
+\contentsline {subsection}{\tocsubsection {}{3.1}{The Duke--Friedlander--Iwaniec sieve in a number field}}{8}{subsection.3.1}
+\contentsline {subsection}{\tocsubsection {}{3.2}{Bounding the sum over semiprimes}}{13}{subsection.3.2}
+\contentsline {section}{\tocsection {}{4}{Gowers norms and main proof framework}}{17}{section.4}
+\contentsline {subsection}{\tocsubsection {}{4.1}{Reduction to polar coordinates}}{17}{subsection.4.1}
+\contentsline {subsection}{\tocsubsection {}{4.2}{Gowers norms}}{19}{subsection.4.2}
+\contentsline {subsection}{\tocsubsection {}{4.3}{Type I and II sums with product weights and Gowers norms}}{20}{subsection.4.3}
+\contentsline {subsection}{\tocsubsection {}{4.4}{Approximations to $\Lambda '$ in Gowers norm}}{21}{subsection.4.4}
+\contentsline {subsection}{\tocsubsection {}{4.5}{Evaluating the main term}}{21}{subsection.4.5}
+\contentsline {subsection}{\tocsubsection {}{4.6}{Proof of the main theorem}}{21}{subsection.4.6}
+\contentsline {section}{\tocsection {}{5}{Preliminaries on concatenation and Gowers--Peluse norms}}{23}{section.5}
+\contentsline {section}{\tocsection {}{6}{Type I up to $X^{1/2}/(\qopname \relax o{log}X)^{A}$}}{26}{section.6}
+\contentsline {section}{\tocsection {}{7}{Type II estimates up to $X^{1/2-o(1)}$}}{31}{section.7}
+\contentsline {section}{\tocsection {}{8}{Computing the asymptotic}}{37}{section.8}
+\contentsline {subsection}{\tocsubsection {}{8.1}{Hecke Gr\"o{\ss }encharaktere on imaginary quadratic fields}}{37}{subsection.8.1}
+\contentsline {subsection}{\tocsubsection {}{8.2}{Decomposing $\Lambda _{{\textnormal {Cram\'er}}}$}}{39}{subsection.8.2}
+\contentsline {subsection}{\tocsubsection {}{8.3}{Writing as a sum over ideals}}{40}{subsection.8.3}
+\contentsline {subsection}{\tocsubsection {}{8.4}{Expanding with Gr\"o{\ss }encharaktere}}{42}{subsection.8.4}
+\contentsline {subsection}{\tocsubsection {}{8.5}{Contribution of the principal character}}{43}{subsection.8.5}
+\contentsline {subsection}{\tocsubsection {}{8.6}{Applying the prime ideal theorem}}{45}{subsection.8.6}
+\contentsline {subsection}{\tocsubsection {}{8.7}{Estimating the Siegel term}}{46}{subsection.8.7}
+\contentsline {subsection}{\tocsubsection {}{8.8}{Evaluation of $E_{\operatorname {main}}$}}{47}{subsection.8.8}
+\contentsline {section}{\tocsection {Appendix}{A}{Properties of the Gowers and Gowers--Peluse norms}}{49}{appendix.A}
+\contentsline {section}{\tocsection {Appendix}{B}{Proof of concatenation estimates}}{50}{appendix.B}
+\contentsline {section}{\tocsection {Appendix}{C}{A large sieve bound in several dimensions}}{56}{appendix.C}
+\contentsline {section}{\tocsection {Appendix}{D}{Number-theoretic bounds}}{57}{appendix.D}
+\contentsline {section}{\tocsection {Appendix}{}{References}}{58}{section*.2}

@@ -1,0 +1,222 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{10}
+
+\bibitem{bombieri-davenport}
+Enrico Bombieri and Harold Davenport, \emph{On the large sieve method}, Number
+  {T}heory and {A}nalysis ({P}apers in {H}onor of {E}dmund {L}andau), Plenum,
+  New York, 1969, pp.~9--22.
+
+\bibitem{cox-book}
+David~A. Cox, \emph{Primes of the form {$x^2 + ny^2$}}, A Wiley-Interscience
+  Publication, John Wiley \& Sons, Inc., New York, 1989, Fermat, class field
+  theory and complex multiplication.
+
+\bibitem{davenport-book}
+Harold Davenport, \emph{Multiplicative number theory}, third ed., Graduate
+  Texts in Mathematics, vol.~74, Springer-Verlag, New York, 2000, Revised and
+  with a preface by Hugh L. Montgomery.
+
+\bibitem{DFI95}
+William Duke, John~B. Friedlander, and Henryk Iwaniec, \emph{Equidistribution
+  of roots of a quadratic congruence to prime moduli}, Ann. of Math. (2)
+  \textbf{141} (1995), 423--441.
+
+\bibitem{fogels-1}
+Ernests Fogels, \emph{On the zeros of {H}ecke's {$L$}-functions. {I}}, Acta
+  Arith. \textbf{7} (1961/62), 87--106.
+
+\bibitem{fogels-2}
+Ernests Fogels, \emph{On the zeros of {H}ecke's {$L$}-functions. {II}}, Acta
+  Arith. \textbf{7} (1961/62), 131--147.
+
+\bibitem{fogels-3}
+Ernests Fogels, \emph{\"uber die {A}usnahmenullstelle der {H}eckeschen
+  {$L$}-{F}unktionen}, Acta Arith. \textbf{8} (1962/63), 307--309.
+
+\bibitem{FM24}
+Kevin Ford and James Maynard, \emph{On the theory of prime producing sieves},
+  arXiv:2407.14368.
+
+\bibitem{FI97}
+{\'E}tienne Fouvry and Henryk Iwaniec, \emph{Gaussian primes}, Acta Arith.
+  \textbf{79} (1997), 249--287.
+
+\bibitem{FriIw2}
+John~B. Friedlander and Henryk Iwaniec, \emph{Asymptotic sieve for primes},
+  Ann. of Math. (2) \textbf{148} (1998), 1041--1065.
+
+\bibitem{FriIw1}
+John~B. Friedlander and Henryk Iwaniec, \emph{The polynomial {$X^2+Y^4$}
+  captures its primes}, Ann. of Math. (2) \textbf{148} (1998), 945--1040.
+
+\bibitem{opera-cribro}
+John~B. Friedlander and Henryk Iwaniec, \emph{Opera de cribro}, American
+  Mathematical Society Colloquium Publications, vol.~57, American Mathematical
+  Society, Providence, RI, 2010.
+
+\bibitem{FI22}
+John~B. Friedlander and Henryk Iwaniec, \emph{Coordinate distribution of
+  {G}aussian primes}, J. Eur. Math. Soc. (JEMS) \textbf{24} (2022), 737--772.
+
+\bibitem{gowers-szemeredi}
+W.~T. Gowers, \emph{A new proof of {S}zemer\'edi's theorem}, Geom. Funct. Anal.
+  \textbf{11} (2001), 465--588.
+
+\bibitem{BJG-hecke-exposition}
+Ben Green, \emph{Classical analytic theory of {H}ecke
+  {G}r\"o{\ss}encharaktere}, expository paper, in preparation.
+
+\bibitem{GS24}
+Ben Green and Mehtaab Sawhney, \emph{Corners in the {G}aussian primes},
+  Forthcoming.
+
+\bibitem{green-tao-linear}
+Ben Green and Terence Tao, \emph{Linear equations in primes}, Ann. of Math. (2)
+  \textbf{171} (2010), 1753--1850.
+
+\bibitem{GT12-orthog}
+Ben Green and Terence Tao, \emph{The {M}\"obius function is strongly orthogonal
+  to nilsequences}, Ann. of Math. (2) \textbf{175} (2012), 541--566.
+
+\bibitem{GT12}
+Ben Green and Terence Tao, \emph{The quantitative behaviour of polynomial
+  orbits on nilmanifolds}, Ann. of Math. (2) \textbf{175} (2012), 465--540.
+
+\bibitem{GTZ12}
+Ben Green, Terence Tao, and Tamar Ziegler, \emph{An inverse theorem for the
+  {G}owers {$U^{s+1}[N]$}-norm}, Ann. of Math. (2) \textbf{176} (2012),
+  1231--1372.
+
+\bibitem{harman}
+Glyn Harman, \emph{Prime-detecting sieves}, London Mathematical Society
+  Monographs Series, vol.~33, Princeton University Press, Princeton, NJ, 2007.
+
+\bibitem{he-thesis}
+Xiaoyu He, \emph{Primes of the form $p^2 + ny^2$}, Harvard Senior Thesis 2016,
+  \url{https://legacy-www.math.harvard.edu/theses/senior/he/he.pdf}.
+
+\bibitem{HB01}
+D.~R. Heath-Brown, \emph{Primes represented by {$x^3+2y^3$}}, Acta Math.
+  \textbf{186} (2001), 1--84.
+
+\bibitem{HL17}
+D.~R. Heath-Brown and Xiannan Li, \emph{Prime values of {$a^2 + p^4$}}, Invent.
+  Math. \textbf{208} (2017), 441--499.
+
+\bibitem{hb-moroz}
+D.~R. Heath-Brown and B.~Z. Moroz, \emph{Primes represented by binary cubic
+  forms}, Proc. London Math. Soc. (3) \textbf{84} (2002), 257--288.
+
+\bibitem{heilbronn}
+Hans Heilbronn, \emph{Zeta-functions and {$L$}-functions}, Algebraic {N}umber
+  {T}heory ({P}roc. {I}nstructional {C}onf., {B}righton, 1965), Academic Press,
+  London, 1967, pp.~204--230.
+
+\bibitem{huxley}
+Martin~N. Huxley, \emph{The large sieve inequality for algebraic number
+  fields}, Mathematika \textbf{15} (1968), 178--187.
+
+\bibitem{IK-book}
+Henryk Iwaniec and Emmanuel Kowalski, \emph{Analytic number theory}, American
+  Mathematical Society Colloquium Publications, vol.~53, American Mathematical
+  Society, Providence, RI, 2004.
+
+\bibitem{koukoulopoulos}
+Dimitris Koukoulopoulos, \emph{The distribution of prime numbers}, Graduate
+  Studies in Mathematics, vol. 203, American Mathematical Society, Providence,
+  RI, [2019] \copyright 2019.
+
+\bibitem{kowalski-ls}
+Emmanuel Kowalski, \emph{The large sieve and its applications}, Cambridge
+  Tracts in Mathematics, vol. 175, Cambridge University Press, Cambridge, 2008,
+  Arithmetic geometry, random walks and discrete groups.
+
+\bibitem{KKL24b}
+Noah Kravitz, Borys Kuca, and James Leng, \emph{Corners with polynomial side
+  length}, arXiv:2407.08637.
+
+\bibitem{KKL24}
+Noah Kravitz, Borys Kuca, and James Leng, \emph{Quantitative concatenation for
+  polynomial box norms}, arXiv:2407.08636.
+
+\bibitem{kuca}
+Borys Kuca, \emph{Multidimensional polynomial patterns over finite fields:
+  bounds, counting estimates and {G}owers norm control}, Adv. Math.
+  \textbf{448} (2024), Paper No. 109700, 61.
+
+\bibitem{Len23b}
+James Leng, \emph{Efficient {E}quidistribution of {N}ilsequences},
+  arXiv:2312.10772.
+
+\bibitem{LSS}
+James Leng, Ashwin Sah, and Mehtaab Sawhney, \emph{Quasipolynomial bounds on
+  the inverse theorem for the {G}owers ${U}^{s+1}[{N}]$-norm},
+  arXiv:2402.17994.
+
+\bibitem{Man18}
+Freddie Manners, \emph{{Q}uantitative bounds in the inverse theorem for the
+  {G}owers ${U}^{s+1}$-norms over cyclic groups}, arXiv:1811.00718.
+
+\bibitem{maynard-norm-forms}
+James Maynard, \emph{Primes represented by incomplete norm forms}, Forum Math.
+  Pi \textbf{8} (2020), e3, 128.
+
+\bibitem{mer2}
+Jori Merikoski, \emph{On gaussian primes in sparse sets}, arXiv:2302.11331.
+
+\bibitem{mer1}
+Jori Merikoski, \emph{The polynomials {$X^2+(Y^2+1)^2$} and {$X^2+(Y^3+Z^3)^2$}
+  also capture their primes}, Proc. Lond. Math. Soc. (3) \textbf{127} (2023),
+  1057--1133.
+
+\bibitem{Mitsui}
+Takayoshi Mitsui, \emph{Generalized prime number theorem}, Jpn. J. Math.
+  \textbf{26} (1956), 1--42.
+
+\bibitem{montgomery-vaughan-paper}
+Hugh~L. Montgomery and Robert~C. Vaughan, \emph{Hilbert's inequality}, J.
+  London Math. Soc. (2) \textbf{8} (1974), 73--82.
+
+\bibitem{MV-book}
+Hugh~L. Montgomery and Robert~C. Vaughan, \emph{Multiplicative number theory.
+  {I}. {C}lassical theory}, Cambridge Studies in Advanced Mathematics, vol.~97,
+  Cambridge University Press, Cambridge, 2007.
+
+\bibitem{Pel20}
+Sarah Peluse, \emph{Bounds for sets with no polynomial progressions}, Forum
+  Math. Pi \textbf{8} (2020), e16, 55.
+
+\bibitem{PP19}
+Sarah Peluse and Sean Prendiville, \emph{Quantitative bounds in the nonlinear
+  {R}oth theorem}, arXiv:1903.02592.
+
+\bibitem{PSS23}
+Sarah Peluse, Ashwin Sah, and Mehtaab Sawhney, \emph{Effective bounds for
+  {R}oth's theorem with shifted square common difference}, arXiv:2309.08359.
+
+\bibitem{Pra20}
+Kevin Pratt, \emph{Primes from sums of two squares and missing digits}, Proc.
+  Lond. Math. Soc. (3) \textbf{120} (2020), 770--830.
+
+\bibitem{TT21}
+Terence Tao and Joni Ter{\"a}v{\"a}inen, \emph{Quantitative bounds for {G}owers
+  uniformity of the {M}\"{o}bius and von {M}angoldt functions}, J. Eur. Math.
+  Soc. (2023), 1--64.
+
+\bibitem{tao-ziegler}
+Terence Tao and Tamar Ziegler, \emph{Concatenation theorems for
+  anti-{G}owers-uniform functions and {H}ost-{K}ra characteristic factors},
+  Discrete Anal. (2016), Paper No. 13, 60.
+
+\bibitem{weber}
+Heinrich~M. Weber, \emph{Beweis des satzes, dass jede eigentlich primitive
+  quadratische form unendlich viele primzahlen darzustellen f\"ahig ist}, Math.
+  Ann. \textbf{20} (1882), 301--329.
+
+\end{thebibliography}
