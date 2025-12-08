@@ -1,3 +1,7 @@
+# Command history
+
+This is with ~/.python_history for interactive Python sessions.
+
 # Miscellaneous AI-related materials in Python
 
 GitHub code, <https://github.com/jinghuazhao/tests/blob/main/AI/python/>
