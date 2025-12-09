@@ -48,17 +48,16 @@ GitHub, <https://github.com/OrangeAVA/Ultimate-Neural-Network-Programming-with-P
 
 ### Visualisation
 
-This is greatly faciliated by Google Colab, <https://colab.research.google.com/>.
+Visual Studio code generally does a very good job but it is greatly faciliated by Google Colab, <https://colab.research.google.com/>. 
+Notably, follow "Runtime" --> "Change runtime type" to enable GPU and/or "Copy path" from the folder listing. In the case of 
+Image_segmentation_pipeline.ipynb, it is also handy to invoke command palette via Ctrl-Shift-P and enter terminal.
 
-Notably, follow "Runtime" --> "Change runtime type" to enable GPU and/or "Copy path" from the folder listing. In the case of Image_segmentation_pipeline.ipynb, it is also handy to invoke command palette via Ctrl-Shift-P and enter terminal.
-
-This is done by posting the GitHub address to <https://nbviewer.org>, e.g., by replacing **stable_diffusion.ipynb** below with a .ipynb in the folder.
-
-<https://nbviewer.org/github/jinghuazhao/tests/blob/main/AI/python/stable_diffusion.ipynb>.
+One can also post the GitHub address to <https://nbviewer.org>, e.g., by replacing **stable_diffusion.ipynb** below with a .ipynb in 
+the folder, e.g., <https://nbviewer.org/github/jinghuazhao/tests/blob/main/AI/python/stable_diffusion.ipynb>.
 
 ### Code extraction
 
-This is furnished in two steps,
+This is furnished in two steps as follows,
 
 ```bash
 # --> markdown
