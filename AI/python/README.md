@@ -44,7 +44,9 @@ GitHub, <https://github.com/OrangeAVA/Ultimate-Neural-Network-Programming-with-P
 * Chapter 9, we have mlp.ipynb and miso_nn_tensorflow.ipynb.
 * Chapter 10, we have ft.ipynb, Image_segmentation_pipeline.ipynb[^fork]. The latter does function calls in main.py from each .py file in a folder to be imported as a module, e.g., `import model`, as composed to a package in a directory containing sub-packages and modules. A __init__.py file (even an empty file works) is needed.
 
-## Visualization of .ipynb
+## .ipynb
+
+### Visualisation
 
 This is greatly faciliated by Google Colab, <https://colab.research.google.com/>.
 
@@ -53,6 +55,21 @@ Notably, follow "Runtime" --> "Change runtime type" to enable GPU and/or "Copy p
 This is done by posting the GitHub address to <https://nbviewer.org>, e.g., by replacing **stable_diffusion.ipynb** below with a .ipynb in the folder.
 
 <https://nbviewer.org/github/jinghuazhao/tests/blob/main/AI/python/stable_diffusion.ipynb>.
+
+### Code extraction
+
+This is furnished in two steps,
+
+```bash
+# --> markdown
+source rds/software/py3.11/bin/activate
+jupyter nbconvert --to markdown Chapter8.ipynb
+# --> Python
+module load ceuadmin/node/
+npm install -g codedown
+which codedown
+cat Chapter8.md | codedown python > Chapter8.py
+```
 
 ---
 
