@@ -38,7 +38,7 @@ The sequence of function calling is illustrated by
 
 ### Practical Deep Learning, 2e
 
-GitHub code, <https://github.com/rkneusel9/PracticalDeepLearning2E>
+GitHub, <https://github.com/rkneusel9/PracticalDeepLearning2E>
 
 ### Ultimate Neural Network Programming with Python
 
