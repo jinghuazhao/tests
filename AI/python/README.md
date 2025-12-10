@@ -10,21 +10,25 @@ GitHub code, <https://github.com/jinghuazhao/tests/blob/main/AI/python/>
 
 The use of Python virtural environment is shown in MDL.sh.
 
-### 1. AI and ML for Coders in PyTorch
+### AI and ML for Coders in PyTorch
 
 GitHub, <https://github.com/lmoroney/PyTorch-Book-FIles>
 
-### 2. Generative AI with Python and PyTorch, 2e
+### Deep Learning Crash Course
+
+GitHub, <https://github.com/DeepTrackAI/DeepLearningCrashCourse>
+
+### Generative AI with Python and PyTorch, 2e
 
 GitHub, <https://github.com/PacktPublishing/Generative-AI-with-Python-and-PyTorch-Second-Edition>
 
-### 3. Math and Architectures of Deep Learning
+### Math and Architectures of Deep Learning
 
 GitHub, <https://github.com/krishnonwork/mathematical-methods-in-deep-learning-ipython>
 
 The .ipynb files are largely well shown.
 
-### 4. Math for Deep Learning
+### Math for Deep Learning
 
 GitHub, <https://github.com/rkneusel9/MathForDeepLearning>
 
@@ -32,11 +36,11 @@ The sequence of function calling is illustrated by
 
 * Chapter 10, mnist.py <- NN.py.
 
-### 5. Practical Deep Learning, 2e
+### Practical Deep Learning, 2e
 
 GitHub code, <https://github.com/rkneusel9/PracticalDeepLearning2E>
 
-### 6. Ultimate Neural Network Programming with Python
+### Ultimate Neural Network Programming with Python
 
 GitHub, <https://github.com/OrangeAVA/Ultimate-Neural-Network-Programming-with-Python>
 
