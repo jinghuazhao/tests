@@ -11,7 +11,7 @@ Command history is ~/.python_history for interactive Python sessions, while use 
 * Math and Architectures of Deep Learning, <https://github.com/krishnonwork/mathematical-methods-in-deep-learning-ipython>
 * Math for Deep Learning, <https://github.com/rkneusel9/MathForDeepLearning>
 * Practical Deep Learning, 2e, <https://github.com/rkneusel9/PracticalDeepLearning2E>
-* Ultimate Neural Network Programming with Python, <https://github.com/OrangeAVA/Ultimate-Neural-Network-Programming-with-Python>
+* Ultimate Neural Network Programming with Python[^fork], <https://github.com/OrangeAVA/Ultimate-Neural-Network-Programming-with-Python>
 
 ## .ipynb
 
