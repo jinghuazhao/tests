@@ -37,6 +37,28 @@ Image_segmentation_pipeline.ipynb, it is also handy to invoke command palette vi
 One can also post the GitHub address to <https://nbviewer.org>, e.g., by replacing **stable_diffusion.ipynb** below with a .ipynb in 
 the folder, e.g., <https://nbviewer.org/github/jinghuazhao/tests/blob/main/AI/python/stable_diffusion.ipynb>.
 
+## Google colab
+
+It is handy to clone a repository into Google drive and use it from there, e.g.,
+
+```bash
+from google.colab import drive
+import os
+
+drive.mount('/content/drive')
+
+BASE = '/content/drive/MyDrive'
+REPO = f'{BASE}/DeepLearningCrashCourse'
+
+if not os.path.isdir(REPO):
+    %cd $BASE
+    !git clone https://github.com/DeepTrackAI/DeepLearningCrashCourse
+
+%cd $REPO
+!ls -R
+%cd Ch01_DNN_classification/ec01_1_neuron_class_1d
+```
+
 ---
 
 [^MDL]: **virtual environment**
