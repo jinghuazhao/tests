@@ -39,7 +39,7 @@ the folder, e.g., <https://nbviewer.org/github/jinghuazhao/tests/blob/main/AI/py
 
 ## Google colab
 
-It is handy to clone a GitHub repository into Google drive and use it from there, e.g.,
+It is handy to clone a GitHub repository into Google drive and use it from there, e.g., insert these lines
 
 ```bash
 from google.colab import drive
@@ -58,6 +58,8 @@ if not os.path.isdir(REPO):
 !ls -R
 %cd Ch01_DNN_classification/ec01_1_neuron_class_1d
 ```
+
+into `neuro_class_1d.ipynb` then the notebook can run smoothly.
 
 ---
 
