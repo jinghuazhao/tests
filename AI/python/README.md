@@ -39,7 +39,7 @@ the folder, e.g., <https://nbviewer.org/github/jinghuazhao/tests/blob/main/AI/py
 
 ## Google colab
 
-It is handy to clone a repository into Google drive and use it from there, e.g.,
+It is handy to clone a GitHub repository into Google drive and use it from there, e.g.,
 
 ```bash
 from google.colab import drive
