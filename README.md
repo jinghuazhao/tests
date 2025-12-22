@@ -9,7 +9,7 @@ A repository to share problems under development.
 
 ## 2. METAL
 
-See <https://jinghuazhao.github.io/tests/METAL/>
+<https://jinghuazhao.github.io/tests/METAL/>
 
 ## 3. turboqq & turboman
 
