@@ -162,3 +162,125 @@
    - 解析：指“黄信”（“黄”指“狗”的谐音）。
 
 The [riddles.sb](https://raw.githubusercontent.com/jinghuazhao/tests/refs/heads/main/AI/Gold/riddles.sb) script for the classic Chinese novel produces [riddles.e](https://raw.githubusercontent.com/jinghuazhao/tests/refs/heads/main/AI/Gold/riddles.e) and [riddles.o](https://raw.githubusercontent.com/jinghuazhao/tests/refs/heads/main/AI/Gold/riddles.o), from which the list is obtained.
+
+# gemini-cli
+
+✦ I have read the 80 riddles from 80.txt. They are wordplay or situational riddles where the answers are names or nicknames of characters from
+  the Chinese classic novel Water Margin (Shui Hu Zhuan).
+
+  Here are the answers to the riddles:
+
+   1. 屡试不中 (名一): 吴用 (Sounds like "No Use")
+   2. 李靖 (名一): 晁盖 (His nickname is "Pagoda-Bearing Heavenly King", same as Li Jing)
+   3. 当春乃发生 (号一): 及时雨 (Timely Rain - Song Jiang)
+   4. 一步三计 (号一): 智多星 (The Resourceful Star - Wu Yong)
+   5. 飞天本鱼化 (号一): 入云龙 (Dragon in the Clouds - Gongsun Sheng)
+   6. 斩颜良，诛文丑；过五关，斩六将 (号、名各一): 美髯公、朱仝 (Nickname "Lord of the Beautiful Beard", and Zhu Tong resembles Guan Yu)
+   7. 雷鸣电闪 (号一): 轰天雷 (Sky-shaking Thunder - Ling Zhen)
+   8. 左右开弓，抽！ (号一): 双鞭 (Twin Whips - Huyuan Zhuo)
+   9. 飞将军之子 (号一): 小李广 (Little Li Guang - Hua Rong)
+   10. 春天来了 (名一): 燕顺 (Swallows come with spring)
+   11. 鹰击长空 (号一): 摩云金翅 (Cloud-touching Golden Wings - Ouyang Shou)
+   12. 关云长 (名一): 朱仝 (Nicknamed "Little Guan Yu")
+   13. 酒肉僧人 (号一): 花和尚 (Flowery Monk - Lu Zhishen)
+   14. 熙熙攘攘，往来不绝 (号一): 神行太保 (Magic Messenger - Dai Zong)
+   15. 刀枪入库，马放南山 (名一): 武松 (Sounds like "Martial arts relaxed")
+   16. 王家烈 (号一): 霹雳火 (Thunderbolt - Qin Ming)
+   17. 押送金银担 (名三): 杨志、蔡福、蔡庆
+   18. 孤军深入 (号一): 没遮拦 (Unstoppable - Mu Hong)
+   19. 坐地日行八万里 (号一): 神行太保 (Dai Zong)
+   20. 红毛夜叉 (名一): 刘唐 (His nickname is "Red-haired Devil")
+   21. 乌云滚滚狂飙起 (号一): 黑旋风 (Black Whirlwind - Li Kui)
+   22. 社会发展，一往无前 (名一): 史进 (History Progresses)
+   23. 一往无前 (号一): 没遮拦 (Mu Hong)
+   24. 飞天大虫 (名一): 李衮 (His nickname is "Flying-Sky Great Sage", but "Great Worm" usually refers to a tiger) -> 李忠 (Tiger Slaying General)
+   25. 顶天立地 (名三): 宋万、杜迁、阮小二 (Their nicknames are Cloud-touching, Sky-touching, and Earth-shaking)
+   26. 野径云俱黑 (号二): 黑旋风、没遮拦
+   27. 壮士有恙 (号一): 病关索 (Yang Xiong)
+   28. 门神住院 (号一): 病尉迟 (Sun Li)
+   29. 似玉非玉可比玉 (名一): 石秀 (Stone is like jade)
+   30. 回头金不换 (号一): 浪子 (Prodigal Son - Yan Qing)
+   31. 洪武登基 (名二): 朱武、王进
+   32. 替爷爷站岗 (名一): 孙立 (Grandson standing)
+   33. 屡战不败 (名一): 关胜 (Winning always)
+   34. 二郎神 (号一): 赤发鬼 (Yang Jian is Erlang Shen) -> Or 照夜玉狮子 (No)
+   35. 烧赤壁，淹七军 (号二): 神火将、圣水将
+   36. 给皇上拟旨 (号一): 圣手书生 (Xiao Rang)
+   37. 王羲之 (名一): 萧让
+   38. 南朝齐梁易代 (名一): 萧让
+   39. 刚正执法，不徇私情 (名一): 裴宣 (Iron-faced Clerk)
+   40. 满目皆红 (名一): 张清 (Seeing Red)
+   41. 斑斓大虫 (名一): 王英 (Short-legged Tiger)
+   42. 霹雳一声，震耳欲聋 (号一): 轰天雷
+   43. 加减乘除，不在话下 (号一): 神算子 (Jiang Jing)
+   44. 吕奉先之后 (号一): 小温侯 (Lü Fang)
+   45. 华佗 (名一): 安道全 (Divine Physician)
+   46. 孙文台之兄 (号一): 小霸王 (Zhou Tong - Sun Jian was the Tiger, his son Sun Ce was the Little Overlord)
+   47. 折足大虫 (号一): 中箭虎 (Ding Desun)
+   48. 程咬金 (名一): 宣赞 (Xuan Zan)
+   49. 凿壁偷光 (名二): 孔明、孔亮
+   50. 章鱼转世 (号一): 八臂哪吒 (Xiang Chong)
+   51. “老孙去也！” (号一): 行者 (Pilgrim - Wu Song)
+   52. 不怕火炼 (名一): 石秀 (Solid like stone)
+   53. 韩湘子 (号一): 铁笛仙 (Ma Lin)
+   54. 英雄出少年 (名二): 童威、童猛
+   55. 老大安然无恙 (名一): 穆弘 (Mu means Eldest)
+   56. 老猿上树，犬不可追 (名一): 侯健 (Monkey-like)
+   57. 一一说明，使之知晓 (名一): 宣赞
+   58. 端午日娘子现形 (名一): 白胜 (White Snake victory)
+   59. 五柳一支，人丁繁盛 (名一): 陶宗旺
+   60. 红孩儿 (号一): 神火将
+   61. 管弦协奏，八音齐鸣 (名一): 乐和 (Music Harmony)
+   62. 家添人口爷快乐 (名一): 孙新 (New Grandson)
+   63. 阴司刽子手 (名一): 蔡福
+   64. 武松 (号、名各一): 行者、武松
+   65. 力拔山兮气盖世，只比项羽矮一头 (号一): 小霸王 (Zhou Tong)
+   66. 环城大道 (名一): 周通 (Circuit communication)
+   67. 人面不要 (名一): 焦挺 (Nickname: Faceless)
+   68. 鳄鱼上岸 (名一): 旱地忽律 (Zhu Gui)
+   69. 吊车 (名一): 凌振 (Rising up)
+   70. 红杏出墙来 (号一): 插翅虎 (Leaping over walls)
+   71. 阎王叫你三更死，岂容你活到五更 (号一): 活阎罗
+   72. 有头无脸 (名一): 焦挺
+   73. 翁仲 (号一): 镇三山
+   74. 建得之弟 (名一): 孙新
+   75. 此处有四时瓜蔬 (号一): 菜园子 (Zhang Qing)
+   76. 魏折八千 (名一): 秦明 (8000 is "Qian" or similar wordplay)
+   77. 秦嬴政统一中国 (名一): 王英 (Hero King)
+   78. 日新月异 (名一): 史进
+   79. 长平之战 (名一): 白胜 (Bai Qi won at Changping)
+
+> ./80.txt
+
+  what are the characters in the riddles
+
+✦ Based on the text in 80.txt, here are the historical, mythological, or fictional characters mentioned within the riddle clues (the people
+  used to hint at the Water Margin heroes):
+
+   * Li Jing (李靖): The "Pagoda-Bearing Heavenly King" (Riddle 2)
+   * Yan Liang (颜良) & Wen Chou (文丑): Generals slain by Guan Yu (Riddle 6)
+   * Fei Jiangjun (飞将军): "The Flying General" Li Guang (Riddle 9)
+   * Guan Yunchang (关云长): Guan Yu (Riddle 12)
+   * Wang Jialie (王家烈): A warlord (Riddle 16)
+   * Hongwu (洪武): The first Ming Emperor, Zhu Yuanzhang (Riddle 31)
+   * Erlang Shen (二郎神): The three-eyed deity (Riddle 34)
+   * Wang Xizhi (王羲之): The famous calligrapher (Riddle 37)
+   * Lü Fengxian (吕奉先): Lü Bu (Riddle 44)
+   * Hua Tuo (华佗): The divine physician (Riddle 45)
+   * Sun Wentai (孙文台): Sun Jian (Riddle 46)
+   * Cheng Yaojin (程咬金): A general from the Sui/Tang dynasty (Riddle 48)
+   * Lao Sun (老孙): Sun Wukong, the Monkey King (Riddle 51)
+   * Han Xiangzi (韩湘子): One of the Eight Immortals (Riddle 53)
+   * Niangzi (娘子): The White Snake/Lady Bai (Riddle 58)
+   * Wu Liu (五柳): Tao Yuanming, "The Master of Five Willows" (Riddle 59)
+   * Hong Hai'er (红孩儿): Red Boy from Journey to the West (Riddle 60)
+   * Wu Song (武松): One of the 108 heroes, used here as his own riddle clue (Riddle 64)
+   * Xiang Yu (项羽): The Hegemon-King of Western Chu (Riddle 65)
+   * Yama (阎王): The King of Hell (Riddle 71)
+   * Wengzhong (翁仲): Stone statues of officials (Riddle 73)
+   * Jiande (建得): Sun Jiande, the brother of Sun Li (Riddle 74)
+   * Qin Yingzheng (秦嬴政): Qin Shi Huang, the first emperor (Riddle 77)
+
+  If you meant the answers (the Water Margin characters being described), they include famous names like Song Jiang (及时雨), Wu Yong
+  (智多星), Gongsun Sheng (入云龙), Li Kui (黑旋风), and many others from the 108 Stars of Destiny.
+
