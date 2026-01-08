@@ -31,3 +31,35 @@ done
  The image you have provided appears to be of a person or a character, but it's not clear enough to make out any specific details. The image quality is low, and there are no distinct features or objects that can be confidently identified or described. If you have any questions about the image or need help with something else, feel free to ask!
 - **images/woman.png**
  The image you provided appears to be a portrait of a woman. However, without more context or information about the image, it is difficult to provide any specific details about the content or context of the photo. If you have any questions or need further information, please feel free to ask!
+
+## llama.cpp/b7673
+
+It appears that llama-run is defunct, so we have.
+
+```bash
+source ~/rds/software/py3.11/bin/activate
+huggingface-cli login
+
+huggingface-cli download \
+  second-state/Llava-v1.5-7B-GGUF \
+  llava-v1.5-7b-Q4_K_M.gguf \
+  --local-dir models/llava
+
+huggingface-cli download \
+  second-state/Llava-v1.5-7B-GGUF \
+  llava-v1.5-7b-mmproj-model-f16.gguf \
+  --local-dir models/llava
+
+llama-mtmd-cli \
+  -m models/llava/llava-v1.5-7b-Q4_K_M.gguf \
+  --mmproj models/llava/llava-v1.5-7b-mmproj-model-f16.gguf \
+  --image /home/jhz22/work/calligraphy.jpg \
+  --chat-template vicuna \
+  -p "Extract and transcribe all visible calligraphy text." \
+  -n 256 \
+  --temp 0.95
+```
+
+## HuggingFace token
+
+URL, <https://huggingface.co/settings/tokens>
