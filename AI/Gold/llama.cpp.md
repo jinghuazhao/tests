@@ -50,6 +50,7 @@ huggingface-cli download \
   llava-v1.5-7b-mmproj-model-f16.gguf \
   --local-dir models/llava
 
+module load ceuadmin/b7673
 llama-mtmd-cli \
   -m models/llava/llava-v1.5-7b-Q4_K_M.gguf \
   --mmproj models/llava/llava-v1.5-7b-mmproj-model-f16.gguf \
