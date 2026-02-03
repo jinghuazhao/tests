@@ -17,19 +17,6 @@ Command history is ~/.python_history for interactive Python sessions, while use 
 
 ## .ipynb
 
-Code extraction is furnished in two steps as follows,
-
-```bash
-# --> markdown
-source rds/software/py3.11/bin/activate
-jupyter nbconvert --to markdown Chapter8.ipynb
-# --> Python
-module load ceuadmin/node/
-npm install -g codedown
-which codedown
-cat Chapter8.md | codedown python > Chapter8.py
-```
-
 Visual Studio code generally does a very good job but it is greatly faciliated by Google Colab, <https://colab.research.google.com/>. 
 Notably, follow "Runtime" --> "Change runtime type" to enable GPU and/or "Copy path" from the folder listing. In the case of 
 Image_segmentation_pipeline.ipynb, it is also handy to invoke command palette via Ctrl-Shift-P and enter terminal.
