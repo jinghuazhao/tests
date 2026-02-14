@@ -1,0 +1,36 @@
+# https://win-builder.r-project.org/incoming_pretest/gap_1.13_20260210_170205/specialChecks/clang-san/summary.txt
+
+Package check result: ERROR
+
+Check: re-building of vignette outputs, Result: ERROR
+  Error(s) in re-building vignettes:
+    ...
+  --- re-building ‘gap.Rmd’ using rmarkdown
+  Read 16 records
+  
+  
+  #
+  # Fatal error in , line 0
+  # Check failed: static_cast<uintptr_t>(caller_frame_top_) - total_output_frame_size > stack_guard->real_jslimit() - kStackLimitSlackForDeoptimizationInBytes.
+  #
+  #
+  #
+  #FailureMessage Object: 0x7ffd37f15700
+  ==== C stack trace ===============================
+  
+      /home/hornik/tmp/R-d-clang-xtra/bin/exec/R(___interceptor_backtrace+0x4a) [0x55833e4c03fa]
+      /usr/lib/x86_64-linux-gnu/libnode.so.127(v8::base::debug::StackTrace::StackTrace()+0x16) [0x7bbcc37f02b6]
+      /usr/lib/x86_64-linux-gnu/libnode.so.127(+0x142aad8) [0x7bbcc2c2aad8]
+      /usr/lib/x86_64-linux-gnu/libnode.so.127(V8_Fatal(char const*, ...)+0x183) [0x7bbcc37dddc3]
+      /usr/lib/x86_64-linux-gnu/libnode.so.127(v8::internal::Deoptimizer::DoComputeOutputFrames()+0x63e) [0x7bbcc2daacce]
+      /usr/lib/x86_64-linux-gnu/libnode.so.127(+0x12471db) [0x7bbcc2a471db]
+  Trace/breakpoint trap
+  --- re-building ‘shinygap.Rmd’ using rmarkdown
+  --- finished re-building ‘shinygap.Rmd’
+  
+  SUMMARY: processing the following file failed:
+    ‘gap.Rmd’
+  
+  Error: Vignette re-building failed.
+  Execution halted
+

@@ -1,0 +1,7 @@
+# In your Rmd setup chunk
+if (requireNamespace("V8", quietly = TRUE)) {
+  engine <- V8::v8()
+  engine$eval("var stack_limit = 10000;") # Example adjustment
+}
+
+Sys.setenv(NODE_OPTIONS = "--stack-size=10000")
