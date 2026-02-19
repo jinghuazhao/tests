@@ -1,0 +1,29 @@
+---
+title: "Genetic Analysis Package"
+subtitle: "Jing Hua Zhao"
+output:
+  html_document:
+    toc: true                 # Adds Table of Contents
+    toc_float: true           # Makes the TOC float as you scroll
+    number_sections: true     # Numbered sections (required by CRAN)
+    self_contained: true      # Embeds images, CSS, JS into the HTML
+author:
+  - Department of Public Health and Primary Care
+  - University of Cambridge
+  - Cambridge, UK
+  - https://jinghuazhao.github.io/
+date: '`r Sys.Date()`'
+bibliography: '`r system.file("REFERENCES.bib", package="gap")`'
+csl: nature-genetics.csl
+nocite: |
+  @wcn92
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown} # Tells R to use knitr to process the .Rmd
+  %\VignetteIndexEntry{gap}          # Entry name in the vignette index (appears in 'browseVignettes')
+  %\VignetteEncoding{UTF-8}          # Specifies the character encoding (important for special chars)
+  %\VignetteDepends{gap}             # Optional: Declare package dependencies (e.g., gap)
+---
+
+```{r}
+library(htmltools)
+includeHTML(system.file("extdata", "gap.html", package = "gap"))
