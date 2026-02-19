@@ -1,0 +1,35 @@
+---
+title: "Genetic Analysis Package"
+subtitle: "Jing Hua Zhao"
+output:
+  bookdown::html_document2:
+    toc: true
+    toc_float: true
+author:
+  - Department of Public Health and Primary Care
+  - University of Cambridge
+  - Cambridge, UK
+  - https://jinghuazhao.github.io/
+date: '`r Sys.Date()`'
+bibliography: '`r system.file("REFERENCES.bib", package="gap")`'
+csl: nature-genetics.csl
+nocite: |
+  @wcn92
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{gap}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+set.seed(0)
+options(rmarkdown.html_vignette.check_title = FALSE, bitmapType = "cairo")
+knitr::opts_chunk$set(
+  out.extra = 'style="display:block; margin: auto"',
+  fig.align = "center",
+  fig.path = "./",
+  collapse = TRUE,
+  comment = "#>",
+  dev = "png"
+)
+```

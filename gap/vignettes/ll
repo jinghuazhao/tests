@@ -1,0 +1,25 @@
+---
+title: "Genetic Analysis Package"
+subtitle: "Jing Hua Zhao"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
+    self_contained: true
+author:
+  - Department of Public Health and Primary Care
+  - University of Cambridge
+  - Cambridge, UK
+  - https://jinghuazhao.github.io/
+date: '`r Sys.Date()`'
+bibliography: '`r system.file("REFERENCES.bib", package="gap")`'
+csl: nature-genetics.csl
+nocite: |
+  @wcn92
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{gap}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteDepends{gap.datasets}
+---
