@@ -162,10 +162,10 @@ cat("=" , rep("=", 70), "\n", sep="")
 cat("TEST 3: Reference Example\n")
 cat("=" , rep("=", 70), "\n\n", sep="")
 
-# Expected: n=25000, pD=0.3, p1=0.2, hr=1.3 -> sample size ≈ 5099
-test_ss <- ccsize07(25000, q = 0.1, pD = 0.3, p1 = 0.2, 
-                    theta = log(1.3), alpha = 0.05, 
-                    beta = 0.2, power = FALSE, method = "A1")
+# Expected: n=25000, pD=0.3, p1=0.2, hr=1.3, alpha=5e-8 -> sample size ≈ 5099
+test_ss <- ccsize(25000, q = 0.1, pD = 0.3, p1 = 0.2, 
+                    theta = log(1.3), alpha = 5e-8, 
+                    beta = 0.2, power = FALSE)
 cat(sprintf("Reference example (n=25000, pD=0.3, p1=0.2, hr=1.3): ssize = %d (expected ≈ 5099)\n", test_ss))
 
 cat("\n")

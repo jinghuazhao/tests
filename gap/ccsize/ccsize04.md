@@ -13,9 +13,9 @@
 #' @details
 #' The power of the test is
 #' \deqn{
-#' \Phi\left(Z_\alpha + \sqrt{nq}\,\theta\sqrt{\frac{p_1 p_2 p_D}{q + (1-q)p_D}}\right)
+#' \Phi\left(Z_\alpha + \sqrt{nq}\,\theta\sqrt{p_1 p_2 p_D}\right)
 #' }{
-#' Phi(Z_alpha + sqrt(n*q)*theta*sqrt(p1*p2*pD/(q+(1-q)*pD)))
+#' Phi(Z_alpha + sqrt(n*q)*theta*sqrt(p1*p2*pD))
 #' }
 #'
 #' where \eqn{\alpha}{alpha} is the significance level, \eqn{\theta}{theta}
@@ -168,10 +168,10 @@ ccsize <- function(n, q, pD, p1, theta, alpha,
 
   if (power) {
     ## ---- Power calculation ----
+    ## Cai & Zeng (2004) use full cohort variance: p1 * p2 * pD
     z_alpha <- qnorm(alpha)
     z <- z_alpha +
-      sqrt(n * q) * theta *
-      sqrt(p1 * p2 * pD / (q + (1 - q) * pD))
+      sqrt(n * q) * theta * sqrt(p1 * p2 * pD)
 
     if (is.nan(z) || is.infinite(z)) {
       warning("Numerical error in power calculation")

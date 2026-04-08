@@ -1,6 +1,6 @@
-# CLAUDE.md
+# context.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance working with code in this repository.
 
 ## Project Overview
 
@@ -8,7 +8,8 @@ R implementations for power and sample size calculations in case-cohort studies:
 - `ccsize()` — Cai & Zeng (2004) for rare events (pD < 0.05)
 - `ccsize07()` — Cai & Zeng (2007) for non-rare events (pD ≥ 0.05)
 
-Goal is numerical correctness and reproducibility against published tables.
+Goal is numerical correctness and reproducibility against published tables and
+possibility to have a unified code for all scenarios, e.g., ccsize() in R.
 
 ## Key Files
 

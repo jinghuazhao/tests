@@ -1,0 +1,26 @@
+#!/usr/bin/bash
+
+#SBATCH --job-name=_ollama
+#SBATCH --account PETERS-SL3-CPU
+#SBATCH --partition icelake-himem
+#SBATCH --mem=28800
+#SBATCH --time=12:00:00
+#SBATCH --error=/rds/user/jhz22/hpc-work/HuggingFace//_pi_%A_%a.err
+#SBATCH --output=/rds/user/jhz22/hpc-work/HuggingFace//_pi_%A_%a.out
+#SBATCH --export ALL
+
+. /etc/profile.d/modules.sh
+module purge
+module load rhel8/default-icl
+module load ceuadmin/ollama/0.20.2 ceuadmin/Pi/0.65.2
+
+export TMPDIR=/rds/user/jhz22/hpc-work/work
+export output=/rds/user/jhz22/hpc-work/HuggingFace/gemma4.txt
+
+cd /home/jhz22/tests/gap/ccsize
+ollama serve > /dev/null 2>&1 &
+until ollama list; do
+  sleep 1
+done
+touch $output
+pi run --provider ollama --model gemma4:e2B @context.md >> $output

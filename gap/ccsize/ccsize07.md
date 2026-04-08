@@ -124,28 +124,25 @@ ccsize07 <- function(n, q, pD, p1, theta, alpha,
   if (power) {
     ## ---- Power calculation ----
     z_alpha <- qnorm(alpha)
+    p2 <- 1 - p1
     
-    # Common variance component
-    var_base <- p1 * p2 * pD / (q + (1 - q) * pD)
-    
+    # Variance calculation depends on method
     if (method == "2004") {
-      # Original Cai & Zeng (2004) - assumes rare events
-      var_term <- sqrt(var_base)
+      ## Cai & Zeng (2004): full cohort efficiency for rare events
+      ## Variance = p1 * p2 * pD
+      var <- p1 * p2 * pD
     } else if (method == "A1") {
-      # Method A1: Improved variance for non-rare events
-      # Adjusts for finite-sample bias in rare-event approx
-      # Based on Cai & Zeng (2007) formula (10)
-      adjustment <- sqrt((1 - pD) / (1 - pD * q))
-      var_term <- sqrt(var_base) * adjustment
+      ## Cai & Zeng (2007) Method A1: adjusted for non-rare events
+      ## Accounts for increased variance when events are not rare
+      var <- p1 * p2 * pD / ((1 - pD) * q + pD) / (1 - pD)
     } else {
-      # Method A2: Alternative estimator for non-rare events
-      # Based on Cai & Zeng (2007) formula (11)
-      w_sub <- q / (q + pD * (1 - q))
-      adjustment_factor <- 1 + w_sub * pD / 2
-      var_term <- sqrt(var_base * adjustment_factor)
+      ## Cai & Zeng (2007) Method A2: alternative adjustment
+      w <- q / (q + (1 - q) * pD)
+      var <- p1 * p2 * pD * (1 - pD * q) / ((1 - pD) * q + pD) / (1 - pD)
     }
     
-    z <- z_alpha + sqrt(n * q) * theta * var_term
+    delta <- sqrt(n * q) * theta * sqrt(var)
+    z <- z_alpha + delta
 
     if (is.nan(z) || is.infinite(z)) {
       warning("Numerical error in power calculation")
@@ -157,35 +154,32 @@ ccsize07 <- function(n, q, pD, p1, theta, alpha,
     ## ---- Sample size calculation ----
     z_alpha <- qnorm(1 - alpha)
     z_beta  <- qnorm(1 - beta)
+    p2 <- 1 - p1
     
-    # Variance component depends on method
-    var_base <- p1 * p2 * pD / (q + (1 - q) * pD)
-    
+    # Variance depends on method
     if (method == "2004") {
-      var_adj <- var_base
+      var <- p1 * p2 * pD
     } else if (method == "A1") {
-      # For sample size calculation, we use the squared adjustment
-      adjustment <- (1 - pD) / (1 - pD * q)
-      var_adj <- var_base * adjustment
+      var <- p1 * p2 * pD / ((1 - pD) * q + pD) / (1 - pD)
     } else {
-      # Method A2 for sample size
-      w_sub <- q / (q + pD * (1 - q))
-      adjustment_factor <- 1 + w_sub * pD / 2
-      var_adj <- var_base * adjustment_factor
+      w <- q / (q + (1 - q) * pD)
+      var <- p1 * p2 * pD * (1 - pD * q) / ((1 - pD) * q + pD) / (1 - pD)
     }
     
-    B <- (z_alpha + z_beta)^2 / (theta^2 * var_adj)
-
+    z_sum <- z_alpha + z_beta
+    B <- z_sum^2 / (theta^2 * var)
+    
     if (is.nan(B) || is.infinite(B) || B < 0) {
       warning("Numerical error in sample size calculation")
       return(NA)
     }
-
+    
+    ## Cai & Zeng formula for subcohort size
     denom <- n - B * (1 - pD)
     
     if (denom <= 0) {
       if (verbose)
-        message("Infeasible configuration")
+        message("Infeasible configuration: cannot achieve specified power")
       return(NA)
     }
     
