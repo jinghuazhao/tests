@@ -2,7 +2,7 @@
 
 #SBATCH --job-name=_ollama
 #SBATCH --account PETERS-SL3-CPU
-#SBATCH --partition icelake-himem
+#SBATCH --partition icelake
 #SBATCH --mem=28800
 #SBATCH --time=12:00:00
 #SBATCH --error=/rds/user/jhz22/hpc-work/HuggingFace//_pi_%A_%a.err
@@ -22,5 +22,10 @@ ollama serve > /dev/null 2>&1 &
 until ollama list; do
   sleep 1
 done
-touch $output
-pi run --provider ollama --model gemma4:e2B @context.md >> $output
+pi -p --mode json --no-session \
+  --provider ollama --model gemma4:e2B \
+  @context.md \
+| jq -rs '.[].content' > $output
+
+# tr '\r' '\n' < gemma4.txt | perl -pe 's/\e\[[0-9;?]*[ -\/]*[@-~]//g; s/\e\].*?\a//g; s/\d{5,}m//g' > output.txt
+

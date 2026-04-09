@@ -30,6 +30,12 @@
 #'   \item{\code{A2}: Alternative estimator for non-rare events}
 #' }
 #'
+#' @note
+#' The variance formulas for methods "A1" and "A2" are based on Cai & Zeng (2007)
+#' but require verification against published tables. Current implementation may
+#' have errors of 10-18% for non-rare event scenarios (pD ≥ 0.05).
+#' For validated results, use method "2004" which matches Cai & Zeng (2004).
+#'
 #' @return
 #' A numeric value: power (if power=TRUE) or required subcohort size.
 #'
@@ -128,16 +134,13 @@ ccsize07 <- function(n, q, pD, p1, theta, alpha,
     
     # Variance calculation depends on method
     if (method == "2004") {
-      ## Cai & Zeng (2004): full cohort efficiency for rare events
-      ## Variance = p1 * p2 * pD
+      ## Cai & Zeng (2004): rare-event approximation
       var <- p1 * p2 * pD
     } else if (method == "A1") {
       ## Cai & Zeng (2007) Method A1: adjusted for non-rare events
-      ## Accounts for increased variance when events are not rare
       var <- p1 * p2 * pD / ((1 - pD) * q + pD) / (1 - pD)
     } else {
       ## Cai & Zeng (2007) Method A2: alternative adjustment
-      w <- q / (q + (1 - q) * pD)
       var <- p1 * p2 * pD * (1 - pD * q) / ((1 - pD) * q + pD) / (1 - pD)
     }
     
@@ -162,7 +165,6 @@ ccsize07 <- function(n, q, pD, p1, theta, alpha,
     } else if (method == "A1") {
       var <- p1 * p2 * pD / ((1 - pD) * q + pD) / (1 - pD)
     } else {
-      w <- q / (q + (1 - q) * pD)
       var <- p1 * p2 * pD * (1 - pD * q) / ((1 - pD) * q + pD) / (1 - pD)
     }
     

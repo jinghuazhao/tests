@@ -1,3 +1,9 @@
+IMPORTANT:
+- Do NOT ask questions
+- Do NOT present options
+- Choose the best solution and implement it fully
+- Output only final code
+
 # context.md
 
 This file provides guidance working with code in this repository.
