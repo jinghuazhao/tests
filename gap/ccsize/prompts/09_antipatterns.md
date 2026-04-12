@@ -1,0 +1,5 @@
+- Negative sample sizes
+- Silent coercion
+- Ignoring warnings
+- Hardcoded constants without explanation
+- Unstable arithmetic when stable alternatives exist

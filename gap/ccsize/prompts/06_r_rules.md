@@ -1,0 +1,5 @@
+- Use explicit numeric types
+- No partial argument matching
+- Use log(hr) internally
+- Prefer vectorized operations
+- Preallocate outputs

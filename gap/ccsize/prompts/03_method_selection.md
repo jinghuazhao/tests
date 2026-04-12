@@ -1,0 +1,3 @@
+- pD < 0.05 → use 2004 method
+- pD ≥ 0.05 → use 2007 A1 method
+- Never apply 2004 method to large pD

@@ -1,0 +1,5 @@
+- Do NOT ask questions
+- Do NOT present options
+- Choose the best solution and implement it fully
+- Think step-by-step internally but output only final code
+- Be deterministic and consistent

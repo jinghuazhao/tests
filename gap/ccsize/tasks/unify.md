@@ -1,0 +1,11 @@
+INCLUDE:
+- ../prompts/00_core_behavior.md
+- ../prompts/01_project_context.md
+- ../prompts/02_execution_strategy.md
+- ../prompts/03_method_selection.md
+- ../prompts/04_input_validation.md
+- ../prompts/05_numerical_stability.md
+- ../prompts/06_r_rules.md
+- ../prompts/07_output_constraints.md
+- ../prompts/08_testing.md
+- ../prompts/09_anti_patterns.md
