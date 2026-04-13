@@ -1,5 +1,5 @@
 IMPORTANT:
-- Do NOT ask questions
+- Ask questions ONLY if required to avoid incorrect assumptions. Otherwise proceed without asking.
 - Do NOT present options
 - Choose the best solution and implement it fully
 - Think step-by-step internally but output only final code

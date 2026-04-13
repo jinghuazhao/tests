@@ -8,3 +8,8 @@ For every task:
 6. Return final code only
 
 Do NOT skip steps.
+
+If the task cannot be completed reliably with the available inputs:
+- Fail explicitly
+- Do NOT guess
+- Do NOT fabricate data or assumptions
