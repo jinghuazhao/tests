@@ -1,0 +1,37 @@
+$ R
+
+R version 4.5.3 (2026-03-11) -- "Reassured Reassurer"
+Copyright (C) 2026 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(testthat)
+> source("fbsize.R")
+> source("tests/test_fbsize.R")
+Test passed with 2 successes 😀.
+Test passed with 3 successes 🎉.
+Test passed with 3 successes 🎊.
+Test passed with 3 successes 🥇.
+Test passed with 1 success 🥳.
+Test passed with 2 successes 😀.
+> source("pbsize.R")
+> source("tests/test_pbsize.R")
+Test passed with 2 successes 🥳.
+Test passed with 4 successes 🎉.
+Test passed with 1 success 🎊.
+Test passed with 1 success 🎉.
+Test passed with 2 successes 🌈.
+>
