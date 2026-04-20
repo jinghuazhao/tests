@@ -4,6 +4,7 @@ A repository to share problems under development.
 
 ## 1. AI-related materials
 
+- Pi agent project, <https://jinghuazhao.github.io/tests/AI/pi-agent-project>.
 - Water Margin riddles (《水浒》谜语). <https://jinghuazhao.github.io/tests/AI/>.
 - Supplementary materials in Python. <https://jinghuazhao.github.io/tests/AI/python>.
 
