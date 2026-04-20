@@ -12,7 +12,7 @@ A repository to share problems under development.
       sleep 1
     done
     ollama list
-    module load ceuadmin/Pi/0.67.68
+    module load ceuadmin/Pi
     ollama launch pi --yes --model kimi-k2.5:cloud -- run.md
     ```
 - Water Margin riddles (《水浒》谜语). <https://jinghuazhao.github.io/tests/AI/>.
