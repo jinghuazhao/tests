@@ -5,6 +5,16 @@ A repository to share problems under development.
 ## 1. AI-related materials
 
 - Pi agent project, <https://jinghuazhao.github.io/tests/AI/pi-agent-project>.
+    ```
+    module load ceuadmin/ollama
+    ollama serve > /dev/null 2>&1 &
+    until ollama list; do
+      sleep 1
+    done
+    ollama list
+    module load ceuadmin/Pi/0.67.68
+    ollama launch pi --yes --model kimi-k2.5:cloud -- run.md
+    ```
 - Water Margin riddles (《水浒》谜语). <https://jinghuazhao.github.io/tests/AI/>.
 - Supplementary materials in Python. <https://jinghuazhao.github.io/tests/AI/python>.
 
