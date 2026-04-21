@@ -4,7 +4,7 @@ A repository to share problems under development.
 
 ## 1. AI-related materials
 
-- Pi agent project, <https://jinghuazhao.github.io/tests/AI/pi-agent-project>.
+- Pi agent project, <https://github.com/jinghuazhao/tests/tree/main/AI/pi-agent-project>.
     ```
     module load ceuadmin/ollama
     ollama serve > /dev/null 2>&1 &
