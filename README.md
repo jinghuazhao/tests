@@ -112,7 +112,7 @@ fetch('AI/chang26.csv')
     $('#biomedTable').DataTable({
       data: parsed.data,
       columns: columns,
-      pageLength: 3
+      pageLength: 2
     });
   });
 </script>
