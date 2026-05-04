@@ -102,15 +102,25 @@ Only definitions for indels are listed. More details are available from the [snp
 fetch('AI/chang26.csv')
   .then(response => response.text())
   .then(csv => {
-    const parsed = Papa.parse(csv, { header: true });
+    const parsed = Papa.parse(csv, {
+      header: true,
+      transformHeader: h => h.trim()   // fixes hidden spacing issues
+    });
 
-    const columns = Object.keys(parsed.data[0]).map(key => ({
+    // Remove empty or invalid rows
+    const cleanData = parsed.data.filter(row =>
+      row && Object.values(row).some(val => val !== null && val !== "")
+    );
+
+    // Build columns safely
+    const columns = Object.keys(cleanData[0]).map(key => ({
       title: key,
-      data: key
+      data: key,
+      defaultContent: ""   // prevents "unknown parameter" warnings
     }));
 
     $('#biomedTable').DataTable({
-      data: parsed.data,
+      data: cleanData,
       columns: columns,
       pageLength: 2
     });
