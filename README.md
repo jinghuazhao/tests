@@ -125,7 +125,7 @@ fetch('AI/chang26.csv')
     $('#biomedTable').DataTable({
       data: clean,
       columns: headers.map(h => ({ data: h, defaultContent: "" })),
-      pageLength: 2,
+      pageLength: 1,
       dom: "<'table-title'<'biomed-title'>f>rt<'bottom'lip><'clear'>"
     });
 
