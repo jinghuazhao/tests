@@ -4,6 +4,11 @@ A repository to share problems under development.
 
 ## 1. AI-related materials
 
+<table id="biomedTable" class="display" style="width:100%">
+  <thead></thead>
+  <tbody></tbody>
+</table>
+
 - Pi agent project, <https://github.com/jinghuazhao/tests/tree/main/AI/pi-agent-project>.
     ```
     module load ceuadmin/ollama
@@ -93,11 +98,6 @@ Only definitions for indels are listed. More details are available from the [snp
 <!-- CSV parser -->
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
-<table id="myTable" class="display" style="width:100%">
-  <thead></thead>
-  <tbody></tbody>
-</table>
-
 <script>
 fetch('AI/chang26.csv')
   .then(response => response.text())
@@ -109,10 +109,10 @@ fetch('AI/chang26.csv')
       data: key
     }));
 
-    $('#myTable').DataTable({
+    $('#biomedTable').DataTable({
       data: parsed.data,
       columns: columns,
-      pageLength: 10
+      pageLength: 3
     });
   });
 </script>
