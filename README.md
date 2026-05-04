@@ -4,7 +4,7 @@ A repository to share problems under development.
 
 ## 1. AI-related materials
 
-- Biomedical foundation models
+- Biomedical foundation models (<https://doi.org/10.1038/s41587-026-03135-y>)
 
 <table id="biomedTable" class="display" style="width:100%">
   <thead>
