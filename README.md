@@ -7,7 +7,9 @@ A repository to share problems under development.
 - Biomedical foundation models
 
 <table id="biomedTable" class="display" style="width:100%">
-  <thead></thead>
+  <thead>
+    <tr></tr>
+  </thead>
   <tbody></tbody>
 </table>
 
@@ -115,11 +117,9 @@ fetch('AI/chang26.csv')
 
     const headers = Object.keys(clean[0]);
 
-    // Build header
-    document.querySelector("#biomedTable thead tr").innerHTML =
-      headers.map(h => `<th>${h}</th>`).join('');
+    const theadRow = document.querySelector("#biomedTable thead tr");
+    theadRow.innerHTML = headers.map(h => `<th>${h}</th>`).join('');
 
-    // Init DataTable (ONLY ONCE)
     $('#biomedTable').DataTable({
       data: clean,
       columns: headers.map(h => ({ data: h, defaultContent: "" })),
