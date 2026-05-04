@@ -4,7 +4,6 @@ A repository to share problems under development.
 
 ## 1. AI-related materials
 
-- [Medical foundation models](AI/chang26.csv)
 - Pi agent project, <https://github.com/jinghuazhao/tests/tree/main/AI/pi-agent-project>.
     ```
     module load ceuadmin/ollama
