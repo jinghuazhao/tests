@@ -4,13 +4,14 @@ A repository to share problems under development.
 
 ## 1. AI-related materials
 
-<table id="biomedTable" class="display" style="width:100%">
-  <caption>Biomedical foundation models</caption>
-  <thead>
-    <tr></tr>
-  </thead>
-  <tbody></tbody>
-</table>
+- Biomedical foundation models
+
+    ```html
+    <table id="biomedTable" class="display" style="width:100%">
+      <thead></thead>
+      <tbody></tbody>
+    </table>
+    ```
 
 - Pi agent project, <https://github.com/jinghuazhao/tests/tree/main/AI/pi-agent-project>.
     ```
@@ -103,31 +104,32 @@ Only definitions for indels are listed. More details are available from the [snp
 
 <script>
 fetch('AI/chang26.csv')
-  .then(response => response.text())
+  .then(r => r.text())
   .then(csv => {
-    const parsed = Papa.parse(csv, {
+    const { data } = Papa.parse(csv, {
       header: true,
       transformHeader: h => h.trim()
     });
 
-    const cleanData = parsed.data.filter(row =>
-      row && Object.values(row).some(val => val !== null && val !== "")
+    const clean = data.filter(row =>
+      Object.values(row).some(v => v)
     );
 
-    const headers = Object.keys(cleanData[0]);
+    const headers = Object.keys(clean[0]);
 
-    // Build header row
-    const headerRow = document.querySelector("#biomedTable thead tr");
-    headerRow.innerHTML = headers.map(h => `<th>${h}</th>`).join('');
+    // Build header
+    document.querySelector("#biomedTable thead tr").innerHTML =
+      headers.map(h => `<th>${h}</th>`).join('');
 
     // Init DataTable
     $('#biomedTable').DataTable({
-      data: cleanData,
-      columns: headers.map(key => ({
-        data: key,
-        defaultContent: ""
-      })),
-      pageLength: 2
+      data: clean,
+      columns: headers.map(h => ({ data: h, defaultContent: "" })),
+      pageLength: 2,
+      dom: "<'table-title'<'biomed-title'>f>rt<'bottom'lip><'clear'>"
     });
+
+    document.querySelector(".biomed-title").textContent =
+      "Biomedical foundation models";
   });
 </script>
