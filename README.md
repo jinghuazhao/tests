@@ -5,7 +5,10 @@ A repository to share problems under development.
 ## 1. AI-related materials
 
 <table id="biomedTable" class="display" style="width:100%">
-  <thead></thead>
+  <caption>Biomedical foundation models</caption>
+  <thead>
+    <tr></tr>
+  </thead>
   <tbody></tbody>
 </table>
 
@@ -104,24 +107,26 @@ fetch('AI/chang26.csv')
   .then(csv => {
     const parsed = Papa.parse(csv, {
       header: true,
-      transformHeader: h => h.trim()   // fixes hidden spacing issues
+      transformHeader: h => h.trim()
     });
 
-    // Remove empty or invalid rows
     const cleanData = parsed.data.filter(row =>
       row && Object.values(row).some(val => val !== null && val !== "")
     );
 
-    // Build columns safely
-    const columns = Object.keys(cleanData[0]).map(key => ({
-      title: key,
-      data: key,
-      defaultContent: ""   // prevents "unknown parameter" warnings
-    }));
+    const headers = Object.keys(cleanData[0]);
 
+    // Build header row
+    const headerRow = document.querySelector("#biomedTable thead tr");
+    headerRow.innerHTML = headers.map(h => `<th>${h}</th>`).join('');
+
+    // Init DataTable
     $('#biomedTable').DataTable({
       data: cleanData,
-      columns: columns,
+      columns: headers.map(key => ({
+        data: key,
+        defaultContent: ""
+      })),
       pageLength: 2
     });
   });
