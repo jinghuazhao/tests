@@ -119,7 +119,7 @@ fetch('AI/chang26.csv')
     document.querySelector("#biomedTable thead tr").innerHTML =
       headers.map(h => `<th>${h}</th>`).join('');
 
-    // Init DataTable
+    // Init DataTable (ONLY ONCE)
     $('#biomedTable').DataTable({
       data: clean,
       columns: headers.map(h => ({ data: h, defaultContent: "" })),
