@@ -84,3 +84,35 @@ Only definitions for indels are listed. More details are available from the [snp
 * The IL-12B example, ![turboman/IL.12B.png](turboman/IL.12B.png)
   - IL.12B.txt.gz was split via `split --bytes=45M "IL.12B.txt.gz" "IL.12B.txt-"`
   - It could be recoverd via `cat IL.12B.txt-*` > IL.12B.txt.gz
+
+<!-- DataTables + jQuery CDN -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+
+<!-- CSV parser -->
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+<table id="myTable" class="display" style="width:100%">
+  <thead></thead>
+  <tbody></tbody>
+</table>
+
+<script>
+fetch('AI/chang26.csv')
+  .then(response => response.text())
+  .then(csv => {
+    const parsed = Papa.parse(csv, { header: true });
+
+    const columns = Object.keys(parsed.data[0]).map(key => ({
+      title: key,
+      data: key
+    }));
+
+    $('#myTable').DataTable({
+      data: parsed.data,
+      columns: columns,
+      pageLength: 10
+    });
+  });
+</script>
