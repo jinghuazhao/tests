@@ -6,12 +6,10 @@ A repository to share problems under development.
 
 - Biomedical foundation models
 
-    ```html
     <table id="biomedTable" class="display" style="width:100%">
       <thead></thead>
       <tbody></tbody>
     </table>
-    ```
 
 - Pi agent project, <https://github.com/jinghuazhao/tests/tree/main/AI/pi-agent-project>.
     ```
