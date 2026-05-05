@@ -98,7 +98,6 @@ Only definitions for indels are listed. More details are available from the [snp
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
-
 <!-- CSV parser -->
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
@@ -110,24 +109,18 @@ fetch('AI/chang26.csv')
       header: true,
       transformHeader: h => h.trim()
     });
-
     const clean = data.filter(row =>
       Object.values(row).some(v => v)
     );
-
     const headers = Object.keys(clean[0]);
-
     const theadRow = document.querySelector("#biomedTable thead tr");
     theadRow.innerHTML = headers.map(h => `<th>${h}</th>`).join('');
-
     $('#biomedTable').DataTable({
       data: clean,
       columns: headers.map(h => ({ data: h, defaultContent: "" })),
       pageLength: 1,
       dom: "<'table-title'<'biomed-title'>f>rt<'bottom'lip><'clear'>"
     });
-
-    document.querySelector(".biomed-title").textContent =
-      "Biomedical foundation models";
+    document.querySelector(".biomed-title").textContent = "";
   });
 </script>
