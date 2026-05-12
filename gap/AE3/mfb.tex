@@ -1,274 +1,236 @@
-\documentclass[11pt]{article}
-\usepackage{amsmath, amssymb, booktabs, geometry}
-\geometry{margin=1in}
+\documentclass[12pt]{article}
 
-\title{Biometrical Modelling of Nuclear Family Trio Data\\
-Using Linear Mixed Models (AE / ACE / ADE)}
+\usepackage{amsmath, amssymb, bm}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{setspace}
+\geometry{margin=1in}
+\doublespacing
+
+\title{Variance Components from Nuclear Family Trios:
+A Linear Mixed Model Implementation in R}
 \author{}
 \date{}
 
 \begin{document}
 \maketitle
-\tableofcontents
 
 \section{Introduction}
 
-We present a unified framework for estimating genetic and environmental
-variance components from \textbf{nuclear family trios}
-(mother–father–child) using standard linear mixed models.
+Quantitative genetic variance can be decomposed into additive genetic (A),
+dominance genetic (D), shared environmental (C), and unique environmental (E)
+components.
 
-The approach follows the key idea of Rabe-Hesketh, Skrondal \& Gjessing (2008):
-pedigree likelihoods can be written as mixed models by exploiting
-covariance equivalence.
+Twin studies traditionally estimate ACE or ADE models, but many modern
+cohorts consist of nuclear family trios (mother--father--child).
+This paper presents a linear mixed model framework for estimating AE, ACE,
+and ADE models from trio data using nlme in R.
 
-This allows biometric models to be fitted using standard software
-(\texttt{nlme} in R) rather than specialised SEM packages.
+\section{Variance Decomposition}
 
-\section{Quantitative Genetic Models}
-
-\subsection{ACE model}
+For an individual phenotype $y$,
 
 \[
-y_{ij} = X_{ij}\beta + a_{ij} + c_j + e_{ij}
+y = \mu + a + d + c + e
 \]
 
 \[
-a_{ij}\sim N(0,\sigma_A^2),\qquad
-c_j\sim N(0,\sigma_C^2),\qquad
-e_{ij}\sim N(0,\sigma_E^2)
+Var(y) = \sigma_A^2 + \sigma_D^2 + \sigma_C^2 + \sigma_E^2
 \]
 
-\subsection{ADE model}
+\section{General Pedigree Covariance}
+
+The covariance between relatives $i$ and $k$ under the ACDE model is
 
 \[
-y_{ij}=X_{ij}\beta + a_{ij} + d_{ij} + e_{ij}
+\text{Cov}(y_i,y_k)
+=
+2\phi_{ik}\sigma_A^2
++ \Delta_{ik}\sigma_D^2
++ \gamma_{ik}\sigma_C^2
 \]
 
-\[
-a_{ij}\sim N(0,\sigma_A^2),\qquad
-d_{ij}\sim N(0,\sigma_D^2),\qquad
-e_{ij}\sim N(0,\sigma_E^2)
-\]
+\begin{itemize}
+\item $\phi_{ik}$ = kinship coefficient (additive sharing)
+\item $\Delta_{ik}$ = probability of sharing two alleles IBD (dominance)
+\item $\gamma_{ik}$ = indicator of shared family environment
+\end{itemize}
 
-Total phenotypic variance:
-
-\[
-\sigma_P^2=\sigma_A^2+\sigma_C^2+\sigma_D^2+\sigma_E^2
-\]
-
-Only a subset of these components can be identified from trio data.
-
-\section{Pedigree Covariance in Nuclear Families}
-
-The covariance between relatives $i$ and $k$ is
-
-\[
-\text{Cov}(y_i,y_k)=2\phi_{ik}\sigma_A^2+\sigma_C^2
-\]
-
-\subsection{Kinship Coefficients}
+\section{Coefficients for Nuclear Family Trios}
 
 \begin{center}
-\begin{tabular}{lcc}
+\begin{tabular}{lccc}
 \toprule
-Pair & $2\phi$ & Covariance \\ \midrule
-Mother--Father & 0 & $\sigma_C^2$ \\
-Mother--Child  & $\tfrac12$ & $\tfrac12\sigma_A^2+\sigma_C^2$ \\
-Father--Child  & $\tfrac12$ & $\tfrac12\sigma_A^2+\sigma_C^2$ \\
+Pair & $2\phi$ & $\Delta$ & $\gamma$ \\
+\midrule
+Mother--Father & 0 & 0 & 1 \\
+Mother--Child  & $\tfrac12$ & 0 & 1 \\
+Father--Child  & $\tfrac12$ & 0 & 1 \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\subsection{Dominance covariance in trios}
+\subsection{Key Consequence}
 
-Dominance effects require two alleles identical by descent.
-Parent--child pairs do not share dominance deviations, therefore
+Dominance deviations are not transmitted from parents to offspring:
 
 \[
-\text{Cov}_D(y_i,y_k)=0 \quad \text{for all pairs in trios.}
+\Delta_{ik}=0 \quad \text{for all trio pairs}
 \]
 
-Dominance contributes only to individual variance:
+Therefore dominance contributes only to individual variance:
 
 \[
 Var(y)=\sigma_A^2+\sigma_D^2+\sigma_E^2
 \]
 
+and produces no observable covariance between relatives.
+
+\section{Identifiable Family Resemblance}
+
+Trio data contain only one source of familial covariance:
+
+\[
+\text{Cov}_{family} =
+\frac12\sigma_A^2 + \sigma_F^2
+\]
+
+where $\sigma_F^2$ is an unidentified family resemblance component.
+
+This component can be interpreted as:
+
+\[
+\sigma_F^2 =
+\begin{cases}
+\sigma_C^2 & \text{ACE interpretation} \\
+\text{residual familial resemblance} & \text{ADE interpretation}
+\end{cases}
+\]
+
+Hence ACE and ADE models are mutually exclusive in trio data.
+
 \section{Mixed Model Representation}
 
-\[
-y = X\beta + Z_A u_A + Z_C u_C + Z_D u_D + e
-\]
+We model stacked trio observations:
 
 \[
-u_A\sim N(0,\sigma_A^2 I),\quad
-u_C\sim N(0,\sigma_C^2 I),\quad
-u_D\sim N(0,\sigma_D^2 I)
+\mathbf{y} = \mathbf{X}\beta + \mathbf{Z}_A \mathbf{a} + 
+\mathbf{Z}_F \mathbf{f} + \boldsymbol{\varepsilon}
 \]
 
-\section{Trio Design Matrix Construction}
+\begin{align}
+\mathbf{a} &\sim N(0, \sigma_A^2 \mathbf{A}) \\
+\mathbf{f} &\sim N(0, \sigma_F^2 \mathbf{I}) \\
+\boldsymbol{\varepsilon} &\sim N(0, \sigma_E^2 \mathbf{I})
+\end{align}
 
-Dataset indicators:
-
-\[
-\text{var1 = mother},\quad
-\text{var2 = father},\quad
-\text{var3 = child}
-\]
-
-Additive genetic contribution:
-
-\[
-A_{ij}=0.5\,\text{Mother}+0.5\,\text{Father}+1\,\text{Child}
-\]
-
-Shared family environment:
-\[
-C_{ij}=1
-\]
-
-Dominance deviation (individual-level):
-\[
-D_{ij}=1
-\]
-
-\section{Identifiability}
-
-With nuclear family trios:
-
-\begin{center}
-\begin{tabular}{lc}
-\toprule
-Model & Identifiable? \\
-\midrule
-AE  & Yes \\
-ACE & Yes \\
-ADE & Yes \\
-ACDE & No \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-Shared environment and dominance cannot be separated simultaneously,
-so ACE and ADE are mutually exclusive.
-
-\section{Variance Components}
-
-\subsection{AE model}
-\[
-\Sigma=\sigma_A^2K+\sigma_E^2I
-\qquad
-h^2=\frac{\sigma_A^2}{\sigma_A^2+\sigma_E^2}
-\]
-
-\subsection{ACE model}
-\[
-\Sigma=\sigma_A^2K+\sigma_C^2J+\sigma_E^2I
-\]
-
-\[
-h^2=\frac{\sigma_A^2}{\sigma_P^2},\qquad
-c^2=\frac{\sigma_C^2}{\sigma_P^2}
-\]
-
-\subsection{ADE model}
-\[
-\Sigma=\sigma_A^2K+\sigma_D^2I+\sigma_E^2I
-\]
-
-\[
-h^2=\frac{\sigma_A^2}{\sigma_P^2},\qquad
-d^2=\frac{\sigma_D^2}{\sigma_P^2}
-\]
-
-\section{Likelihood Model Comparison}
-
-\[
-LR=2(\ell_{\text{full}}-\ell_{\text{reduced}})
-\]
-
-\section{R Implementation}
-
-\subsection{Unified Trio Model Function (AE / ACE / ADE)}
+\section{Data Restructuring in R}
 
 \begin{verbatim}
-trio_model <- function(model, data, type=c("AE","ACE","ADE"))
-{
-  require(nlme)
-  type <- match.arg(type)
+library(nlme)
 
-  data$Acoef <- 0.5*data$var1 + 0.5*data$var2 + 1*data$var3
-  data$Ccoef <- 1
-  data$Dcoef <- 1
-  data$indid <- 1:nrow(data)
+longdata <- reshape(
+  widelong,
+  varying = c("bmi1","bmi2","bmi3"),
+  v.names = "bmi",
+  timevar = "member",
+  times = c("mother","father","child"),
+  idvar = "famid",
+  direction = "long"
+)
 
-  if(type=="AE")
-    rand <- list(familyid = pdDiag(~ Acoef - 1))
-
-  if(type=="ACE")
-    rand <- list(familyid = pdDiag(~ Acoef + Ccoef - 1))
-
-  if(type=="ADE")
-    rand <- list(
-      familyid = pdDiag(~ Acoef - 1),
-      indid    = pdDiag(~ Dcoef - 1)
-    )
-
-  fit <- lme(model, random=rand, data=data, method="ML",
-             control=lmeControl(opt="optim"))
-
-  pars <- attr(fit$apVar,"Pars")
-
-  varE <- exp(2*pars[1])
-  varA <- exp(2*pars[2])
-  varC <- if(type=="ACE") exp(2*pars[3]) else 0
-  varD <- if(type=="ADE") exp(2*pars[3]) else 0
-
-  varP <- varA + varC + varD + varE
-
-  list(
-    fit = fit,
-    var = c(A=varA,C=varC,D=varD,E=varE),
-    h2  = varA/varP,
-    c2  = varC/varP,
-    d2  = varD/varP
-  )
-}
+longdata$Acoef <- ifelse(longdata$member=="child",1,0.5)
+longdata$Dcoef <- 1
 \end{verbatim}
 
-\subsection{Model Comparison}
+\section{AE Model}
+
+\[
+Var(y) = \sigma_A^2 + \sigma_E^2
+\]
 
 \begin{verbatim}
-compare_trio_models <- function(model,data)
-{
-  AE  <- trio_model(model,data,"AE")
-  ACE <- trio_model(model,data,"ACE")
-  ADE <- trio_model(model,data,"ADE")
-
-  tab <- anova(AE$fit, ACE$fit, ADE$fit)
-
-  list(AE=AE, ACE=ACE, ADE=ADE, anova=tab)
-}
+model_AE <- lme(
+  bmi ~ 1,
+  random = list(
+    famid = pdDiag(~ Acoef - 1),
+    indid = pdDiag(~ Dcoef - 1)
+  ),
+  data = longdata,
+  method = "REML"
+)
 \end{verbatim}
 
-\section{Example}
+\section{ACE Model}
+
+\[
+Var(y) = \sigma_A^2 + \sigma_C^2 + \sigma_E^2
+\]
 
 \begin{verbatim}
-library(gap.datasets)
-data(mfblong)
-
-model <- bwt ~ male + first + midage + highage + birthyr
-res <- compare_trio_models(model, mfblong)
-
-res$anova
-res$ACE$h2
-res$ADE$d2
+model_ACE <- lme(
+  bmi ~ 1,
+  random = list(
+    famid = pdBlocked(list(
+      pdDiag(~ Acoef - 1),
+      pdDiag(~ Dcoef - 1)
+    )),
+    indid = pdDiag(~ Dcoef - 1)
+  ),
+  data = longdata,
+  method = "REML"
+)
 \end{verbatim}
+
+\section{ADE Model}
+
+\[
+Var(y) = \sigma_A^2 + \sigma_D^2 + \sigma_E^2
+\]
+
+In trio data the ADE model estimates additive genetic variance and a
+combined non-additive/unique environmental component.
+
+\begin{verbatim}
+model_ADE <- lme(
+  bmi ~ 1,
+  random = list(
+    famid = pdDiag(~ Acoef - 1),
+    indid = pdDiag(~ Dcoef - 1)
+  ),
+  data = longdata,
+  method = "REML"
+)
+\end{verbatim}
+
+\section{Extracting Variance Components}
+
+\begin{verbatim}
+VarCorr(model_ACE)
+VarCorr(model_AE)
+VarCorr(model_ADE)
+\end{verbatim}
+
+\section{Model Comparison}
+
+\begin{verbatim}
+anova(model_AE, model_ACE)
+anova(model_AE, model_ADE)
+\end{verbatim}
+
+\section{Interpretation}
+
+\begin{itemize}
+\item AE vs ACE tests shared environmental effects.
+\item AE vs ADE tests non-additive genetic effects.
+\item ACE vs ADE cannot be fit simultaneously.
+\end{itemize}
 
 \section{Conclusion}
 
-Nuclear family biometric models can be estimated entirely within linear
-mixed models. Trio data allow estimation of AE, ACE or ADE models,
-but shared environment and dominance cannot be estimated simultaneously.
+Nuclear family trios allow estimation of additive genetic variance and a
+single familial resemblance component. This component may be interpreted
+as shared environment (ACE) or as residual familial resemblance (ADE).
+Model comparison provides evidence for the most plausible interpretation.
 
 \end{document}
