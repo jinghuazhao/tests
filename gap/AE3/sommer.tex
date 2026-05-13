@@ -1,0 +1,505 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{bm}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titling}
+\usepackage{titlesec}
+\usepackage{microtype}
+\usepackage{etoolbox}
+
+% Page layout (matches technical note style)
+\geometry{margin=1.15in}
+
+% Section numbering depth
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+% Compact title block
+\setlength{\droptitle}{-3em}
+\pretitle{\begin{center}\Large\bfseries}
+\posttitle{\par\end{center}\vspace{-1em}}
+
+% Line spacing similar to original PDF
+\setstretch{1.08}
+
+% More breathing room around equations
+\setlength{\abovedisplayskip}{10pt}
+\setlength{\belowdisplayskip}{10pt}
+
+% Space around section titles
+\titlespacing*{\section}{0pt}{14pt}{6pt}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+
+% Space around verbatim blocks
+\AtBeginEnvironment{verbatim}{\vspace{6pt}}
+\AtEndEnvironment{verbatim}{\vspace{6pt}}
+
+\title{The ACDE Model with Trio and Sibling Data}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace{-1em}
+\tableofcontents
+\vspace{1em}
+
+\section{Introduction}
+
+Classical twin studies partition phenotypic variance into additive genetic (A), 
+shared environmental (C), and unique environmental (E) components. 
+In many settings, however, dominance genetic effects (D) may also contribute 
+substantially to phenotypic variation. 
+
+The ACDE model extends the classical ACE framework by including dominance 
+genetic variance. Estimation of all four variance components is not possible 
+with twin data alone because C and D induce similar covariance patterns. 
+Additional pedigree information is therefore required.
+
+This document develops a compact formulation of the ACDE model using
+trios (mother, father, child) and sibling data. The goal is to derive:
+
+\begin{itemize}
+\item the quantitative genetic model,
+\item pedigree covariance expectations,
+\item identifiability conditions,
+\item a mixed model representation,
+\item practical implementation and simulation.
+\end{itemize}
+
+\section{Quantitative Genetic Model}
+
+For an individual $i$, the phenotype is written as
+\begin{equation}
+Y_i = \mu + A_i + D_i + C_i + E_i .
+\end{equation}
+
+The variance components are defined as
+\begin{align}
+A_i &\sim N(0,\sigma_A^2),\\
+D_i &\sim N(0,\sigma_D^2),\\
+C_i &\sim N(0,\sigma_C^2),\\
+E_i &\sim N(0,\sigma_E^2).
+\end{align}
+
+The total phenotypic variance is therefore
+\begin{equation}
+\sigma_P^2 = \sigma_A^2 + \sigma_D^2 + \sigma_C^2 + \sigma_E^2 .
+\end{equation}
+
+Additive effects represent the sum of allele substitution effects across loci.  
+Dominance effects represent within-locus interactions between alleles.  
+Shared environment captures environmental influences common to members of 
+the same household.  
+Unique environment includes measurement error and individual-specific factors.
+
+\section{Pedigree Covariances}
+
+Covariances between relatives follow directly from kinship coefficients.  
+Let $\phi_{ij}$ denote the kinship coefficient between individuals $i$ and $j$, 
+and let $\Delta_{ij}$ denote the probability of sharing both alleles identical 
+by descent at a locus.
+
+\subsection{Additive covariance}
+
+The additive genetic covariance between individuals $i$ and $j$ is
+\begin{equation}
+\mathrm{Cov}_A(i,j) = 2\phi_{ij}\sigma_A^2 .
+\end{equation}
+
+\subsection{Dominance covariance}
+
+Dominance covariance depends on the probability of sharing two alleles 
+identical by descent:
+\begin{equation}
+\mathrm{Cov}_D(i,j) = \Delta_{ij}\sigma_D^2 .
+\end{equation}
+
+\subsection{Shared environment}
+
+Individuals raised in the same household share the same environmental effect:
+\begin{equation}
+\mathrm{Cov}_C(i,j) =
+\begin{cases}
+\sigma_C^2 & \text{if same household},\\
+0 & \text{otherwise}.
+\end{cases}
+\end{equation}
+
+\subsection{Key pedigree relationships}
+
+For common family relationships we obtain:
+
+\begin{center}
+\begin{tabular}{lcc}
+Relationship & $2\phi$ & $\Delta$\\
+\hline
+Parent--child & $1/2$ & $0$\\
+Full siblings & $1/2$ & $1/4$\\
+Unrelated & $0$ & $0$
+\end{tabular}
+\end{center}
+
+These coefficients determine all expected covariances used in the ACDE model.
+
+\section{Identifiability}
+
+A central difficulty of the ACDE model is that shared environment (C) and 
+dominance (D) produce similar covariance structures. Without sufficient 
+pedigree information, the model parameters are not identifiable.
+
+We therefore examine which family structures provide enough information to 
+separate the four variance components.
+
+\subsection{Trio data}
+
+Consider a nuclear trio consisting of mother ($m$), father ($f$), and child ($c$).  
+Assume parents are unrelated and do not share a household with the child 
+after accounting for the child's shared environment.
+
+The expected covariances are:
+
+\begin{align}
+\mathrm{Var}(Y_c) &= \sigma_A^2 + \sigma_D^2 + \sigma_C^2 + \sigma_E^2,\\
+\mathrm{Var}(Y_m) &= \sigma_A^2 + \sigma_D^2 + \sigma_E^2,\\
+\mathrm{Var}(Y_f) &= \sigma_A^2 + \sigma_D^2 + \sigma_E^2.
+\end{align}
+
+Parent--child covariance:
+\begin{equation}
+\mathrm{Cov}(Y_c,Y_m) = \frac{1}{2}\sigma_A^2.
+\end{equation}
+
+The same holds for the father.
+
+\paragraph{Key observation}
+
+Trio data identify the additive variance because parent–child covariance 
+depends only on additive genetic effects. However, trio data alone cannot 
+separate dominance and shared environmental variance because neither produces 
+parent–child covariance.
+
+\subsection{Trio + sibling data}
+
+Now add a second child (siblings $c_1,c_2$).  
+Sibling covariance becomes
+
+\begin{equation}
+\mathrm{Cov}(Y_{c_1},Y_{c_2})
+= \frac{1}{2}\sigma_A^2 + \frac{1}{4}\sigma_D^2 + \sigma_C^2.
+\end{equation}
+
+This additional equation provides the crucial information required to 
+separate dominance from shared environmental effects.
+
+\subsection{Summary of identifying equations}
+
+We now have three independent covariance relationships:
+
+\begin{align}
+\text{Parent--child:} \quad
+& \frac{1}{2}\sigma_A^2, \\
+\text{Sibling:} \quad
+& \frac{1}{2}\sigma_A^2 + \frac{1}{4}\sigma_D^2 + \sigma_C^2, \\
+\text{Individual variance:} \quad
+& \sigma_A^2 + \sigma_D^2 + \sigma_C^2 + \sigma_E^2.
+\end{align}
+
+These equations are sufficient to identify all four variance components.
+
+\section{Mixed Model Representation}
+
+The ACDE model can be written as a linear mixed model.
+
+\subsection{Vector notation}
+
+Let $\mathbf{y}$ denote the vector of all phenotypes.  
+The model is written as
+
+\begin{equation}
+\mathbf{y} = \mathbf{X}\bm{\beta}
++ \mathbf{Z_A}\mathbf{a}
++ \mathbf{Z_D}\mathbf{d}
++ \mathbf{Z_C}\mathbf{c}
++ \bm{\varepsilon}.
+\end{equation}
+
+Random effects are assumed to follow:
+
+\begin{align}
+\mathbf{a} &\sim N(0,\,\sigma_A^2\mathbf{A}),\\
+\mathbf{d} &\sim N(0,\,\sigma_D^2\mathbf{D}),\\
+\mathbf{c} &\sim N(0,\,\sigma_C^2\mathbf{I_f}),\\
+\bm{\varepsilon} &\sim N(0,\,\sigma_E^2\mathbf{I}).
+\end{align}
+
+Here:
+
+\begin{itemize}
+\item $\mathbf{A}$ is the additive relationship matrix,
+\item $\mathbf{D}$ is the dominance relationship matrix,
+\item $\mathbf{I_f}$ indexes families.
+\end{itemize}
+
+\subsection{Phenotypic covariance matrix}
+
+The marginal covariance of $\mathbf{y}$ becomes
+
+\begin{equation}
+\mathbf{V} =
+\sigma_A^2\mathbf{A}
++ \sigma_D^2\mathbf{D}
++ \sigma_C^2\mathbf{C}
++ \sigma_E^2\mathbf{I}.
+\end{equation}
+
+This form enables estimation via REML using standard mixed-model software.
+
+\section{Design Matrices}
+
+To implement the ACDE mixed model, we must construct relationship matrices 
+that encode pedigree structure.
+
+\subsection{Additive relationship matrix}
+
+The additive relationship matrix $\mathbf{A}$ contains twice the kinship 
+coefficients. For the nuclear family with two siblings ordered as
+
+\[
+(m,\; f,\; c_1,\; c_2),
+\]
+
+the matrix is
+
+\[
+\mathbf{A} =
+\begin{pmatrix}
+1 & 0 & 1/2 & 1/2 \\
+0 & 1 & 1/2 & 1/2 \\
+1/2 & 1/2 & 1 & 1/2 \\
+1/2 & 1/2 & 1/2 & 1
+\end{pmatrix}.
+\]
+
+\subsection{Dominance relationship matrix}
+
+Dominance relationships capture identity by descent of both alleles.  
+For the same ordering, the dominance matrix becomes
+
+\[
+\mathbf{D} =
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 1/4 \\
+0 & 0 & 1/4 & 1
+\end{pmatrix}.
+\]
+
+Parents do not share dominance covariance with their children.
+
+\subsection{Shared environment matrix}
+
+Individuals raised in the same household share a common environmental effect.  
+For a family with two siblings,
+
+\[
+\mathbf{C} =
+\begin{pmatrix}
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 1 \\
+0 & 0 & 1 & 1
+\end{pmatrix}.
+\]
+
+This matrix indexes the family-level random effect.
+
+\section{R Implementation}
+
+The ACDE model can be estimated using standard mixed model software such as 
+\texttt{lme4} or \texttt{sommer}. The key requirement is the ability to supply 
+custom covariance matrices.
+
+\subsection{Unified model fitting function}
+
+Below is a minimal implementation using the \texttt{sommer} package.
+
+\begin{verbatim}
+library(sommer)
+
+fit_acde <- function(df, A, D, C) {
+
+  fit <- mmer(
+    y ~ 1,
+    random = ~ vs(id, Gu = A)      # additive
+            + vs(id, Gu = D)      # dominance
+            + vs(fam)             # shared environment
+            ,
+    rcov = ~ units,
+    data = df
+  )
+
+  return(fit)
+}
+\end{verbatim}
+
+\subsection{Extracting variance components}
+
+\begin{verbatim}
+extract_vc <- function(fit) {
+  vc <- summary(fit)$varcomp
+  return(vc[,1])
+}
+\end{verbatim}
+
+\subsection{Model comparison}
+
+Nested models allow testing of variance components.
+
+\begin{verbatim}
+fit_ADE <- mmer(y ~ 1,
+                random = ~ vs(id, Gu=A) + vs(id, Gu=D),
+                rcov = ~ units, data=df)
+
+anova(fit_ADE, fit_ACDE)
+\end{verbatim}
+
+Likelihood ratio tests provide formal evidence for the presence of shared 
+environmental effects.
+
+\section{Simulation Study}
+
+A simulation study is useful to verify that the ACDE model can recover the 
+true variance components under realistic sampling conditions.
+
+\subsection{Simulation design}
+
+We simulate nuclear families consisting of:
+\begin{itemize}
+\item mother,
+\item father,
+\item two siblings.
+\end{itemize}
+
+True variance components are set to
+
+\[
+\sigma_A^2 = 0.4,\quad
+\sigma_D^2 = 0.2,\quad
+\sigma_C^2 = 0.2,\quad
+\sigma_E^2 = 0.2.
+\]
+
+These values produce substantial contributions from all sources of variation.
+
+\subsection{Simulation algorithm}
+
+For each family $j$:
+
+\begin{enumerate}
+\item Draw parental additive values
+\[
+A_m, A_f \sim N(0,\sigma_A^2).
+\]
+
+\item Generate offspring additive values using Mendelian sampling:
+\[
+A_{c_k} = \frac{1}{2}(A_m + A_f) + M_k,
+\quad M_k \sim N\!\left(0,\frac{1}{2}\sigma_A^2\right).
+\]
+
+\item Simulate dominance deviations:
+\[
+D_i \sim N(0,\sigma_D^2).
+\]
+
+\item Draw family shared environment:
+\[
+C_j \sim N(0,\sigma_C^2).
+\]
+
+\item Draw individual environmental noise:
+\[
+E_i \sim N(0,\sigma_E^2).
+\]
+
+\item Construct phenotypes:
+\[
+Y_i = A_i + D_i + C_j + E_i.
+\]
+\end{enumerate}
+
+\subsection{R simulation code}
+
+\begin{verbatim}
+simulate_family <- function() {
+
+  Am <- rnorm(1,0,sqrt(.4))
+  Af <- rnorm(1,0,sqrt(.4))
+
+  Cfam <- rnorm(1,0,sqrt(.2))
+
+  make_child <- function(){
+    A <- 0.5*(Am+Af) + rnorm(1,0,sqrt(.2))
+    D <- rnorm(1,0,sqrt(.2))
+    E <- rnorm(1,0,sqrt(.2))
+    return(A + D + Cfam + E)
+  }
+
+  Ym <- Am + rnorm(1,0,sqrt(.2)) + rnorm(1,0,sqrt(.2))
+  Yf <- Af + rnorm(1,0,sqrt(.2)) + rnorm(1,0,sqrt(.2))
+
+  Yc1 <- make_child()
+  Yc2 <- make_child()
+
+  return(c(Ym,Yf,Yc1,Yc2))
+}
+\end{verbatim}
+
+\subsection{Model recovery experiment}
+
+We simulate many families and fit the ACDE model.
+
+\begin{verbatim}
+Y <- replicate(1000, simulate_family())
+\end{verbatim}
+
+Estimated variance components should converge to the true values as the 
+sample size increases.
+
+\subsection{Expected results}
+
+With sufficient sample size, REML estimates are approximately unbiased:
+\[
+\hat{\sigma}_A^2 \approx 0.4,\quad
+\hat{\sigma}_D^2 \approx 0.2,\quad
+\hat{\sigma}_C^2 \approx 0.2,\quad
+\hat{\sigma}_E^2 \approx 0.2.
+\]
+
+\section{Interpretation}
+
+The ACDE framework allows separation of additive, dominance, and shared 
+environmental effects using standard family data.
+
+Key insights include:
+
+\begin{itemize}
+\item Parent--child covariance identifies additive genetic variance.
+\item Sibling covariance separates dominance from shared environment.
+\item Mixed models provide a convenient estimation framework.
+\end{itemize}
+
+The approach extends classical twin models while retaining a simple 
+likelihood-based implementation.
+
+\section{Conclusion}
+
+Trio and sibling data provide sufficient information to estimate the full 
+ACDE variance decomposition. The mixed model formulation allows practical 
+implementation using existing software and enables flexible extensions 
+to larger pedigrees and genomic relationship matrices.
+
+\end{document}

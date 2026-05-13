@@ -1,0 +1,216 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, booktabs, geometry}
+\geometry{margin=1in}
+
+\title{Biometrical Modelling of Nuclear Family Data:\\
+Unified ACDE Variance Component Estimation}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Introduction}
+
+Biometrical genetics aims to partition phenotypic variation into
+genetic and environmental components. Classical models decompose the
+phenotypic variance into:
+
+\begin{itemize}
+\item Additive genetic effects ($A$)
+\item Dominance genetic effects ($D$)
+\item Shared environmental effects ($C$)
+\item Unique environmental effects ($E$)
+\end{itemize}
+
+Nuclear family data provide an alternative to twin designs.
+However, identifiability depends strongly on which relatives are observed.
+
+\section{Why Trio Data Are Insufficient}
+
+Consider nuclear family trios (mother, father, child).
+
+Expected covariances:
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Pair & Expected covariance \\ \midrule
+Parent--parent & $C$ \\
+Parent--child  & $\tfrac12 A + C$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Dominance effects require two alleles identical by descent.
+Parent--child pairs never share dominance deviations:
+
+\[
+\text{Cov}_D(\text{parent, child}) = 0
+\]
+
+Therefore trio data contain no covariance information about $D$.
+This creates confounding:
+
+\[
+V_P = A + C + D + E
+\]
+
+but only the sum $C + D$ is estimable.
+
+Hence trios allow estimation of AE, ACE or ADE models,
+but not the full ACDE model.
+
+\section{Why Adding Siblings Solves Identifiability}
+
+When at least two siblings are observed, a new covariance appears:
+
+\[
+\text{Cov}(\text{sibling}_1,\text{sibling}_2)
+= \tfrac12 A + C + \tfrac14 D
+\]
+
+This additional $\tfrac14 D$ term allows separation of
+shared environment and dominance.
+
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+Design & Identifiable components \\ \midrule
+Trio & AE, ACE or ADE \\
+Nuclear family with siblings & ACDE \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{ACDE Variance Decomposition}
+
+Total phenotypic variance:
+
+\[
+V_P = V_A + V_C + V_D + V_E
+\]
+
+Interpretation:
+
+\begin{itemize}
+\item $V_A$ : additive genetic variance
+\item $V_C$ : shared family environment
+\item $V_D$ : dominance genetic variance
+\item $V_E$ : individual environment + measurement error
+\end{itemize}
+
+\section{Expected Covariance Matrix}
+
+For each family we observe:
+
+\[
+\mathbf{y}_i = (P_f, P_m, S_1, S_2)^\top
+\]
+
+The theoretical covariance matrix is
+
+\[
+\Sigma =
+\begin{pmatrix}
+V_P & V_C & \tfrac12 V_A + V_C & \tfrac12 V_A + V_C \\
+V_C & V_P & \tfrac12 V_A + V_C & \tfrac12 V_A + V_C \\
+\tfrac12 V_A + V_C & \tfrac12 V_A + V_C & V_P &
+\tfrac12 V_A + V_C + \tfrac14 V_D \\
+\tfrac12 V_A + V_C & \tfrac12 V_A + V_C &
+\tfrac12 V_A + V_C + \tfrac14 V_D & V_P
+\end{pmatrix}
+\]
+
+Key covariance contributions:
+
+\begin{align}
+\text{Parent--child} &= \tfrac12 V_A + V_C \\
+\text{Sibling--sibling} &= \tfrac12 V_A + V_C + \tfrac14 V_D \\
+\text{Parent--parent} &= V_C
+\end{align}
+
+\section{Likelihood Formulation}
+
+Assume phenotypes are multivariate normal:
+
+\[
+\mathbf{y}_i \sim \mathcal{N}(\mathbf{0}, \Sigma)
+\]
+
+Families are independent, giving log-likelihood:
+
+\[
+\ell(\theta) = \sum_{i=1}^N \log f(\mathbf{y}_i|\Sigma(\theta))
+\]
+
+For a single family:
+
+\[
+\log f(\mathbf{y}_i) =
+-\frac12\left[
+\log|\Sigma|
++ \mathbf{y}_i^\top \Sigma^{-1} \mathbf{y}_i
++ k\log(2\pi)
+\right]
+\]
+
+\section{Parameterisation}
+
+To ensure positive variances:
+
+\begin{align}
+V_A &= \exp(\theta_A) \\
+V_C &= \exp(\theta_C) \\
+V_D &= \exp(\theta_D) \\
+V_E &= \exp(\theta_E)
+\end{align}
+
+Parameters $\theta$ are estimated by maximising the likelihood.
+
+\section{Maximum Likelihood Estimation}
+
+At each iteration:
+
+\begin{enumerate}
+\item Construct $\Sigma(\theta)$
+\item Compute log-likelihood
+\item Update parameters using quasi-Newton optimisation
+\end{enumerate}
+
+\section{Derived Quantities}
+
+After estimation:
+
+\[
+h^2 = \frac{V_A}{V_P},\quad
+c^2 = \frac{V_C}{V_P},\quad
+d^2 = \frac{V_D}{V_P},\quad
+e^2 = \frac{V_E}{V_P}
+\]
+
+\section{Model Comparison}
+
+Nested models are compared using:
+
+\begin{align}
+\text{AIC} &= -2\ell + 2k \\
+\text{BIC} &= -2\ell + k\log(N)
+\end{align}
+
+Likelihood ratio tests:
+
+\[
+\chi^2 = -2(\ell_{\text{reduced}} - \ell_{\text{full}})
+\]
+
+\section{Conclusion}
+
+Nuclear family data with siblings provide sufficient information to
+estimate the full ACDE model using likelihood-based variance component
+estimation. The key advantage over trio data is the presence of sibling
+covariance, which separates shared environmental and dominance genetic
+effects.
+
+\end{document}
