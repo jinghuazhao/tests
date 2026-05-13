@@ -1,0 +1,310 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath, amssymb, bm, booktabs, geometry, setspace}
+\geometry{margin=1in}
+\doublespacing
+
+\title{Variance Component Modelling of Nuclear Family Data:\\
+From Trio Designs to Full ACDE Estimation in R}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+%====================================================
+\section{Introduction}
+
+Biometrical genetics aims to partition phenotypic variation into
+genetic and environmental components:
+
+\begin{itemize}
+\item Additive genetic effects ($A$)
+\item Dominance genetic effects ($D$)
+\item Shared environmental effects ($C$)
+\item Unique environmental effects ($E$)
+\end{itemize}
+
+Twin studies traditionally estimate ACE or ADE models.  
+Modern population cohorts, however, frequently contain nuclear family
+data. This paper presents a unified framework showing:
+
+\begin{itemize}
+\item what can be estimated from trio data,
+\item why siblings solve identifiability,
+\item how to estimate AE/ACE/ADE/ACDE using linear mixed models in R.
+\end{itemize}
+
+%====================================================
+\section{General Variance Decomposition}
+
+For phenotype $y$:
+
+\[
+y = \mu + a + d + c + e
+\]
+
+\[
+Var(y) = \sigma_A^2 + \sigma_D^2 + \sigma_C^2 + \sigma_E^2
+\]
+
+%====================================================
+\section{General Pedigree Covariance}
+
+For relatives $i,k$:
+
+\[
+\text{Cov}(y_i,y_k)
+= 2\phi_{ik}\sigma_A^2
++ \Delta_{ik}\sigma_D^2
++ \gamma_{ik}\sigma_C^2
+\]
+
+\begin{itemize}
+\item $\phi_{ik}$ : kinship coefficient
+\item $\Delta_{ik}$ : probability of sharing two alleles IBD
+\item $\gamma_{ik}$ : shared family environment indicator
+\end{itemize}
+
+%====================================================
+\section{Nuclear Family Trio Design}
+
+Consider mother--father--child trios.
+
+\subsection{Expected Covariances}
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Pair & $2\phi$ & $\Delta$ & $\gamma$ \\ \midrule
+Mother--Father & 0 & 0 & 1 \\
+Mother--Child  & $\tfrac12$ & 0 & 1 \\
+Father--Child  & $\tfrac12$ & 0 & 1 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Key Consequence}
+
+Dominance deviations are not transmitted:
+
+\[
+\Delta_{ik}=0 \quad \text{for all trio pairs}
+\]
+
+Thus dominance contributes only to individual variance:
+
+\[
+Var(y)=\sigma_A^2+\sigma_D^2+\sigma_E^2
+\]
+
+\subsection{Identifiable Family Resemblance}
+
+Trio data contain only one familial covariance:
+
+\[
+\text{Cov}_{family} = \frac12\sigma_A^2 + \sigma_F^2
+\]
+
+\[
+\sigma_F^2 =
+\begin{cases}
+\sigma_C^2 & \text{ACE interpretation} \\
+\text{residual familial resemblance} & \text{ADE interpretation}
+\end{cases}
+\]
+
+Hence:
+
+\[
+\textbf{Trio data allow AE, ACE or ADE --- but not ACDE.}
+\]
+
+%====================================================
+\section{Why Adding Siblings Solves Identifiability}
+
+Sibling covariance:
+
+\[
+\text{Cov}(\text{sibling}_1,\text{sibling}_2)
+= \tfrac12 A + C + \tfrac14 D
+\]
+
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+Design & Identifiable components \\ \midrule
+Trio & AE, ACE or ADE \\
+Family with siblings & ACDE \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%====================================================
+\section{ACDE Covariance Matrix}
+
+For parents ($P_f,P_m$) and siblings ($S_1,S_2$):
+
+\[
+\Sigma =
+\begin{pmatrix}
+V_P & V_C & \tfrac12 V_A + V_C & \tfrac12 V_A + V_C \\
+V_C & V_P & \tfrac12 V_A + V_C & \tfrac12 V_A + V_C \\
+\tfrac12 V_A + V_C & \tfrac12 V_A + V_C & V_P &
+\tfrac12 V_A + V_C + \tfrac14 V_D \\
+\tfrac12 V_A + V_C & \tfrac12 V_A + V_C &
+\tfrac12 V_A + V_C + \tfrac14 V_D & V_P
+\end{pmatrix}
+\]
+
+%====================================================
+\section{Likelihood Formulation}
+
+\[
+\mathbf{y}_i \sim \mathcal{N}(\mathbf{0}, \Sigma)
+\]
+
+\[
+\log f(\mathbf{y}_i) =
+-\frac12\left[
+\log|\Sigma|
++ \mathbf{y}_i^\top \Sigma^{-1} \mathbf{y}_i
++ k\log(2\pi)
+\right]
+\]
+
+Variance parameterisation:
+
+\[
+V_A = e^{\theta_A}, \quad
+V_C = e^{\theta_C}, \quad
+V_D = e^{\theta_D}, \quad
+V_E = e^{\theta_E}
+\]
+
+%====================================================
+\section{Linear Mixed Model Representation}
+
+Stacked observations:
+
+\[
+\mathbf{y} = \mathbf{X}\beta + \mathbf{Z}_A \mathbf{a}
++ \mathbf{Z}_F \mathbf{f} + \boldsymbol{\varepsilon}
+\]
+
+\begin{align}
+\mathbf{a} &\sim N(0, \sigma_A^2 \mathbf{A}) \\
+\mathbf{f} &\sim N(0, \sigma_F^2 \mathbf{I}) \\
+\boldsymbol{\varepsilon} &\sim N(0, \sigma_E^2 \mathbf{I})
+\end{align}
+
+%====================================================
+\section{Data Restructuring in R}
+
+\begin{verbatim}
+library(nlme)
+
+longdata <- reshape(
+  widelong,
+  varying=c("bmi1","bmi2","bmi3"),
+  v.names="bmi",
+  timevar="member",
+  times=c("mother","father","child"),
+  idvar="famid",
+  direction="long"
+)
+
+longdata$Acoef <- ifelse(longdata$member=="child",1,0.5)
+longdata$Ccoef <- 1
+longdata$Dcoef <- 1
+\end{verbatim}
+
+%====================================================
+\section{AE Model}
+
+\[
+Var(y)=\sigma_A^2+\sigma_E^2
+\]
+
+\begin{verbatim}
+model_AE <- lme(
+  bmi~1,
+  random=list(
+    famid=pdDiag(~Acoef-1),
+    indid=pdDiag(~Dcoef-1)
+  ),
+  data=longdata, method="REML")
+\end{verbatim}
+
+%====================================================
+\section{ACE Model}
+
+\[
+Var(y)=\sigma_A^2+\sigma_C^2+\sigma_E^2
+\]
+
+\begin{verbatim}
+model_ACE <- lme(
+  bmi~1,
+  random=list(
+    famid=pdDiag(~Acoef+Ccoef-1),
+    indid=pdDiag(~Dcoef-1)
+  ),
+  data=longdata, method="REML")
+\end{verbatim}
+
+%====================================================
+\section{ADE Model}
+
+\[
+Var(y)=\sigma_A^2+\sigma_D^2+\sigma_E^2
+\]
+
+\begin{verbatim}
+model_ADE <- lme(
+  bmi~1,
+  random=list(
+    famid=pdDiag(~Acoef-1),
+    sibshipid=pdDiag(~Dcoef-1)
+  ),
+  data=longdata, method="REML")
+\end{verbatim}
+
+%====================================================
+\section{Extracting Variance Components}
+
+\begin{verbatim}
+VarCorr(model_AE)
+VarCorr(model_ACE)
+VarCorr(model_ADE)
+\end{verbatim}
+
+%====================================================
+\section{Model Comparison}
+
+\begin{verbatim}
+anova(model_AE, model_ACE)
+anova(model_AE, model_ADE)
+\end{verbatim}
+
+%====================================================
+\section{Derived Quantities}
+
+\[
+h^2=\frac{V_A}{V_P},\quad
+c^2=\frac{V_C}{V_P},\quad
+d^2=\frac{V_D}{V_P},\quad
+e^2=\frac{V_E}{V_P}
+\]
+
+%====================================================
+\section{Conclusion}
+
+\begin{itemize}
+\item Trio data estimate additive genetic variance and one familial component.
+\item Siblings enable separation of shared environment and dominance.
+\item Linear mixed models provide a practical implementation in R.
+\end{itemize}
+
+\end{document}

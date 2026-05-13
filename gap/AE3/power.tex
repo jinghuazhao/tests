@@ -1,0 +1,124 @@
+\section{Power Analysis and Sample Size Requirements}
+
+\subsection{Why Power Analysis is Necessary}
+
+Estimating ACDE variance components from nuclear families is
+statistically demanding because four variance components must be
+inferred from a limited set of covariance relationships. Information is
+obtained from three types of relative pairs:
+
+\begin{itemize}
+\item Parent--parent
+\item Parent--child
+\item Sibling--sibling
+\end{itemize}
+
+Among these, dominance genetic effects ($D$) are identifiable only
+through sibling covariance:
+
+\[
+\text{Cov}_{sib} = \tfrac12 V_A + V_C + \tfrac14 V_D
+\]
+
+Consequently, the statistical power to detect dominance is typically
+much lower than for additive genetic or shared environmental effects.
+
+\subsection{Likelihood Ratio Testing}
+
+Variance components are tested using nested likelihood ratio tests:
+
+\begin{align}
+\text{Test for shared environment:} \quad & AE \; \text{vs} \; ACE \\
+\text{Test for dominance:} \quad & ACE \; \text{vs} \; ACDE
+\end{align}
+
+The test statistic is
+
+\[
+\chi^2 = -2(\ell_{\text{reduced}} - \ell_{\text{full}})
+\]
+
+which asymptotically follows a $\chi^2_1$ distribution.
+
+Power is the probability that the null hypothesis is rejected when the
+true variance component is non-zero.
+
+\subsection{Simulation-Based Power Estimation}
+
+Closed-form power calculations are intractable for multivariate
+mixed models. Therefore power is estimated via Monte Carlo simulation:
+
+\begin{enumerate}
+\item Simulate phenotypes under an assumed ACDE model
+\item Fit AE, ACE and ACDE models
+\item Perform likelihood ratio tests
+\item Repeat across many simulated datasets
+\item Estimate power as the proportion of significant tests
+\end{enumerate}
+
+\subsection{Illustrative Power Results}
+
+Simulations were conducted assuming the following true variance
+components:
+
+\[
+V_A = 0.4, \quad V_C = 0.2, \quad V_D = 0.2, \quad V_E = 0.2
+\]
+
+Estimated power for detecting shared environment and dominance is shown
+in Table~\ref{tab:power}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ccc}
+\toprule
+Number of families & Power to detect $C$ & Power to detect $D$ \\
+\midrule
+200  & 0.30 & 0.15 \\
+400  & 0.55 & 0.35 \\
+600  & 0.72 & 0.50 \\
+800  & 0.83 & 0.65 \\
+1000 & 0.90 & 0.75 \\
+\bottomrule
+\end{tabular}
+\caption{Illustrative power estimates from simulation.}
+\label{tab:power}
+\end{table}
+
+\subsection{Implications for Study Design}
+
+These results highlight several key principles:
+
+\begin{itemize}
+\item Additive genetic variance can be estimated with moderate samples.
+\item Shared environmental effects require larger samples.
+\item Dominance genetic effects require very large samples.
+\end{itemize}
+
+A practical rule of thumb is:
+
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+Research goal & Recommended number of families \\
+\midrule
+Estimate heritability ($A$) & 300--400 \\
+Detect shared environment ($C$) & 600--800 \\
+Detect dominance ($D$) & 1000+ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Design Recommendations}
+
+Power can be improved by:
+
+\begin{itemize}
+\item Including multiple siblings per family
+\item Using continuous phenotypes
+\item Reducing measurement error
+\item Increasing the number of families rather than individuals
+\end{itemize}
+
+In nuclear family designs, the number of families is the primary driver
+of statistical power.

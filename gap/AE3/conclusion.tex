@@ -1,0 +1,97 @@
+\section{Discussion}
+
+This paper presents a unified framework for estimating genetic and
+environmental variance components from nuclear family data using linear
+mixed models. The approach provides a practical alternative to classical
+twin designs and is directly applicable to modern cohort studies in which
+parents and multiple siblings are frequently observed.
+
+\subsection{Summary of Contributions}
+
+The key contributions of this work are:
+
+\begin{itemize}
+\item A unified theoretical treatment linking trio-based and sibling-based
+family designs within the ACDE variance decomposition framework.
+\item A likelihood-based formulation of the nuclear family covariance
+structure.
+\item A practical implementation using linear mixed models in \texttt{R}.
+\item Simulation studies demonstrating unbiased recovery of variance
+components.
+\item Power calculations providing guidance for study design.
+\end{itemize}
+
+Together, these elements provide a complete workflow from theory to
+practical application.
+
+\subsection{Relationship to Twin Designs}
+
+Twin studies have historically dominated quantitative genetic research
+because monozygotic and dizygotic twins provide strong contrasts in
+genetic relatedness. However, twin cohorts are not always available and
+may not be representative of the general population.
+
+Nuclear family designs offer several advantages:
+
+\begin{itemize}
+\item Availability in large population cohorts and biobanks
+\item Greater demographic representativeness
+\item Compatibility with longitudinal and multigenerational data
+\end{itemize}
+
+The present work shows that when siblings are included, nuclear families
+contain sufficient information to estimate the full ACDE model.
+
+\subsection{Limitations}
+
+Several limitations should be acknowledged.
+
+\paragraph{Large sample requirements}
+
+Detecting dominance variance is challenging because it is identified only
+through sibling covariance. As shown in the power analysis, large numbers
+of families are required to achieve adequate power.
+
+\paragraph{Assumptions of the classical model}
+
+The ACDE model relies on several simplifying assumptions:
+
+\begin{itemize}
+\item Random mating
+\item No gene--environment correlation
+\item No gene--environment interaction
+\item Equal shared environment within families
+\end{itemize}
+
+Violations of these assumptions may bias variance component estimates.
+
+\paragraph{Measurement error}
+
+Measurement error inflates the unique environmental component ($E$).
+High-quality phenotyping is therefore critical.
+
+\subsection{Future Directions}
+
+Several extensions of the framework are possible:
+
+\begin{itemize}
+\item Multivariate modelling of multiple phenotypes
+\item Longitudinal models for repeated measures
+\item Inclusion of genomic relationship matrices
+\item Bayesian estimation of variance components
+\end{itemize}
+
+These developments will further enhance the utility of nuclear family
+designs in genetic epidemiology.
+
+\subsection{Conclusion}
+
+Nuclear family data with siblings provide a powerful and flexible design
+for decomposing phenotypic variation into genetic and environmental
+components. The linear mixed model implementation presented here enables
+routine estimation of AE, ACE, ADE, and ACDE models using widely available
+software.
+
+As large family-based cohorts continue to grow, nuclear family modelling
+is likely to become an increasingly important tool in quantitative
+genetics.
