@@ -1,54 +1,92 @@
-#' Fit biometric AE, ACE or ADE mixed models for nuclear family trios
+#' Fit AE, ACE or ADE biometric mixed models to nuclear family data
 #'
 #' Fits classical biometric variance–decomposition models using a
 #' linear mixed model formulation implemented with `nlme::lme`.
-#' The implementation follows the covariance–equivalence approach of
-#' Rabe-Hesketh, Skrondal & Gjessing (2008).
 #'
-#' The function estimates additive genetic (A), shared familial (C or D),
-#' and unique environmental (E) variance components from parent–child
-#' trio data.
+#' The function estimates additive genetic (A), shared environmental (C),
+#' dominance genetic (D), and unique environmental (E) variance components
+#' from nuclear family data (parents and offspring).
 #'
-#' @param model A fixed-effects model formula.
-#' @param data A data frame in trio *long format* with one row per individual.
-#' Must contain:
+#' The model is valid for:
+#' * Parent–child trios (one offspring)
+#' * Nuclear families with multiple offsprings
+#'
+#' Only AE, ACE and ADE models are fitted.
+#' A second family-level random effect represents either shared
+#' environmental (C) or dominance genetic (D) variance and,
+#' in trio-only data, ACE and ADE models are statistically indistinguishable.
+#'
+#' @param model   Fixed-effects formula.
+#' @param data    Nuclear-family data in long format (one row per individual).
+#' @param type    Biometric model: "AE", "ACE" or "ADE".
+#' @param method  "ML" (default) or "REML".
+#'
+#' Required columns in `data`:
 #' \describe{
 #'   \item{familyid}{Nuclear family identifier}
 #'   \item{var1}{Mother indicator (1/0)}
 #'   \item{var2}{Father indicator (1/0)}
 #'   \item{var3}{Child indicator (1/0)}
 #' }
-#' @param type Character string specifying the biometric model:
-#' `"AE"`, `"ACE"` or `"ADE"`.
 #'
-#' @details
-#' The mixed model uses genetic design regressors:
-#'
-#' Additive genetic coefficient:
-#' \deqn{A = 0.5\,Mother + 0.5\,Father + 1\,Child}
-#'
-#' The second random effect represents either:
-#' \itemize{
-#'   \item shared environment (C) in the ACE model, or
-#'   \item dominance genetic variance (D) in the ADE model.
-#' }
-#'
-#' With trio data, ACE and ADE models have identical likelihood and
-#' cannot be statistically distinguished.
-#'
-#' @return A list with components:
+#' @return A list with:
 #' \describe{
 #'   \item{fit}{Fitted `nlme::lme` model}
-#'   \item{var}{Named vector of variance components (A, C, D, E)}
+#'   \item{var}{Variance components A, C, D, E}
 #'   \item{h2}{Narrow-sense heritability}
 #'   \item{c2}{Shared environmental proportion}
 #'   \item{d2}{Dominance proportion}
 #'   \item{H2}{Broad-sense heritability}
 #' }
 #'
+#' @details
+#' The function automatically detects whether the dataset contains
+#' only parent–child trios or nuclear families with multiple offspring
+#' and adapts the genetic parameterisation accordingly.
+#'
+#' \strong{Trio data (one offspring per family)}
+#'
+#' Additive genetic variance is represented using a single family-level
+#' random effect with coefficient
+#'
+#' \deqn{A = 0.5\,Mother + 0.5\,Father + 1\,Child.}
+#'
+#' This parameterisation is sufficient when only one offspring is present.
+#'
+#' \strong{Sibling data (multiple offspring per family)}
+#'
+#' Additive genetic variance is decomposed into three independent
+#' transmitted components:
+#'
+#' \itemize{
+#'   \item transmitted maternal genes (Am)
+#'   \item transmitted paternal genes (Af)
+#'   \item Mendelian sampling of the offspring (Ms)
+#' }
+#'
+#' For an offspring phenotype,
+#' \deqn{A = A_m + A_f + M_s}
+#'
+#' and the additive genetic variance becomes
+#' \deqn{Var(A) = 2(\sigma^2_{Am} + \sigma^2_{Af}) + \sigma^2_{Ms}.}
+#'
+#' A second family-level random effect represents either:
+#' \itemize{
+#'   \item shared environmental variance (C) in the ACE model, or
+#'   \item dominance genetic variance (D) in the ADE model.
+#' }
+#'
+#' With trio-only data, ACE and ADE models have identical likelihood and
+#' cannot be statistically distinguished. The function nevertheless allows
+#' both parameterisations to be fitted for completeness and model comparison.
+#'
+#' @references
+#' Rabe-Hesketh S, Skrondal A, Gjessing HK (2008).
+#' "Biometrical modeling of twin and family data using standard mixed model software."
+#' *Biometrics*, 64(1), 280–288.
+#'
 #' @examples
 #' library(gap.datasets)
-#' data(mfblong)
 #'
 #' model <- bwt ~ male + first + midage + highage + birthyr
 #'
@@ -73,49 +111,97 @@
 #'
 #' @export
 #'
-acde <- function(model, data, type=c("AE","ACE","ADE"))
+acde <- function(model, data, type=c("AE","ACE","ADE"), method="ML")
 {
-  require(nlme)
+  if(!requireNamespace("nlme", quietly=TRUE))
+    stop("Package 'nlme' is required.")
+
   type <- match.arg(type)
 
-  data$Acoef <- 0.5*data$var1 + 0.5*data$var2 + 1*data$var3
-  data$Fcoef <- 1
+  ## ---- check role indicators ----
+  if(!all(c("var1","var2","var3") %in% names(data)))
+    stop("Data must contain var1 (mother), var2 (father), var3 (child) indicators")
 
-  if(type=="AE")
-    rand <- list(familyid = pdDiag(~ Acoef - 1))
+  ## =====================================================
+  ## Detect whether siblings exist
+  ## =====================================================
+  child_count <- tapply(data$var3, data$familyid, sum)
+  has_siblings <- any(child_count > 1)
 
-  if(type %in% c("ACE","ADE"))
-    rand <- list(familyid = pdDiag(~ Acoef + Fcoef - 1))
+  ## =====================================================
+  ## Build design variables + random structure
+  ## =====================================================
+  if(!has_siblings)
+  {
+    message("Trio data detected → using collapsed additive model")
 
-  fit <- lme(model,
-             random = rand,
-             data   = data,
-             method = "ML",
-             control = lmeControl(opt="optim"))
+    ## ---- TRIO PARAMETERISATION ----
+    data$Acoef <- 0.5*data$var1 + 0.5*data$var2 + 1*data$var3
+    data$Fcoef <- 1
 
-  ## ===== extract SDs from VarCorr text matrix =====
-  vc <- VarCorr(fit)
+    if(type=="AE")
+      rand <- list(familyid = nlme::pdDiag(~ Acoef - 1))
+
+    if(type %in% c("ACE","ADE"))
+      rand <- list(familyid = nlme::pdDiag(~ Acoef + Fcoef - 1))
+
+    param <- "trio"
+
+  } else {
+
+    message("Sibling data detected → using transmission decomposition")
+
+    ## ---- SIBLING PARAMETERISATION ----
+    data$Amcoef <- data$var1
+    data$Afcoef <- data$var2
+    data$Mscoef <- data$var3
+    data$Fcoef  <- 1
+
+    if(type=="AE")
+      rand <- list(familyid = nlme::pdDiag(~ Amcoef + Afcoef + Mscoef -1))
+
+    if(type %in% c("ACE","ADE"))
+      rand <- list(familyid = nlme::pdDiag(~ Amcoef + Afcoef + Mscoef + Fcoef -1))
+
+    param <- "sibling"
+  }
+
+  ## =====================================================
+  ## Fit model
+  ## =====================================================
+  fit <- nlme::lme(model,
+                   random = rand,
+                   data   = data,
+                   method = method,
+                   control = nlme::lmeControl(opt="optim"))
+
+  ## =====================================================
+  ## Extract variance components
+  ## =====================================================
+  vc <- nlme::VarCorr(fit)
   sd_vals <- as.numeric(vc[,"StdDev"])
+  varE <- fit$sigma^2
+  re_var <- sd_vals[1:(length(sd_vals)-1)]^2
 
-  ## nlme ordering:
-  ## random effects first, residual last
-  varE <- fit$sigma^2            # residual variance
-  re_sd <- sd_vals[1:(length(sd_vals)-1)]
-  re_var <- re_sd^2
-
-  varA <- re_var[1]
-  varF <- if(type!="AE") re_var[2] else 0
+  if(param=="trio")
+  {
+    varA <- re_var[1]
+    varF <- if(type!="AE") re_var[2] else 0
+  } else {
+    varAm <- re_var[1]
+    varAf <- re_var[2]
+    varMs <- re_var[3]
+    varF  <- if(type!="AE") re_var[4] else 0
+    varA  <- 2*(varAm + varAf) + varMs
+  }
 
   varC <- if(type=="ACE") varF else 0
   varD <- if(type=="ADE") varF else 0
-
-  varA <- as.numeric(varA)
-  varC <- as.numeric(varC)
-  varD <- as.numeric(varD)
-  varE <- as.numeric(varE)
-
   varP <- varA + varC + varD + varE
 
+  ## =====================================================
+  ## Output
+  ## =====================================================
   list(
     fit = fit,
     var = c(A=varA, C=varC, D=varD, E=varE),
