@@ -33,10 +33,12 @@
 #' \describe{
 #'   \item{fit}{Fitted `nlme::lme` model}
 #'   \item{var}{Variance components A, C, D, E}
-#'   \item{h2}{Narrow-sense heritability}
-#'   \item{c2}{Shared environmental proportion}
-#'   \item{d2}{Dominance proportion}
-#'   \item{H2}{Broad-sense heritability}
+#'   \item{h2}{Narrow-sense heritability (\eqn{A/V_P})}
+#'   \item{c2}{Shared environmental proportion (\eqn{C/V_P})}
+#'   \item{d2}{Dominance proportion (\eqn{D/V_P})}
+#'   \item{H2}{Broad-sense heritability (\eqn{(A+D)/V_P}) in the ADE model;
+#'             in the AE model, \code{h2} provides an upper bound on total
+#'             genetic influence}
 #' }
 #'
 #' @details
@@ -80,6 +82,12 @@
 #' cannot be statistically distinguished. The function nevertheless allows
 #' both parameterisations to be fitted for completeness and model comparison.
 #'
+#' Because shared environmental (C) and dominance genetic (D) effects are not
+#' separately identifiable in nuclear family data, AE, ACE and ADE models
+#' should be interpreted jointly. The AE model typically provides an upper
+#' bound on total genetic influence, while the ADE model provides an estimate
+#' of broad-sense heritability when dominance effects are supported by the data.
+#'
 #' @references
 #' Rabe-Hesketh S, Skrondal A, Gjessing HK (2008).
 #' "Biometrical modeling of twin and family data using standard mixed model software."
@@ -117,72 +125,42 @@ acde <- function(model, data, type=c("AE","ACE","ADE"), method="ML")
     stop("Package 'nlme' is required.")
 
   type <- match.arg(type)
-
-  ## ---- check role indicators ----
   if(!all(c("var1","var2","var3") %in% names(data)))
     stop("Data must contain var1 (mother), var2 (father), var3 (child) indicators")
 
-  ## =====================================================
-  ## Detect whether siblings exist
-  ## =====================================================
   child_count <- tapply(data$var3, data$familyid, sum)
   has_siblings <- any(child_count > 1)
-
-  ## =====================================================
-  ## Build design variables + random structure
-  ## =====================================================
   if(!has_siblings)
   {
     message("Trio data detected → using collapsed additive model")
-
-    ## ---- TRIO PARAMETERISATION ----
     data$Acoef <- 0.5*data$var1 + 0.5*data$var2 + 1*data$var3
     data$Fcoef <- 1
-
     if(type=="AE")
       rand <- list(familyid = nlme::pdDiag(~ Acoef - 1))
-
     if(type %in% c("ACE","ADE"))
       rand <- list(familyid = nlme::pdDiag(~ Acoef + Fcoef - 1))
-
     param <- "trio"
-
   } else {
-
     message("Sibling data detected → using transmission decomposition")
-
-    ## ---- SIBLING PARAMETERISATION ----
     data$Amcoef <- data$var1
     data$Afcoef <- data$var2
     data$Mscoef <- data$var3
     data$Fcoef  <- 1
-
     if(type=="AE")
       rand <- list(familyid = nlme::pdDiag(~ Amcoef + Afcoef + Mscoef -1))
-
     if(type %in% c("ACE","ADE"))
       rand <- list(familyid = nlme::pdDiag(~ Amcoef + Afcoef + Mscoef + Fcoef -1))
-
     param <- "sibling"
   }
-
-  ## =====================================================
-  ## Fit model
-  ## =====================================================
   fit <- nlme::lme(model,
                    random = rand,
                    data   = data,
                    method = method,
                    control = nlme::lmeControl(opt="optim"))
-
-  ## =====================================================
-  ## Extract variance components
-  ## =====================================================
   vc <- nlme::VarCorr(fit)
   sd_vals <- as.numeric(vc[,"StdDev"])
   varE <- fit$sigma^2
   re_var <- sd_vals[1:(length(sd_vals)-1)]^2
-
   if(param=="trio")
   {
     varA <- re_var[1]
@@ -194,14 +172,9 @@ acde <- function(model, data, type=c("AE","ACE","ADE"), method="ML")
     varF  <- if(type!="AE") re_var[4] else 0
     varA  <- 2*(varAm + varAf) + varMs
   }
-
   varC <- if(type=="ACE") varF else 0
   varD <- if(type=="ADE") varF else 0
   varP <- varA + varC + varD + varE
-
-  ## =====================================================
-  ## Output
-  ## =====================================================
   list(
     fit = fit,
     var = c(A=varA, C=varC, D=varD, E=varE),
