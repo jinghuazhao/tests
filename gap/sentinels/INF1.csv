@@ -1,0 +1,3 @@
+Chromosome,Position,MarkerName,Allele1,Allele2,Freq1,FreqSE,MinFreq,MaxFreq,Effect,StdErr,P.value,Direction,N,prot,chi2n
+8,120081031,chr8:120081031_C_T,t,c,0.5572,0.0269,0.5162,0.6229,-0.1698,0.0114,2.335e-50,-------?----,14470.01,OPG,0.0153319303577239
+17,26694861,chr17:26694861_A_G,a,g,0.4727,0.0382,0.3678,0.548,-0.1385,0.011,2.607e-36,---+--------,14918,OPG,0.0106268260983736
