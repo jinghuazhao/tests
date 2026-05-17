@@ -152,4 +152,3 @@ metareg <- function(data,N,verbose=TRUE,prefixb="b",prefixse="se")
            "eps=smallest double-precision number\n")
    invisible(data.frame(beta_f=BETA_F,se_f=SE_F,z_f=Z_F,beta_r=BETA_R,se_r=SE_R,p_heter=P_HETER,i2=I2,k=K,eps=eps))
 }
-
