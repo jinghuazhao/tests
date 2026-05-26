@@ -12,18 +12,19 @@ gsmr_efo <- read.delim(file.path(INF,"mr","gsmr","gsmr-efo.txt")) %>%
 #proxies <- qtl_lookup(d,gsmr_efo,plink_bin="/rds/user/jhz22/hpc-work/bin/plink",
 #                      xlsx=file.path(INF,"mr","gsmr","r2_INTERVAL.xlsx")) %>%
 #           select(protein,id,Disease,fdr,pqtl,p,qtl,p_qtl,proxy,p_proxy,rsq)
+# load("~/tests/pQTLtools/qtl_lookup/test.rda")
 # revised
 proxies <- qtl_lookup(
     d,
     gsmr_efo,
     panel = "local",
     plink_bin = "/rds/user/jhz22/hpc-work/bin/plink",
-    xlsx = file.path(INF, "mr", "gsmr", "r2_INTERVAL.xlsx")
+    xlsx = file.path("r2_INTERVAL.xlsx")
 ) |>
 dplyr::select(
     protein, id, Disease, fdr,
     pqtl, p, qtl, p_qtl,
     proxy, p_proxy, rsq, classification
 )
-write.table(proxies,file=file.path(INF,"mr","gsmr","r2_INTERVAL.tsv"),
+write.table(proxies,file=file.path("test_INTERVAL.tsv"),
             row.names=FALSE,quote=FALSE,sep="\t")
