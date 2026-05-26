@@ -8,8 +8,22 @@ gsmr_efo <- read.delim(file.path(INF,"mr","gsmr","gsmr-efo.txt")) %>%
                    bfile=file.path(INF,"INTERVAL","per_chr",
                                    paste0("interval.imputed.olink.chr_",chr)),
                    proxy=NA,p_proxy=NA,rsq=NA)
-proxies <- qtl_lookup(d,gsmr_efo,plink_bin="/rds/user/jhz22/hpc-work/bin/plink",
-                      xlsx=file.path(INF,"mr","gsmr","r2_INTERVAL.xlsx")) %>%
-           select(protein,id,Disease,fdr,pqtl,p,qtl,p_qtl,proxy,p_proxy,rsq)
+# legacy
+#proxies <- qtl_lookup(d,gsmr_efo,plink_bin="/rds/user/jhz22/hpc-work/bin/plink",
+#                      xlsx=file.path(INF,"mr","gsmr","r2_INTERVAL.xlsx")) %>%
+#           select(protein,id,Disease,fdr,pqtl,p,qtl,p_qtl,proxy,p_proxy,rsq)
+# revised
+proxies <- qtl_lookup(
+    d,
+    gsmr_efo,
+    panel = "local",
+    plink_bin = "/rds/user/jhz22/hpc-work/bin/plink",
+    xlsx = file.path(INF, "mr", "gsmr", "r2_INTERVAL.xlsx")
+) |>
+dplyr::select(
+    protein, id, Disease, fdr,
+    pqtl, p, qtl, p_qtl,
+    proxy, p_proxy, rsq, classification
+)
 write.table(proxies,file=file.path(INF,"mr","gsmr","r2_INTERVAL.tsv"),
             row.names=FALSE,quote=FALSE,sep="\t")
