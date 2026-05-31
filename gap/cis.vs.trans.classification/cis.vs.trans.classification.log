@@ -1,0 +1,98 @@
+> ?cis.vs.trans.classification
+> jma.cojo
+    prot Chr                SNP        bp refA    freq        b        se
+393  OPG   8 chr8:120081031_C_T 120081031    C 0.46416 0.207855 0.0204073
+394  OPG  17 chr17:26612996_C_T  26612996    T 0.46947 0.172628 0.0201845
+              p       n freq_geno       bJ     bJ_se          pJ LD_r uniprot
+393 4.00719e-24 6243.00  0.439364 0.207855 0.0205745 5.38315e-24    0  O00300
+394 1.59082e-17 6405.28  0.484095 0.172628 0.0202979 1.82001e-17    0  O00300
+>
+>      INF <- Sys.getenv("INF")
+>      f <- file.path(INF,"work","INF1.merge")
+>      clumped <- read.delim(f,as.is=TRUE)
+>      hits <- merge(clumped[c("CHR","POS","MarkerName","prot","log10p")],
++                    inf1[c("prot","uniprot")],by="prot")
+>      names(hits) <- c("prot","Chr","bp","SNP","log10p","uniprot")
+>      cistrans <- cis.vs.trans.classification(hits,inf1,"uniprot")
+>      cis.vs.trans <- with(cistrans,data)
+>      knitr::kable(with(cistrans,table),caption="Table 1. cis/trans classification")
+
+
+Table: Table 1. cis/trans classification
+
+|          | cis| trans| total|
+|:---------|---:|-----:|-----:|
+|ADA       |   1|     0|     1|
+|CASP8     |   1|     0|     1|
+|CCL11     |   1|     4|     5|
+|CCL13     |   1|     3|     4|
+|CCL19     |   1|     3|     4|
+|CCL2      |   0|     3|     3|
+|CCL20     |   1|     1|     2|
+|CCL23     |   1|     0|     1|
+|CCL25     |   1|     3|     4|
+|CCL3      |   1|     1|     2|
+|CCL4      |   1|     1|     2|
+|CCL7      |   1|     2|     3|
+|CCL8      |   1|     1|     2|
+|CD244     |   1|     2|     3|
+|CD274     |   1|     0|     1|
+|CD40      |   1|     0|     1|
+|CD5       |   1|     2|     3|
+|CD6       |   1|     1|     2|
+|CDCP1     |   1|     2|     3|
+|CSF1      |   1|     0|     1|
+|CST5      |   1|     3|     4|
+|CX3CL1    |   1|     2|     3|
+|CXCL1     |   1|     0|     1|
+|CXCL10    |   1|     1|     2|
+|CXCL11    |   1|     3|     4|
+|CXCL5     |   1|     3|     4|
+|CXCL6     |   1|     1|     2|
+|CXCL9     |   1|     2|     3|
+|DNER      |   1|     0|     1|
+|EIF4EBP1  |   0|     1|     1|
+|FGF19     |   0|     3|     3|
+|FGF21     |   1|     2|     3|
+|FGF23     |   0|     2|     2|
+|FGF5      |   1|     0|     1|
+|FLT3LG    |   0|     6|     6|
+|GDNF      |   1|     0|     1|
+|HGF       |   1|     1|     2|
+|IL10      |   1|     2|     3|
+|IL10RB    |   1|     1|     2|
+|IL12B     |   1|     7|     8|
+|IL15RA    |   1|     0|     1|
+|IL17C     |   1|     0|     1|
+|IL18      |   1|     1|     2|
+|IL18R1    |   1|     1|     2|
+|IL1A      |   0|     1|     1|
+|IL6       |   0|     1|     1|
+|IL7       |   1|     0|     1|
+|IL8       |   1|     0|     1|
+|KITLG     |   0|     7|     7|
+|LIFR      |   0|     1|     1|
+|LTA       |   1|     2|     3|
+|MMP1      |   1|     2|     3|
+|MMP10     |   1|     1|     2|
+|NGF       |   1|     1|     2|
+|NTF3      |   0|     1|     1|
+|OSM       |   0|     2|     2|
+|PLAU      |   1|     5|     6|
+|S100A12   |   1|     0|     1|
+|SIRT2     |   1|     0|     1|
+|SLAMF1    |   1|     4|     5|
+|SULT1A1   |   1|     1|     2|
+|TGFA      |   1|     0|     1|
+|TGFB1     |   1|     0|     1|
+|TNFRSF11B |   1|     1|     2|
+|TNFRSF9   |   1|     1|     2|
+|TNFSF10   |   1|     7|     8|
+|TNFSF11   |   1|     5|     6|
+|TNFSF12   |   1|     4|     5|
+|TNFSF14   |   1|     0|     1|
+|VEGFA     |   1|     3|     4|
+|total     |  59|   121|   180|
+>      with(cistrans,total)
+[1] 180
+>
