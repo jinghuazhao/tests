@@ -1,0 +1,125 @@
+Sequence: MWQLTSLLLFVATWGISGTPAPLDSVFSSSERAHQVLRIRKRANSFLEELRHSSLERECIEEICDFEEAKEIFQNVDDTLAFWSKHVDGDQCLVLPLEHPCASLCCGHGTCIDGIGSFSCDCRSGWEGRFCQREVSFLNCSLDNGGCTHYCLEEVGWRRCSCAPGYKLGDDLLQCHPAVKFPCGRPWKRMEKKRSHLKRDTEDQEDQVDPRLIDGKMTRRGDSPWQVVLLDSKKKLACGAVLIHPSWVLTAAHCMDESKKLLVRLGEYDLRRWEKWELDLDIKEVFVHPNYSKSTTDNDIALLHLAQPATLSQTIVPICLPDSGLAERELNQAGQETLVTGWGYHSSREKEAKRNRTFVLNFIKIPVVPHNECSEVMSNMVSENMLCAGILGDRQDACEGDSGGPMVASFHGTWFLVGLVSWGEGCGLLHNYGVYTKVSRYLDWIHGHIRDKEAPQKSWAP 
+$accession
+[1] "P04070"
+
+$sequence
+461-letter AAString object
+seq: MWQLTSLLLFVATWGISGTPAPLDSVFSSSERAHQV...CGLLHNYGVYTKVSRYLDWIHGHIRDKEAPQKSWAP
+
+$mapping
+      Isotope.Group.ID    Protein      Modified.Peptide.Sequence
+16828        442652002 PROC_HUMAN                   DTEDQEDQVDPR
+16829        442662841 PROC_HUMAN                   DTEDQEDQVDPR
+16830        442686210 PROC_HUMAN                   DTEDQEDQVDPR
+16831        442686796 PROC_HUMAN                   DTEDQEDQVDPR
+16832        442686905 PROC_HUMAN                   DTEDQEDQVDPR
+16833        442847259 PROC_HUMAN ELN[115.0269]QAGQETLVTGWGYHSSR
+16834        442688824 PROC_HUMAN           ELNQAGQETLVTGWGYHSSR
+16835        442747564 PROC_HUMAN           ELNQAGQETLVTGWGYHSSR
+16836        442601996 PROC_HUMAN                     EVFVHPNYSK
+16837        442580878 PROC_HUMAN                        LGEYDLR
+16838        442583032 PROC_HUMAN                        LGEYDLR
+16839        442582032 PROC_HUMAN                       LGEYDLRR
+16840        442593270 PROC_HUMAN                  RDTEDQEDQVDPR
+16841        442581615 PROC_HUMAN                 RGDSPWQVVLLDSK
+16842        442688952 PROC_HUMAN                 RGDSPWQVVLLDSK
+16843        442739582 PROC_HUMAN                 RGDSPWQVVLLDSK
+16844        442618737 PROC_HUMAN                RGDSPWQVVLLDSKK
+16845        442645310 PROC_HUMAN                RGDSPWQVVLLDSKK
+16846        442585077 PROC_HUMAN             TFVLN[115.0269]FIK
+16847        442593037 PROC_HUMAN             TFVLN[115.0269]FIK
+16848        442605638 PROC_HUMAN             TFVLN[115.0269]FIK
+16849        442580593 PROC_HUMAN                       TFVLNFIK
+16850        442592347 PROC_HUMAN                       TFVLNFIK
+16851        442597510 PROC_HUMAN                       TFVLNFIK
+16852        442611348 PROC_HUMAN                       TFVLNFIK
+16853        442616032 PROC_HUMAN                       TFVLNFIK
+16854        442590967 PROC_HUMAN                       WELDLDIK
+16855        442607670 PROC_HUMAN                       WELDLDIK
+16856        442580684 PROC_HUMAN                     YLDWIHGHIR
+16857        442589612 PROC_HUMAN                     YLDWIHGHIR
+16858        442658354 PROC_HUMAN              YLDWIHGHIRDKEAPQK
+      Monoisotopic.mz Max.Isotope.Time.Centroid Charge
+16828        723.8046                    5.2633      2
+16829        723.8127                    7.7277      2
+16830        723.8044                    4.1260      2
+16831        723.8035                    4.5577      0
+16832        723.8129                    4.8033      0
+16833       1117.5094                   31.5090      0
+16834        745.0284                   31.2355      3
+16835       1117.0494                   31.1975      2
+16836        407.2068                   13.1994      3
+16837        433.2243                   14.0641      2
+16838        433.2238                   12.6712      2
+16839        511.2749                   10.8674      2
+16840        534.9095                    4.3923      3
+16841        533.9556                   37.9377      3
+16842        800.4311                   37.8835      2
+16843        800.4154                   35.6785      0
+16844        576.6539                   34.4286      3
+16845        576.6534                   33.7468      0
+16846        491.7846                   39.7706      2
+16847        491.7845                   41.9174      2
+16848        491.7869                   40.7976      0
+16849        491.2932                   40.2392      2
+16850        491.2831                   37.8737      0
+16851        491.2833                   38.3483      0
+16852        491.2840                   38.8045      0
+16853        491.2837                   39.3173      0
+16854        516.2746                   39.1881      2
+16855        516.2718                   38.2174      0
+16856        437.2319                   29.7762      3
+16857        437.2352                   29.0782      3
+16858        702.7053                   21.9742      0
+
+$mps
+# A tibble: 14 × 6
+   Modified.Peptide.Sequence      n_isotope isotope           mz    mtime charge
+   <chr>                              <int> <chr>             <chr> <chr> <chr> 
+ 1 DTEDQEDQVDPR                           5 442652002;442662… 723.… 5.26… 2;2;2…
+ 2 ELNQAGQETLVTGWGYHSSR                   2 442688824;442747… 745.… 31.2… 3;2   
+ 3 ELN[115.0269]QAGQETLVTGWGYHSSR         1 442847259         1117… 31.5… 0     
+ 4 EVFVHPNYSK                             1 442601996         407.… 13.1… 3     
+ 5 LGEYDLR                                2 442580878;442583… 433.… 14.0… 2;2   
+ 6 LGEYDLRR                               1 442582032         511.… 10.8… 2     
+ 7 RDTEDQEDQVDPR                          1 442593270         534.… 4.39… 3     
+ 8 RGDSPWQVVLLDSK                         3 442581615;442688… 533.… 37.9… 3;2;0 
+ 9 RGDSPWQVVLLDSKK                        2 442618737;442645… 576.… 34.4… 3;0   
+10 TFVLNFIK                               5 442580593;442592… 491.… 40.2… 2;0;0…
+11 TFVLN[115.0269]FIK                     3 442585077;442593… 491.… 39.7… 2;2;0 
+12 WELDLDIK                               2 442590967;442607… 516.… 39.1… 2;0   
+13 YLDWIHGHIR                             2 442580684;442589… 437.… 29.7… 3;3   
+14 YLDWIHGHIRDKEAPQK                      1 442658354         702.… 21.9… 0     
+
+$positions
+                               start     end       width    
+DTEDQEDQVDPR                   200       211       12       
+ELN[115.0269]QAGQETLVTGWGYHSSR integer,0 integer,0 integer,0
+ELNQAGQETLVTGWGYHSSR           329       348       20       
+EVFVHPNYSK                     284       293       10       
+LGEYDLR                        265       271       7        
+LGEYDLRR                       265       272       8        
+RDTEDQEDQVDPR                  199       211       13       
+RGDSPWQVVLLDSK                 220       233       14       
+RGDSPWQVVLLDSKK                220       234       15       
+TFVLN[115.0269]FIK             integer,0 integer,0 integer,0
+TFVLNFIK                       357       364       8        
+WELDLDIK                       276       283       8        
+YLDWIHGHIR                     441       450       10       
+YLDWIHGHIRDKEAPQK              441       457       17       
+                               seq                   
+DTEDQEDQVDPR                   "DTEDQEDQVDPR"        
+ELN[115.0269]QAGQETLVTGWGYHSSR character,0           
+ELNQAGQETLVTGWGYHSSR           "ELNQAGQETLVTGWGYHSSR"
+EVFVHPNYSK                     "EVFVHPNYSK"          
+LGEYDLR                        "LGEYDLR"             
+LGEYDLRR                       "LGEYDLRR"            
+RDTEDQEDQVDPR                  "RDTEDQEDQVDPR"       
+RGDSPWQVVLLDSK                 "RGDSPWQVVLLDSK"      
+RGDSPWQVVLLDSKK                "RGDSPWQVVLLDSKK"     
+TFVLN[115.0269]FIK             character,0           
+TFVLNFIK                       "TFVLNFIK"            
+WELDLDIK                       "WELDLDIK"            
+YLDWIHGHIR                     "YLDWIHGHIR"          
+YLDWIHGHIRDKEAPQK              "YLDWIHGHIRDKEAPQK"   
+
