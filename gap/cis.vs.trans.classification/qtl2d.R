@@ -1,0 +1,13 @@
+gap::qtl2dplot(
+    cis.vs.trans,
+    snp_name="SNP",
+    snp_chr="Chr",
+    snp_pos="bp",
+    gene_chr="p.chr",
+    gene_start="p.start",
+    gene_end="p.end",
+    trait="prot",
+    gene="p.gene",
+    cis="cis",
+    value="log10p"
+)
