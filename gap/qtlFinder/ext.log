@@ -1,0 +1,61 @@
+> threshold <- log10(5 * 10^-8)
+> tbl <- "~/Caprion/analysis/METAL_dr/ZPI_dr-1.tbl.gz"
+> sumstats <- read.table(tbl, col.names = varlist, check.names = FALSE)
+> res1 <- qtlFinder(sumstats)
+> res1
+# A tibble: 43 × 14
+# Groups:   chrom, regionStart, regionEnd [43]
+   chrom     start      end rsid  a1    a2       EAF      b     SE mlog10p     n
+   <chr>     <dbl>    <dbl> <chr> <chr> <chr>  <dbl>  <dbl>  <dbl>   <dbl> <int>
+ 1 chr1   27626659   2.76e7 1:27… a     g     0.0162  0.581 0.123     5.6   2491
+ 2 chr1  165685067   1.66e8 1:16… a     c     0.55   -0.135 0.0290    5.47  2491
+ 3 chr10  15722440   1.57e7 10:1… t     g     0.998   2.15  0.461     5.52  2295
+ 4 chr10 102506959   1.03e8 10:1… a     g     0.996  -1.27  0.260     5.97  2491
+ 5 chr11  33883524   3.39e7 11:3… t     c     0.999   2.68  0.597     5.17  1488
+ 6 chr11  87910276   8.79e7 11:8… a     c     0.995   0.995 0.203     6     2491
+ 7 chr12  26097119   2.61e7 12:2… t     c     0.943   0.262 0.0607    4.79  2491
+ 8 chr12  48898823   4.89e7 12:4… a     t     0.0022 -2.20  0.480     5.35  1684
+ 9 chr13 113800622   1.14e8 13:1… t     c     0.373  -0.541 0.0306   69.0   2491
+10 chr14  94750486   9.48e7 14:9… t     c     0.989   1.52  0.136    28.5   2491
+# ℹ 33 more rows
+# ℹ 3 more variables: regionStart <dbl>, regionEnd <dbl>, .overlap <int>
+# ℹ Use `print(n = ...)` to see more rows
+> subset(res1, mlog10p >= -threshold)
+# A tibble: 2 × 14
+# Groups:   chrom, regionStart, regionEnd [2]
+  chrom     start       end rsid   a1    a2      EAF      b     SE mlog10p     n
+  <chr>     <dbl>     <dbl> <chr>  <chr> <chr> <dbl>  <dbl>  <dbl>   <dbl> <int>
+1 chr13 113800622 113800622 13:11… t     c     0.373 -0.541 0.0306    69.0  2491
+2 chr14  94750486  94750486 14:94… t     c     0.989  1.52  0.136     28.5  2491
+# ℹ 3 more variables: regionStart <dbl>, regionEnd <dbl>, .overlap <int>
+>
+> d <- subset(sumstats, log10P <= threshold)
+> res2 <- qtlFinder(d)
+> res2
+# A tibble: 2 × 14
+# Groups:   chrom, regionStart, regionEnd [2]
+  chrom     start       end rsid   a1    a2      EAF      b     SE mlog10p     n
+  <chr>     <dbl>     <dbl> <chr>  <chr> <chr> <dbl>  <dbl>  <dbl>   <dbl> <int>
+1 chr13 113800622 113800622 13:11… t     c     0.373 -0.541 0.0306    69.0  2491
+2 chr14  94750486  94750486 14:94… t     c     0.989  1.52  0.136     28.5  2491
+# ℹ 3 more variables: regionStart <dbl>, regionEnd <dbl>, .overlap <int>
+>
+> sentinels <- "~/Caprion/analysis/METAL_dr/sentinels/ZPI_dr.p.gz"
+> d2 <- read.table(sentinels, col.names = varlist, check.names = FALSE)
+> res3 <- qtlFinder(d2)
+> res3
+# A tibble: 2 × 14
+# Groups:   chrom, regionStart, regionEnd [2]
+  chrom     start       end rsid   a1    a2      EAF      b     SE mlog10p     n
+  <chr>     <dbl>     <dbl> <chr>  <chr> <chr> <dbl>  <dbl>  <dbl>   <dbl> <int>
+1 chr13 113800622 113800622 13:11… t     c     0.373 -0.541 0.0306    69.0  2491
+2 chr14  94750486  94750486 14:94… t     c     0.989  1.52  0.136     28.5  2491
+# ℹ 3 more variables: regionStart <dbl>, regionEnd <dbl>, .overlap <int>
+>
+> # A tibble: 2 × 14
+> # Groups:   chrom, regionStart, regionEnd [2]
+> #   chrom     start       end rsid   a1    a2      EAF      b     SE mlog10p     n
+> #   <chr>     <dbl>     <dbl> <chr>  <chr> <chr> <dbl>  <dbl>  <dbl>   <dbl> <int>
+> # 1 chr13 113800622 113800622 13:11… t     c     0.373 -0.541 0.0306    69.0  2491
+> # 2 chr14  94750486  94750486 14:94… t     c     0.989  1.52  0.136     28.5  2491
+> # # 3 more variables: regionStart <dbl>, regionEnd <dbl>, .overlap <int>
