@@ -1,0 +1,93 @@
+#' Test/Power Calculation for Mediating Effect
+#'
+#' This function tests for or calculates power of a mediation (indirect) effect based on
+#' regression coefficients from independent variable to mediator (`a`) and from mediator to
+#' outcome (`b`), along with their standard errors. It supports Sobel, Aroian, and Goodman variants.
+#'
+#' @param type One of `"test"` or `"power"`.
+#' @param n Numeric; default sample size used for power calculation.
+#' @param a Numeric; regression coefficient from independent variable to mediator.
+#' @param sa Numeric; standard error of `a`.
+#' @param b Numeric; regression coefficient from mediator to outcome.
+#' @param sb Numeric; standard error of `b`.
+#' @param alpha Numeric; significance level (default 0.05) for power calculation.
+#' @param fold Numeric; fold change for power calculation (useful for a range of sample sizes).
+#' @param method One of `"sobel"`, `"aroian"`, or `"goodman"` specifying the variance formula.
+#'
+#' @details
+#' The function computes the indirect effect (\eqn{ab}) and its standard error, then
+#' calculates the z-statistic and p-value. For power calculation, it treats the
+#' \eqn{z^2} statistic as a non-central chi-square statistic and computes the
+#' probability of detection at the specified sample size.
+#'
+#' @return
+#' For `type = "test"`, a named numeric vector containing:
+#' - `effect`: indirect effect estimate (\eqn{ab}).
+#' - `se`: standard error of the indirect effect.
+#' - `z`: z-statistic.
+#' - `p`: two-sided p-value.
+#' - `lcl`: lower 95% confidence limit.
+#' - `ucl`: upper 95% confidence limit.
+#'
+#' For `type = "power"`, a named numeric vector containing:
+#' - `sample_size`: effective sample size (`fold * n`).
+#' - `power`: estimated statistical power.
+#'
+#' @references
+#' \insertRef{freathy08}{gap}
+#' \insertRef{kline05}{gap}
+#' \insertRef{mackinnon08}{gap}
+#' \insertRef{preacher01}{gap}
+#'
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' # Test mediation effect
+#' ab(a = 0.15, sa = 0.01, b = log(1.19), sb = 0.01, method = "aroian")
+#'
+#' # Power calculation for 10% increase in sample size
+#' ab(type = "power", n = 25000, a = 0.15, sa = 0.01,
+#'    b = log(1.19), sb = 0.01, fold = 1.1)
+#' }
+#'
+ab <- function(type = c("power", "test"),
+               n = 25000,
+               a = 0.15,
+               sa = 0.01,
+               b = log(1.19),
+               sb = 0.01,
+               alpha = 0.05,
+               fold = 1,
+               method = c("sobel", "aroian", "goodman"))
+{
+  type <- match.arg(type)
+  method <- match.arg(method)
+  # Indirect effect
+  effect <- a * b
+  # Standard error according to method
+  se <- switch(method,
+    sobel   = sqrt(b^2 * sa^2 + a^2 * sb^2),
+    aroian  = sqrt(b^2 * sa^2 + a^2 * sb^2 + sa^2 * sb^2),
+    goodman = sqrt(b^2 * sa^2 + a^2 * sb^2 - sa^2 * sb^2)
+  )
+  z <- effect / se
+  p <- 2 * pnorm(-abs(z))
+  lcl <- effect - qnorm(0.975) * se
+  ucl <- effect + qnorm(0.975) * se
+  if (type == "power") {
+    x2 <- z^2
+    crit <- qchisq(alpha, df = 1, lower.tail = FALSE)
+    power <- pchisq(crit, df = 1, ncp = x2 * fold, lower.tail = FALSE)
+    stats <- c(sample_size = fold * n,
+               power = power)
+  } else {
+    stats <- c(effect = effect,
+               se = se,
+               z = z,
+               p = p,
+               lcl = lcl,
+               ucl = ucl)
+  }
+  invisible(stats)
+}

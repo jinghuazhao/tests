@@ -1,0 +1,30 @@
+> library(gap)
+Loading required package: gap.datasets
+gap version 1.15.3
+>      ab(
++        type = "power",
++        n = 25000,
++        a = 0.15,
++        sa = 0.01,
++        b = log(1.19),
++        sb = 0.01,
++        alpha = 0.05,
++        fold = 1
++      )
+25000 , 1
+>
+> detech(package:gap)
+> source("ext.R")
+> a <- ab(a = 0.15, sa = 0.01, b = log(1.19), sb = 0.01, method = "aroian")
+> a
+sample_size       power
+      25000           1
+> b <- ab(type = "power", n = 25000, a = 0.15, sa = 0.01,b = log(1.19), sb = 0.01, fold = 1.1)
+> b
+sample_size       power
+      27500           1
+> c <- ab(type = "test", n = 25000, a = 0.15, sa = 0.01,b = log(1.19), sb = 0.01, fold = 1.1)
+> c
+      effect           se            z            p          lcl          ucl
+2.609300e-02 2.296949e-03 1.135985e+01 6.625880e-30 2.159106e-02 3.059493e-02
+>
