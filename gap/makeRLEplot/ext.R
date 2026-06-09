@@ -20,27 +20,32 @@
 #'
 #' @examples
 #' \dontrun{
-#' par(mfrow = c(2, 1))
-#'
+#' set.seed(123)
+#' E <- matrix(
+#'   rlnorm(987 * 200, meanlog = 5, sdlog = 1),
+#'   nrow = 987,
+#'   ncol = 200
+#' )
+#' colnames(E) <- paste0("Sample_", seq_len(200))
+#' rownames(E) <- paste0("Gene_", seq_len(987))
+#' group <- rep(c("Control", "Treatment"), each = 100)
+#' col.group <- c(
+#'   Control = "steelblue",
+#'   Treatment = "tomato"
+#' )
 #' makeRLEplot(
-#'   d,
-#'   log2.data = FALSE,
+#'   E,
+#'   log2.data = TRUE,
 #'   groups = group,
 #'   col.group = col.group,
-#'   cex = 0.3,
-#'   showTitle = TRUE
-#' )
-#'
-#' makeRLEplot(
-#'   d,
-#'   log2.data = FALSE,
-#'   cex = 0.3,
+#'   cex = 0.4,
 #'   showTitle = TRUE,
-#'   title = "Uncoloured relative log expression (RLE) plot"
+#'   title = "RLE plot (987 genes × 200 samples)"
 #' )
 #' }
 #'
 #' @export
+#'
 makeRLEplot <- function(
   E,
   log2.data = TRUE,
