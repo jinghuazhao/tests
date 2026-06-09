@@ -50,22 +50,16 @@ makeRLEplot <- function(
     title = "Relative log expression (RLE) plot",
     ...
 ) {
-
   E <- as.matrix(E)
-
   if (isTRUE(log2.data)) {
     message("Applying log2 transformation")
     E <- log2(E)
   }
-
   mycol <- NULL
-
   if (!is.null(groups)) {
-
     if (!is.factor(groups)) {
       groups <- factor(groups)
     }
-
     if (is.null(col.group)) {
       warning("No colours supplied; plotting without group colours.")
     } else if (nlevels(groups) > length(col.group)) {
@@ -74,20 +68,15 @@ makeRLEplot <- function(
       mycol <- col.group[groups]
     }
   }
-
   if (requireNamespace("matrixStats", quietly = TRUE)) {
     g.medians <- matrixStats::rowMedians(E, na.rm = TRUE)
   } else {
     g.medians <- apply(E, 1, median, na.rm = TRUE)
   }
-
   E.rle <- sweep(E, MARGIN = 1, STATS = g.medians, FUN = "-")
-
   boxplot(E.rle, xaxt = "n", las = 2, col = mycol, ...)
-
   xtick <- seq_len(ncol(E.rle))
   axis(side = 1, at = xtick, tick = FALSE, labels = FALSE)
-
   text(
     x = xtick,
     y = par("usr")[3],
@@ -97,10 +86,8 @@ makeRLEplot <- function(
     xpd = TRUE,
     col = mycol
   )
-
   if (isTRUE(showTitle)) {
     mtext(text = title, side = 3, line = 0.1)
   }
-
   invisible(E.rle)
 }
