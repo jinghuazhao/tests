@@ -1,24 +1,24 @@
-# ============================================================
 #' Converting pedigree(s) to dot file(s)
 #'
-#' @param pedfile a pedigree file in GAS or LINKAGE format. If
-#'   IDs are character, use `as.is=TRUE` in `read.table()`.
+#' @param pedfile A data frame with at least 6 columns:
+#'   pedigree id, individual id, father id, mother id, sex, affection.
+#'
+#' | Column | Description |
+#' |----------|----------------|
+#' | 1 | Pedigree identifier |
+#' | 2 | Individual identifier |
+#' | 3 | Father identifier |
+#' | 4 | Mother identifier |
+#' | 5 | Sex (`1`/`f`, `2`/`m`, `0`/`u`) |
+#' | 6 | Affection status (`0`, `1`, `2`, `x`, `n`, `y`) |
+#'
 #' @param makeped logical: TRUE if pedigree is post-makeped format.
-#' @param sink logical: if TRUE, writes .dot files to disk.
-#' @param page page size (A4, A5, B5, Legal, Letter, Executive, or "x,y").
-#' @param url optional URL embedded in graph.
 #' @param height node height.
 #' @param width node width.
-#' @param rotate rotation (90 = landscape).
-#' @param dir edge direction ("none","forward","back","both").
 #'
 #' @details
 #' Converts GAS/LINKAGE pedigree data into Graphviz DOT format.
 #' Each pedigree is written as a separate directed graph.
-#'
-#' The structure uses explicit "marriage nodes" to preserve pedigree topology.
-#'
-#' Layout is intentionally Graphviz-driven (dot/neato/fdp recommended).
 #'
 #' Typical rendering:
 #' ```
@@ -71,7 +71,7 @@
 #' plot(dot)
 #' ped_export(dot, "ped.pdf", engine="dot")
 #' # more details
-#' pedtodot(ped,sink=FALSE,page="B5",url="https://jinghuazhao.github.io/")
+#' pedtodot(ped)
 #' # An example from Richard Mott and in the demo
 #' filespec <- "ped.1.3.txt"
 #' pre <- read.table(filespec,as.is=TRUE)
@@ -82,50 +82,25 @@
 #' @author David Duffy, Jing Hua Zhao
 #' @export
 # ============================================================
-
+#'
 pedtodot <- function(pedfile,
                      makeped = FALSE,
-                     sink = TRUE,
-                     page = "B5",
-                     url = "",
                      height = 0.5,
                      width = 0.75,
-                     rotate = 0,
                      dir = "none")
 {
   if (!is.data.frame(pedfile)) stop("pedfile must be a data.frame")
-
   `%||%` <- function(a, b) if (is.null(a) || length(a) == 0 || all(is.na(a))) b else a
-
   sep <- "\034"
-
-shape <- c(
-  f = "box",
-  `1` = "box",
-  m = "circle",
-  `2` = "circle",
-  u = "diamond",
-  `0` = "diamond"
-)
-
-shade <- c(
-  y = "grey",
-  `2` = "grey",
-  n = "white",
-  `1` = "white",
-  x = "white",
-  `0` = "white"
-)
-
+  shape <- c(f = "box", `1` = "box", m = "circle", `2` = "circle", u = "diamond", `0` = "diamond")
+  shade <- c(y = "grey",`2` = "grey",n = "white", `1` = "white", x = "white", `0` = "white")
   if (makeped) ped <- pedfile[,-c(5,6,7,9)]
   else ped <- pedfile
-
   build <- function(pid, ped)
   {
     sex <- aff <- character()
     marriage <- list()
     child <- list()
-
     for (i in seq_len(nrow(ped)))
     {
       id  <- as.character(ped[i,2])
@@ -133,16 +108,12 @@ shade <- c(
       mom <- as.character(ped[i,4])
       sx  <- as.character(ped[i,5])
       af  <- as.character(ped[i,6])
-
-if (is.null(sx) || !(sx %in% names(shape))) sx <- "u"
-if (is.null(af) || !(af %in% names(shade))) af <- "x"
-
-sh <- shape[[sx]]
-if (is.null(sh)) sh <- "ellipse"
-
-sd <- shade[[af]]
-if (is.null(sd)) sd <- "white"
-
+      if (is.null(sx) || !(sx %in% names(shape))) sx <- "u"
+      if (is.null(af) || !(af %in% names(shade))) af <- "x"
+      sh <- shape[[sx]]
+      if (is.null(sh)) sh <- "ellipse"
+      sd <- shade[[af]]
+      if (is.null(sd)) sd <- "white"
       if (!is.na(dad) && !is.na(mom) &&
           !dad %in% c("0","x",".","") &&
           !mom %in% c("0","x",".",""))
@@ -152,23 +123,18 @@ if (is.null(sd)) sd <- "white"
         child[[paste(key, marriage[[key]], sep = sep)]] <- id
       }
     }
-
     ids <- sort(unique(names(sex)))
     pairs <- sort(names(marriage))
-
     dot <- c(
       sprintf("digraph Ped_%s {", pid),
       "graph [rankdir=TB, splines=true, overlap=false, nodesep=0.35, ranksep=0.7];",
       "node [fontname=Helvetica, fontsize=10];",
       sprintf("label=\"Pedigree %s\";", pid)
     )
-
-    # nodes
     for (id in ids)
     {
       sx <- sex[id] %||% "u"
       af <- aff[id] %||% "x"
-
       dot <- c(dot,
         sprintf("\"%s\" [shape=%s, style=filled, fillcolor=%s, height=%s, width=%s];",
                 id,
@@ -177,28 +143,21 @@ if (is.null(sd)) sd <- "white"
                 height, width)
       )
     }
-
-    # families (marriage nodes)
     for (p in pairs)
     {
       par <- strsplit(p, sep, fixed=TRUE)[[1]]
       dad <- par[1]; mom <- par[2]
-
       fam <- paste0("fam_", dad, "_", mom)
-
       # IMPORTANT: small neutral node (no rank forcing)
       dot <- c(dot,
         sprintf("\"%s\" [shape=point, width=0.03, label=\"\"];", fam)
       )
-
       # relaxed edges (avoid rigid centering artifacts)
       dot <- c(dot,
         sprintf("\"%s\" -> \"%s\" [dir=none, weight=1];", dad, fam),
         sprintf("\"%s\" -> \"%s\" [dir=none, weight=1];", mom, fam)
       )
-
       n <- marriage[[p]] %||% 0L
-
       for (k in seq_len(n))
       {
         kid <- child[[paste(p, k, sep=sep)]]
@@ -207,16 +166,12 @@ if (is.null(sd)) sd <- "white"
         )
       }
     }
-
     c(dot, "}")
   }
-
   ids <- unique(pedfile[[1]])
-
   out <- lapply(ids, function(pid)
     build(pid, pedfile[pedfile[[1]] == pid, , drop=FALSE])
   )
-
   names(out) <- ids
   class(out) <- "pedtodot"
   out
