@@ -1,4 +1,4 @@
-#' Converting pedigree(s) to dot file(s)
+#' Convert pedigree data to Graphviz DOT format
 #'
 #' @param pedfile A data frame with at least 6 columns:
 #'   pedigree id, individual id, father id, mother id, sex, affection.
@@ -25,6 +25,13 @@
 #' dot -Tpdf file.dot -o file.pdf
 #' neato -Tpdf file.dot -o file.pdf
 #' ```
+#' @section S3 methods:
+#' The following S3 methods are available for `pedtodot` objects:
+#'
+#' - `print.pedtodot()` prints a compact summary
+#' - `plot.pedtodot()` renders an interactive DiagrammeR view
+#' - `ped_write.pedtodot()` writes DOT files to disk
+#' - `export.pedtodot()` renders via Graphviz engines (dot, neato, etc.)
 #'
 #' @return A list of DOT character vectors (S3 class `pedtodot`),
 #' one per pedigree. DOT is treated as the canonical representation.
@@ -68,7 +75,7 @@
 #' dot <- pedtodot(ped,makeped=TRUE)
 #' write_pedtodot(dot,file="me.dot")
 #' plot(dot)
-#' ped_export(dot, "ped.pdf", engine="dot")
+#' export(dot, "ped.pdf", engine="dot")
 #' # An example from Richard Mott
 #' pre <- read.table("ped.1.3.txt",as.is=TRUE)
 #' pedtodot(data.frame(pid=1,pre))
@@ -102,12 +109,8 @@ pedtodot <- function(pedfile,
       mom <- as.character(ped[i,4])
       sx  <- as.character(ped[i,5])
       af  <- as.character(ped[i,6])
-      if (is.null(sx) || !(sx %in% names(shape))) sx <- "u"
-      if (is.null(af) || !(af %in% names(shade))) af <- "x"
-      sh <- shape[[sx]]
-      if (is.null(sh)) sh <- "ellipse"
-      sd <- shade[[af]]
-      if (is.null(sd)) sd <- "white"
+      sex[id] <- if (sx %in% names(shape)) sx else "u"
+      aff[id] <- if (af %in% names(shade)) af else "x
       if (!is.na(dad) && !is.na(mom) &&
           !dad %in% c("0","x",".","") &&
           !mom %in% c("0","x",".",""))
@@ -158,46 +161,118 @@ pedtodot <- function(pedfile,
     }
     c(dot, "}")
   }
-  ids <- unique(pedfile[[1]])
+  ids <- unique(ped[[1]])
   out <- lapply(ids, function(pid)
-    build(pid, pedfile[pedfile[[1]] == pid, , drop=FALSE])
+    build(pid, ped[ped[[1]] == pid, , drop=FALSE])
   )
   names(out) <- ids
   class(out) <- "pedtodot"
   out
 }
 
-#' Optional helper: write DOT
-#'
 #' @export
-write_pedtodot <- function(x, id = names(x)[1], file = NULL)
+print.pedtodot <- function(x, ...)
 {
+  cat("<pedtodot>\n")
+  cat(length(x), "pedigree(s)\n")
+  if (length(x))
+    cat("ids:", paste(names(x), collapse = ", "), "\n")
+  invisible(x)
+}
+
+#' @export
+ped_write.pedtodot <- function(x, id = names(x)[1], file = NULL) {
   if (is.null(file)) file <- paste0(id, ".dot")
   writeLines(x[[id]], file)
   invisible(file)
 }
 
+ped_write <- function(x, ...) UseMethod("ped_write")
+
 #' Plot pedigree using DiagrammeR
-#'
 #' @export
-plot.pedtodot <- function(x, id = names(x)[1], ...)
-{
-  if (!requireNamespace("DiagrammeR", quietly=TRUE))
-    stop("Install DiagrammeR")
-
-  DiagrammeR::grViz(paste(x[[id]], collapse="\n"))
-}
-
-
-#' Export DOT to Graphviz formats
-#'
-#' @export
-ped_export <- function(x, file, engine = c("dot","neato","fdp","sfdp","circo","twopi"))
+plot.pedtodot <- function(x, id = names(x)[1], engine = c("dot", "neato", "fdp"), ...)
 {
   engine <- match.arg(engine)
-  tmp <- tempfile(fileext=".dot")
-  writeLines(x[[1]], tmp)
-
-  system2(engine, c(paste0("-T", tools::file_ext(file)), tmp, "-o", file))
-  invisible(file)
+  if (!requireNamespace("DiagrammeR", quietly = TRUE)) {
+    stop("Package 'DiagrammeR' required for plotting.")
+  }
+  dot <- x[[id]]
+  if (engine != "dot") {
+    dot <- sub(
+      "digraph [^\\{]*\\{",
+      paste0("digraph { graph [layout=", engine, "];"),
+      dot
+    )
+  }
+  DiagrammeR::grViz(paste(dot, collapse = "\n"))
+  invisible(x)
 }
+
+#' Export a pedigree diagram via Graphviz
+#'
+#' Export a pedigree stored in a `pedtodot` object to any format
+#' supported by Graphviz (e.g. PDF, PNG, SVG, PostScript).
+#'
+#' The selected pedigree is first written to a temporary DOT file and
+#' then rendered using the chosen Graphviz layout engine.
+#'
+#' @param x An object returned by [pedtodot()].
+#' @param file Output filename. The output format is inferred from the
+#'   file extension.
+#' @param id Pedigree identifier. Defaults to the first pedigree in `x`.
+#' @param engine Graphviz layout engine. One of `"dot"`, `"neato"`,
+#'   `"fdp"`, `"sfdp"`, `"circo"` or `"twopi"`.
+#'
+#' @return Invisibly returns `file`.
+#'
+#' @details
+#' Graphviz supports multiple rendering engines. For pedigree diagrams,
+#' `dot` usually gives the most traditional hierarchical layout, whereas
+#' `neato` and `fdp` may produce more compact force-directed layouts.
+#'
+#' The output format is determined from the extension of `file`, for
+#' example:
+#'
+#' * `.pdf` — Portable Document Format
+#' * `.png` — Portable Network Graphics
+#' * `.svg` — Scalable Vector Graphics
+#' * `.ps` — PostScript
+#'
+#' Graphviz must be installed and available on the system path.
+#'
+#' @examples
+#' \dontrun{
+#' pd <- pedtodot(ped)
+#'
+#' # export first pedigree
+#' export(pd, "pedigree.pdf")
+#'
+#' # export a specific pedigree
+#' export(pd, "10081.pdf", id = "10081")
+#'
+#' # alternative layout engine
+#' export(pd, "10081.svg", id = "10081", engine = "neato")
+#'
+#' # All pedigrees
+#' for(id in names(pd)) export(pd, paste0(id, ".pdf"), id = id)
+#' }
+#'
+#' @seealso [pedtodot()], [write.pedtodot()], [plot.pedtodot()]
+#'
+#' @export
+#'
+export.pedtodot <- function(x, file, id = names(x)[1],
+    engine = c("dot","neato","fdp","sfdp","circo","twopi")
+)
+{
+    engine <- match.arg(engine)
+    fmt <- tools::file_ext(file)
+    tmp <- tempfile(fileext = ".dot")
+    writeLines(x[[id]], tmp)
+    system2(engine, c(paste0("-T", fmt), tmp, "-o", file))
+    invisible(file)
+}
+
+export <- function(x, ...)
+  UseMethod("export")
