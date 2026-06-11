@@ -1,0 +1,20 @@
+digraph Ped_1 {
+graph [rankdir=TB, splines=true, overlap=false, nodesep=0.35, ranksep=0.7];
+node [fontname=Helvetica, fontsize=10];
+label="Pedigree 1";
+"1" [shape=box, style=filled, fillcolor=grey, height=0.5, width=0.75];
+"2" [shape=circle, style=filled, fillcolor=white, height=0.5, width=0.75];
+"3" [shape=circle, style=filled, fillcolor=grey, height=0.5, width=0.75];
+"4" [shape=box, style=filled, fillcolor=grey, height=0.5, width=0.75];
+"5" [shape=box, style=filled, fillcolor=grey, height=0.5, width=0.75];
+"6" [shape=circle, style=filled, fillcolor=grey, height=0.5, width=0.75];
+"7" [shape=box, style=filled, fillcolor=white, height=0.5, width=0.75];
+"fam_1_2" [shape=point, width=0.03, label=""];
+"1" -> "fam_1_2" [dir=none, weight=1];
+"2" -> "fam_1_2" [dir=none, weight=1];
+"fam_1_2" -> "3" [dir=none, weight=1];
+"fam_1_2" -> "4" [dir=none, weight=1];
+"fam_1_2" -> "5" [dir=none, weight=1];
+"fam_1_2" -> "6" [dir=none, weight=1];
+"fam_1_2" -> "7" [dir=none, weight=1];
+}

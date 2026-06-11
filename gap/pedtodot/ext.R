@@ -28,9 +28,9 @@
 #' @section S3 methods:
 #' The following S3 methods are available for `pedtodot` objects:
 #'
-#' - `print.pedtodot()` prints a compact summary
 #' - `plot.pedtodot()` renders an interactive DiagrammeR view
-#' - `ped_write.pedtodot()` writes DOT files to disk
+#' - `print.pedtodot()` displays the DOT representation
+#' - `output.pedtodot()` writes DOT files to disk
 #' - `export.pedtodot()` renders via Graphviz engines (dot, neato, etc.)
 #'
 #' @return A list of DOT character vectors (S3 class `pedtodot`),
@@ -73,12 +73,13 @@
 #' # post-MakePed LINKAGE file in which IDs are integers
 #' ped <- read.table("me.ped")[,1:10]
 #' dot <- pedtodot(ped,makeped=TRUE)
-#' write_pedtodot(dot,file="me.dot")
+#' output(dot,file="me.dot")
 #' plot(dot)
 #' export(dot, "ped.pdf", engine="dot")
 #' # An example from Richard Mott
 #' pre <- read.table("ped.1.3.txt",as.is=TRUE)
-#' pedtodot(data.frame(pid=1,pre))
+#' dot <- pedtodot(data.frame(pid=1,pre))
+#' export(dot,file="1.pdf")
 #' }
 #'
 #' @author David Duffy, Jing Hua Zhao
@@ -110,7 +111,7 @@ pedtodot <- function(pedfile,
       sx  <- as.character(ped[i,5])
       af  <- as.character(ped[i,6])
       sex[id] <- if (sx %in% names(shape)) sx else "u"
-      aff[id] <- if (af %in% names(shade)) af else "x
+      aff[id] <- if (af %in% names(shade)) af else "x"
       if (!is.na(dad) && !is.na(mom) &&
           !dad %in% c("0","x",".","") &&
           !mom %in% c("0","x",".",""))
@@ -171,23 +172,22 @@ pedtodot <- function(pedfile,
 }
 
 #' @export
-print.pedtodot <- function(x, ...)
+print.pedtodot <- function(x, id = names(x)[1], ...)
 {
   cat("<pedtodot>\n")
-  cat(length(x), "pedigree(s)\n")
-  if (length(x))
-    cat("ids:", paste(names(x), collapse = ", "), "\n")
+  cat("pedigree:", id, "\n\n")
+  cat(x[[id]], sep = "\n")
   invisible(x)
 }
 
 #' @export
-ped_write.pedtodot <- function(x, id = names(x)[1], file = NULL) {
+output.pedtodot <- function(x, id = names(x)[1], file = NULL) {
   if (is.null(file)) file <- paste0(id, ".dot")
   writeLines(x[[id]], file)
   invisible(file)
 }
 
-ped_write <- function(x, ...) UseMethod("ped_write")
+output <- function(x, ...) UseMethod("output")
 
 #' Plot pedigree using DiagrammeR
 #' @export
@@ -206,7 +206,6 @@ plot.pedtodot <- function(x, id = names(x)[1], engine = c("dot", "neato", "fdp")
     )
   }
   DiagrammeR::grViz(paste(dot, collapse = "\n"))
-  invisible(x)
 }
 
 #' Export a pedigree diagram via Graphviz
@@ -258,7 +257,7 @@ plot.pedtodot <- function(x, id = names(x)[1], engine = c("dot", "neato", "fdp")
 #' for(id in names(pd)) export(pd, paste0(id, ".pdf"), id = id)
 #' }
 #'
-#' @seealso [pedtodot()], [write.pedtodot()], [plot.pedtodot()]
+#' @seealso [pedtodot()], [output.pedtodot()], [plot.pedtodot()]
 #'
 #' @export
 #'
