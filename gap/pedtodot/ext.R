@@ -77,8 +77,11 @@
 #' plot(dot)
 #' export(dot, "ped.pdf", engine="dot")
 #' # An example from Richard Mott
-#' pre <- read.table("ped.1.3.txt",as.is=TRUE)
-#' dot <- pedtodot(data.frame(pid=1,pre))
+#' pre <- read.table("ped.1.3.txt",as.is=TRUE,
+#'                   col.names=c("id", "fid", "mid", "sex", "aff"))
+#' pre <- data.frame(pid=1,pre)
+#' pre[is.na(pre)] <- 0
+#' dot <- pedtodot(pre)
 #' export(dot,file="1.pdf")
 #' }
 #'
