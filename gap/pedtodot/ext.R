@@ -81,6 +81,8 @@
 #'                   col.names=c("id", "fid", "mid", "sex", "aff"))
 #' pre <- data.frame(pid=1,pre)
 #' pre[is.na(pre)] <- 0
+#' pre[pre == "UnknownFather5"] <- 0
+#' gap::pedtodot(pre,dir="forward")
 #' dot <- pedtodot(pre)
 #' export(dot,file="1.pdf")
 #' }
