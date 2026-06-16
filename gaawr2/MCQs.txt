@@ -1,0 +1,80 @@
+0. Recent features of R that make it useful
+
+Q1. Which R feature highlighted in the vignette allows chaining operations together in a readable workflow?
+
+A. :: scope operator
+B. |> native pipe operator
+C. $ extraction operator
+D. @ slot operator
+
+Answer: B. |> native pipe operator
+
+Explanation: The vignette highlights the native pipe operator (|>) and the magrittr pipe (%>%) as important modern features for constructing chained data-analysis workflows.
+
+1. Components of pipelines
+
+Q2. Components of pipelines
+
+Which of the following best illustrates the role of R in a Bash-based bioinformatics pipeline?
+
+A. R replaces all command-line tools and directly performs sequence alignment.
+
+B. R acts as one stage in a workflow, receiving data from upstream tools and producing outputs that can be passed to downstream tools.
+
+C. R is used only for plotting final results and cannot be integrated into automated pipelines.
+
+D. R can only read data from interactive user input.
+
+Answer: B. R acts as one stage in a workflow, receiving data from upstream tools and producing outputs that can be passed to downstream tools.
+
+Q2. In the diabetes analysis pipeline, which sequence best represents the workflow used?
+
+A. group_by → mutate → filter → summarize
+B. filter → mutate → group_by → select → summarize
+C. summarize → filter → mutate → group_by
+D. select → summarize → filter → mutate
+
+Answer: B. filter → mutate → group_by → select → summarize
+
+Explanation: The example pipeline filters records, recodes variables with mutate(), groups data, selects variables, and finally summarizes them.
+
+2. Components of genetic association analysis
+
+Q3. According to the vignette, which of the following is listed as a core component of genetic association analysis?
+
+A. Web scraping of genomic databases only
+B. Hardy–Weinberg equilibrium testing
+C. Image classification using convolutional neural networks
+D. Natural language processing
+
+Answer: B. Hardy–Weinberg equilibrium testing
+
+Explanation: The vignette introduces genetic association analysis through topics including Hardy–Weinberg equilibrium (HWE), association testing, power calculations, Bayesian methods, and annotation.
+
+3. Genetic models
+
+Q4. The SNPassoc package is described as implementing association procedures under:
+
+A. Only additive genetic models
+B. Only dominant genetic models
+C. A variety of genetic models
+D. Only recessive genetic models
+
+Answer: C. A variety of genetic models
+
+Explanation: The vignette states that SNPassoc implements procedures for candidate-gene association analysis under a variety of genetic models.
+
+4. Annotation
+
+Q5. Which Bioconductor package listed in the vignette is specifically intended for genome annotation resources?
+
+A. HardyWeinberg
+B. GMMAT
+C. EnsDb.Hsapiens.v75
+D. SNPassoc
+
+Answer: C. EnsDb.Hsapiens.v75
+
+Explanation: The package list includes EnsDb.Hsapiens.v75 and ensembldb, which provide Ensembl-based gene and transcript annotation resources used in genetic annotation workflows.
+
+These questions progress from modern R workflow concepts to genetic association analysis, genetic models, and annotation, matching the structure and emphasis of the vignette.
