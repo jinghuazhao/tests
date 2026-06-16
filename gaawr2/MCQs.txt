@@ -1,5 +1,16 @@
 0. Recent features of R that make it useful
 
+Q0. The vignette demonstrates "Hello World" using how many different approaches in R?
+
+A. 2
+B. 3
+C. 4
+D. 5
+
+Answer: C. 4
+
+Explanation: The vignette presents multiple ways to produce a simple "Hello World" output, including traditional R usage and newer interfaces that illustrate recent developments in the R ecosystem such as scripting, pipelines, and interoperability with other environments. The purpos
+
 Q1. Which R feature highlighted in the vignette allows chaining operations together in a readable workflow?
 
 A. :: scope operator
