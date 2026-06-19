@@ -36,18 +36,15 @@ Auxiliary Files
 
 ## Mermaid experiment
 
-    ```mermaid
-    graph LR
-      files --(MCQs.R)--> MCQs.md
-      MCQs.md --(pandoc)--> MCQs.docx
-    ```
+## Mermaid experiment
 
-    <div class="mermaid">
-    graph LR
-      A[Auxiliary Files] --> B[MCQs.R]
-      B --> C[MCQs.md]
-      C --> D[MCQs.docx via Pandoc]
-    </div>
+```mermaid
+graph LR
+  files --(MCQs.R)--> MCQs.md
+  MCQs.md --(pandoc)--> MCQs.docx
+```
+
+<div class="mermaid"> graph LR A[Auxiliary Files] --> B[MCQs.R] B --> C[MCQs.md] C --> D[MCQs.docx via Pandoc] </div>
 
 [^files]:
 
