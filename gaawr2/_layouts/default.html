@@ -34,13 +34,13 @@
     {{ content }}
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        mermaid.initialize({
-          startOnLoad: true,
-          theme: "default"
-        });
-        mermaid.init(undefined, document.querySelectorAll(".mermaid"));
+    document.addEventListener("DOMContentLoaded", function () {
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: "default"
       });
-    </script>
+  mermaid.init(undefined, document.querySelectorAll(".mermaid"));
+});
+</script>
   </body>
 </html>
