@@ -142,8 +142,6 @@ Answer: C
 
 ## Question 9
 
-MCQ 6
-
 Which command is specifically intended to create a pkgdown website suitable for GitHub Pages?
 
 A. build_articles()
