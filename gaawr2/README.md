@@ -1,4 +1,6 @@
-The MCQs are based on the HSTalks presentation accompanying the R package `gaawr2` (https://cran.r-project.org/package=gaawr2).
+The MCQs are based on the HSTalks presentation accompanying the R package **gaawr2**:
+
+https://cran.r-project.org/package=gaawr2
 
 Questions are organised into four categories:
 
@@ -19,4 +21,17 @@ Files included:
 graph LR
   files -->|MCQs.R| MCQs.md
   MCQs.md -->|pandoc| MCQs.docx
+```
+
+```text
+Auxiliary Files
+│
+├── MCQs.R
+│     │
+│     ▼
+├── MCQs.md
+│     │
+│     ▼
+└── MCQs.docx
+      (generated via pandoc)
 ```
