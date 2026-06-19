@@ -28,9 +28,9 @@ flowchart LR
     M -- pandoc --> D
 </div>
 
-* **[MCQs.docx](MCQs.docx)** - Word document generated from `MCQs.md`.
-* **[MCQs.md](MCQs.md)** - Markdown source containing the generated MCQs.
 * **[MCQs.R](MCQs.R)** - R script that randomly selects questions and generates a 10-question `MCQs.md`.
+* **[MCQs.md](MCQs.md)** - Markdown source containing the generated MCQs.
+* **[MCQs.docx](MCQs.docx)** - Word document generated from `MCQs.md`.
 
 [^files]:
 
