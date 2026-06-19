@@ -39,9 +39,24 @@ Auxiliary Files
     ## Files
 
     <ul>
+    {% assign repo = "https://github.com/jinghuazhao/tests/tree/main/gaawr2" %}
+    {% assign blob = "https://github.com/jinghuazhao/tests/blob/main/gaawr2" %}
+
     {% for file in site.static_files %}
       {% if file.path contains "gaawr2" %}
-        <li><a href="{{ file.path }}">{{ file.path }}</a></li>
+
+        {% assign ext = file.extname %}
+
+        {% if ext == "" %}
+          <li>
+            <a href="{{ repo }}/{{ file.name }}">{{ file.path }}</a>
+          </li>
+        {% else %}
+          <li>
+            <a href="{{ blob }}/{{ file.name }}">{{ file.path }}</a>
+          </li>
+        {% endif %}
+
       {% endif %}
     {% endfor %}
     </ul>
