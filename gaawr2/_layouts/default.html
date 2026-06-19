@@ -8,7 +8,12 @@
 <body>
 {{ content }}
 <script>
-  mermaid.initialize({ startOnLoad: true });
+document.addEventListener("DOMContentLoaded", function() {
+  mermaid.initialize({
+    startOnLoad: false
+  });
+  mermaid.run();
+});
 </script>
 </body>
 </html>
