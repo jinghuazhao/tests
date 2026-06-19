@@ -34,6 +34,10 @@ Auxiliary Files
 └── MCQs.docx
 ```
 
+---
+
+## Mermaid experiment
+
 ```mermaid
 graph LR
   files --(MCQs.R)--> MCQs.md
