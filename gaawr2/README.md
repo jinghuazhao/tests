@@ -1,18 +1,22 @@
-# Auxiliary files for gaawr2
+The MCQs are based on the HSTalks presentation accompanying the R package `gaawr2` (https://cran.r-project.org/package=gaawr2).
 
-The MCQs is based on the HSTalks presentation in connection with <https://cran.r-project.org/package=gaawr2>
+Questions are organised into four categories:
 
-E. Environment
+* **E** — Environment
+* **L** — R Language
+* **A** — Association Analysis
+* **N** — Annotation
 
-L. R language
+The questions progress from modern R workflow concepts through genetic association analysis, genetic models, and annotation, reflecting the structure and emphasis of the package vignette.
 
-A. Association analysis
+Files included:
 
-N. Annotation
+* **[MCQs.docx](MCQs.docx)** — Word document generated from `MCQs.md`.
+* **[MCQs.md](MCQs.md)** — Markdown source containing the generated MCQs.
+* **[MCQs.R](MCQs.R)** — R script that randomly selects questions and generates a 10-question `MCQs.md`.
 
-These questions progress from modern R workflow concepts to genetic association analysis, genetic models, and annotation, matching the
-structure and emphasis of the vignette.
-
-- [MCQs.docs](MCQs.docx). MCQs.docx from MCQs.md.
-- [MCQs.md](MCQs.md). Initial MCQs.
-- [MCQs.R](MCQs.R). R script to randomly form a 10-question MCQs.
+```mermaid
+graph LR
+  files -->|MCQs.R| MCQs.md
+  MCQs.md -->|pandoc| MCQs.docx
+```
