@@ -1,8 +1,5 @@
 set.seed(as.integer(Sys.time()))
 
-# Read general description
-header <- readLines("MCQs.txt", warn = FALSE)
-
 # Question files
 qfiles <- list.files(
   pattern = "^(A[0-9]+|E[0-9]+|L[0-9]+|N[0-9]+)$"

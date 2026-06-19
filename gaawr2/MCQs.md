@@ -1,16 +1,3 @@
-The MCQs is based on the HSTalks presentation in connection with <https://cran.r-project.org/package=gaawr2>
-
-E. Environment
-
-L. R language
-
-A. Association analysis
-
-N. Annotation
-
-These questions progress from modern R workflow concepts to genetic association analysis, genetic models, and annotation, matching the 
-structure and emphasis of the vignette.
-
 # Questions
 
 ## Question 1
