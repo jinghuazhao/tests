@@ -16,13 +16,7 @@ Questions are organised into four categories[^files]:
 
 The questions progress from modern R workflow concepts through genetic association analysis, genetic models, and annotation, reflecting the structure and emphasis of the package vignette.
 
-Files included:
-
-* **[MCQs.docx](MCQs.docx)** — Word document generated from `MCQs.md`.
-* **[MCQs.md](MCQs.md)** — Markdown source containing the generated MCQs.
-* **[MCQs.R](MCQs.R)** — R script that randomly selects questions and generates a 10-question `MCQs.md`.
-
-A Mermaid flowchart:
+A flowchart:
 
 <div class="mermaid">
 flowchart LR
@@ -33,6 +27,10 @@ flowchart LR
     Q -- MCQs.R --> M
     M -- pandoc --> D
 </div>
+
+* **[MCQs.docx](MCQs.docx)** - Word document generated from `MCQs.md`.
+* **[MCQs.md](MCQs.md)** - Markdown source containing the generated MCQs.
+* **[MCQs.R](MCQs.R)** - R script that randomly selects questions and generates a 10-question `MCQs.md`.
 
 [^files]:
 
