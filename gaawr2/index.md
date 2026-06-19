@@ -5,7 +5,7 @@ title: MCQs (gaawr2 learning set)
 
 The MCQs are based on the HSTalks presentation accompanying the R package **gaawr2**:
 
-https://cran.r-project.org/package=gaawr2
+<a href="https://cran.r-project.org/package=gaawr2">https://cran.r-project.org/package=gaawr2</a>
 
 Questions are organised into four categories:
 

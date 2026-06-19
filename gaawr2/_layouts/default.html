@@ -17,18 +17,33 @@
       padding: 2px 4px;
       border-radius: 4px;
     }
+    pre {
+      background: #f6f8fa;
+      padding: 12px;
+      overflow-x: auto;
+    }
+    a {
+      color: #0366d6;
+    }
     .mermaid {
-      background: white;
+      text-align: center;
     }
   </style>
 </head>
 <body>
+<!-- Jekyll injects Markdown-rendered HTML here -->
 {{ content }}
+<!-- Mermaid (stable Jekyll-safe setup) -->
 <script type="module">
 import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
-document.addEventListener("DOMContentLoaded", () => {
-  mermaid.initialize({ startOnLoad: false });
-  mermaid.run();
+document.addEventListener("DOMContentLoaded", async () => {
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: "default"
+  });
+  await mermaid.run({
+    querySelector: ".mermaid"
+  });
 });
 </script>
 </body>
