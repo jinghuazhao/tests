@@ -32,7 +32,6 @@ Auxiliary Files
 │     │
 │     ▼
 └── MCQs.docx
-      (generated via pandoc)
 ```
 
 ```mermaid
