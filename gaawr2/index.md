@@ -7,7 +7,7 @@ The MCQs are based on the HSTalks presentation accompanying the R package **gaaw
 
 <a href="https://cran.r-project.org/package=gaawr2">https://cran.r-project.org/package=gaawr2</a>
 
-Questions are organised into four categories:
+Questions are organised into four categories[^files]:
 
 * **E** — Environment
 * **L** — R Language
@@ -34,19 +34,29 @@ Auxiliary Files
 └── MCQs.docx
 ```
 
----
+[^files]:
 
-## Mermaid experiment
+    ## Files
 
-```mermaid
-graph LR
-  files --(MCQs.R)--> MCQs.md
-  MCQs.md --(pandoc)--> MCQs.docx
-```
+    <ul>
+    {% for file in site.static_files %}
+      {% if file.path contains "gaawr2" %}
+        <li><a href="{{ file.path }}">{{ file.path }}</a></li>
+      {% endif %}
+    {% endfor %}
+    </ul>
 
-<div class="mermaid">
-graph LR
-  A[Auxiliary Files] --> B[MCQs.R]
-  B --> C[MCQs.md]
-  C --> D[MCQs.docx via Pandoc]
-</div>
+    ## Mermaid experiment
+
+    ```mermaid
+    graph LR
+      files --(MCQs.R)--> MCQs.md
+      MCQs.md --(pandoc)--> MCQs.docx
+    ```
+
+    <div class="mermaid">
+    graph LR
+      A[Auxiliary Files] --> B[MCQs.R]
+      B --> C[MCQs.md]
+      C --> D[MCQs.docx via Pandoc]
+    </div>
