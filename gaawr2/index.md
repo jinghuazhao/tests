@@ -1,3 +1,8 @@
+---
+layout: default
+title: MCQs (gaawr2 learning set)
+---
+
 The MCQs are based on the HSTalks presentation accompanying the R package **gaawr2**:
 
 https://cran.r-project.org/package=gaawr2
@@ -17,12 +22,6 @@ Files included:
 * **[MCQs.md](MCQs.md)** — Markdown source containing the generated MCQs.
 * **[MCQs.R](MCQs.R)** — R script that randomly selects questions and generates a 10-question `MCQs.md`.
 
-```mermaid
-graph LR
-  files -->|MCQs.R| MCQs.md
-  MCQs.md -->|pandoc| MCQs.docx
-```
-
 ```text
 Auxiliary Files
 │
@@ -34,4 +33,10 @@ Auxiliary Files
 │     ▼
 └── MCQs.docx
       (generated via pandoc)
+```
+
+```mermaid
+graph LR
+  files --(MCQs.R)--> MCQs.md
+  MCQs.md --(pandoc)--> MCQs.docx
 ```
