@@ -34,7 +34,7 @@ Auxiliary Files
 └── MCQs.docx
 ```
 
-## Mermaid experiment
+(Mermaid experiment):
 
 <div class="mermaid">
 graph LR
