@@ -1,0 +1,19 @@
+Which of the following statements about R operators is NOT correct?
+
+A. iris[1,1:3] extracts the first row and the first three columns of the iris dataset.
+
+B. iris[[2]] extracts the second column as a vector rather than as a data frame.
+
+C. The scope operator :: allows access to exported functions from a package without attaching the package using library().
+
+D. The built-in pipe operator |> and the %>% operator from magrittr always produce different results when used with simple functions such as sum().
+
+Answer: D
+
+Explanation:
+For many common operations, such as:
+
+1:10 |> sum()
+1:10 %>% sum()
+
+both operators produce the same result (55). The base R pipe |> and the magrittr pipe %>% differ mainly in implementation and some advanced usage features, not in the result of simple function calls.

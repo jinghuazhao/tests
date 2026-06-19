@@ -1,0 +1,14 @@
+Which of the following statements is NOT true regarding genetic association studies?
+
+A. A significant deviation from Hardy–Weinberg Equilibrium (HWE) in control samples may indicate genotyping errors.
+
+B. A haplotype refers to a combination of alleles at multiple loci that are inherited together on the same chromosome.
+
+C. Genome-Wide Association Studies (GWAS) typically test millions of SNPs across the genome for association with a trait.
+
+D. Single-SNP association analysis directly identifies the causal variant responsible for a disease.
+
+Answer: D
+
+Explanation:
+Single-SNP association analysis identifies variants statistically associated with a trait, but the associated SNP is often only in linkage disequilibrium with the true causal variant. Additional fine-mapping and functional studies are usually required to identify the causal variant.

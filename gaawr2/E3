@@ -1,0 +1,13 @@
+What is the primary purpose of the command below?
+
+create_package("gaawr2")
+
+A. Install the package from GitHub
+
+B. Create a package skeleton with the required directory structure
+
+C. Build a pkgdown website
+
+D. Generate Rd documentation files
+
+Answer: B

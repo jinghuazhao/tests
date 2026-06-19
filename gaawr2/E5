@@ -1,0 +1,14 @@
+What is the purpose of the following command?
+
+use_github_action("pkgdown",
+                  save_as = "R-CMD-check.yaml")
+
+A. Creates a local web server using plumber.
+
+B. Sets up a GitHub Action workflow for automated package checking and website deployment.
+
+C. Builds the package tarball.
+
+D. Creates a GitHub repository.
+
+Answer: B

@@ -1,0 +1,10 @@
+Which Bioconductor package listed in the vignette is specifically intended for genome annotation resources?
+
+A. HardyWeinberg
+B. GMMAT
+C. EnsDb.Hsapiens.v75
+D. SNPassoc
+
+Answer: C. EnsDb.Hsapiens.v75
+
+Explanation: The package list includes EnsDb.Hsapiens.v75 and ensembldb, which provide Ensembl-based gene and transcript annotation resources used in genetic annotation workflows.

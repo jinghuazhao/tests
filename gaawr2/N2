@@ -1,0 +1,14 @@
+Which of the following statements about genetic annotation is NOT correct?
+
+A. Genetic annotation involves identifying the locations and functions of genomic elements such as genes, exons, and regulatory regions.
+
+B. Functional annotation can include predicting the biological impact of genetic variants on gene function.
+
+C. Genetic annotation is performed only for protein-coding regions because non-coding regions have no biological function.
+
+D. Databases and tools can be used to annotate variants with information such as gene location, conservation scores, and known disease associations.
+
+Answer: C
+
+Explanation:
+Non-coding regions can have important biological functions, including gene regulation, RNA processing, and chromatin organization. Modern genetic annotation includes both coding and non-coding genomic regions.

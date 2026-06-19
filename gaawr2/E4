@@ -1,0 +1,11 @@
+Which statement about R CMD check is correct?
+
+A. It installs a package from GitHub.
+
+B. It generates package documentation.
+
+C. It performs quality checks on a package and can be run with --as-cran for CRAN-like validation.
+
+D. It creates a package skeleton.
+
+Answer: C

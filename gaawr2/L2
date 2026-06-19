@@ -1,0 +1,10 @@
+Which R feature highlighted in the vignette allows chaining operations together in a readable workflow?
+
+A. :: scope operator
+B. |> native pipe operator
+C. $ extraction operator
+D. @ slot operator
+
+Answer: B. |> native pipe operator
+
+Explanation: The vignette highlights the native pipe operator (|>) and the magrittr pipe (%>%) as important modern features for constructing chained data-analysis workflows.

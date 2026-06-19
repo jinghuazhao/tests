@@ -1,0 +1,10 @@
+According to the vignette, which of the following is listed as a core component of genetic association analysis?
+
+A. Web scraping of genomic databases only
+B. Hardy–Weinberg equilibrium testing
+C. Image classification using convolutional neural networks
+D. Natural language processing
+
+Answer: B. Hardy–Weinberg equilibrium testing
+
+Explanation: The vignette introduces genetic association analysis through topics including Hardy–Weinberg equilibrium (HWE), association testing, power calculations, Bayesian methods, and annotation.

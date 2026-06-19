@@ -1,0 +1,10 @@
+The SNPassoc package is described as implementing association procedures under:
+
+A. Only additive genetic models
+B. Only dominant genetic models
+C. A variety of genetic models
+D. Only recessive genetic models
+
+Answer: C. A variety of genetic models
+
+Explanation: The vignette states that SNPassoc implements procedures for candidate-gene association analysis under a variety of genetic models.

@@ -1,0 +1,10 @@
+In the diabetes analysis pipeline, which sequence best represents the workflow used?
+
+A. group_by → mutate → filter → summarize
+B. filter → mutate → group_by → select → summarize
+C. summarize → filter → mutate → group_by
+D. select → summarize → filter → mutate
+
+Answer: B. filter → mutate → group_by → select → summarize
+
+Explanation: The example pipeline filters records, recodes variables with mutate(), groups data, selects variables, and finally summarizes them.

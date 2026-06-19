@@ -1,0 +1,11 @@
+Which function is used to generate documentation files from Roxygen comments in the R/ directory?
+
+A. build_reference()
+
+B. build_articles()
+
+C. devtools::document()
+
+D. build_news()
+
+Answer: C

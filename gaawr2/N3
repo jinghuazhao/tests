@@ -1,0 +1,45 @@
+Which of the following statements is NOT correct regarding EnsDb.Hsapiens.v75, ensembldb, biomaRt, and EFO/ontologyIndex?
+
+A. EnsDb.Hsapiens.v75 and ensembldb provide local, offline access to Ensembl gene models, including genes, transcripts, and exons.
+
+B. biomaRt retrieves gene and annotation data by querying Ensembl (or other BioMart services) over the internet.
+
+C. EFO/ontologyIndex are used to represent and traverse hierarchical phenotype and trait ontologies rather than gene annotation databases.
+
+D. ensembldb and biomaRt both rely on ontology structures such as EFO to define gene–trait relationships.
+
+Answer: D
+
+Key reasoning
+EnsDb.Hsapiens.v75
+→ Local snapshot of Ensembl gene models (offline, versioned)
+ensembldb
+→ General framework behind EnsDb packages
+biomaRt
+→ Online query system for Ensembl/BioMart
+ontologyIndex
+→ Local ontology graph traversal (parents/children/ancestors)
+Experimental Factor Ontology
+→ Standardized phenotype/trait ontology used in GWAS and annotation
+Key conceptual separation (high-yield)
+1. Gene annotation layer
+EnsDb.Hsapiens.v75 (snapshot)
+ensembldb (framework)
+
+👉 “What genes exist at this locus?”
+
+2. Online annotation layer
+biomaRt
+
+👉 “Query Ensembl dynamically”
+
+3. Ontology layer (phenotypes/traits)
+EFO
+ontologyIndex
+
+👉 “How are traits/phenotypes structured and related?”
+
+One-line memory trick
+EnsDb / ensembldb = local genome
+biomaRt = remote genome
+EFO / ontologyIndex = phenotype ontology (not genes)

@@ -1,0 +1,13 @@
+Which of the following methods for running R code from the command line is not usually covered?
+
+A. Running an R script in batch mode using R CMD BATCH hello.R.
+
+B. Redirecting an R script to the R interpreter using R --no-save -q < hello.R.
+
+C. Executing an R script using Rscript hello.R.
+
+D. Passing text from a shell pipe to an inline Rscript -e command, reading from standard input with scan("stdin", ...), and processing the result within R.
+
+Answer: D
+
+Explanation: Options A–C are standard approaches for running R scripts from the command line. Option D uses a shell pipe combined with an inline Rscript -e expression that reads data from standard input, a technique that was not covered in the presentation.

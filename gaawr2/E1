@@ -1,0 +1,14 @@
+Which of the following is NOT a primary rationale for using R as a bioinformatics and data analysis environment?
+
+A. It provides integrated facilities for data handling, including customized genomic, transcriptomic, RNA-Seq, and proteomic data.
+
+B. It offers comprehensive statistical modeling capabilities, including GLM, GLMM, and GAM.
+
+C. It provides extensive graphics capabilities and visualization controls comparable to or exceeding many other software environments.
+
+D. It is designed exclusively for biological data analysis and cannot interface with languages such as C++, Java, or Python.
+
+Answer: D
+
+Explanation:
+R is not limited to biological data analysis. It can interface with several programming languages, including C/C++, Fortran, Java, JavaScript, and Python. Its strengths include data handling, statistical modeling, graphics, cross-platform compatibility, and access to extensive package ecosystems such as Bioconductor.

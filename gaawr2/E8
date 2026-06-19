@@ -1,0 +1,11 @@
+Why might one install a package from the compressed .tar.gz file rather than directly from the source directory?
+
+A. It automatically creates GitHub Actions.
+
+B. It avoids compiled object files appearing in the source directory.
+
+C. It generates pkgdown documentation.
+
+D. It converts Markdown to HTML.
+
+Answer: B

@@ -1,0 +1,18 @@
+A developer wishes to:
+
+Automatically test package functions,
+Publish package documentation as a website,
+Expose selected functions through a REST API,
+Run the API through an HTTP server.
+
+Which sequence of packages is most appropriate?
+
+A. testthat → pkgdown → plumber → httpuv
+
+B. pkgdown → testthat → httpuv → plumber
+
+C. plumber → httpuv → testthat → pkgdown
+
+D. testthat → plumber → pkgdown → httpuv
+
+Answer: A.

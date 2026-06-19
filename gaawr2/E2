@@ -1,0 +1,13 @@
+Which command is used to create a source package archive from an R package directory?
+
+A. R CMD INSTALL gaawr2
+
+B. R CMD build gaawr2
+
+C. R CMD check gaawr2
+
+D. devtools::document()
+
+Answer: B
+
+Explanation: R CMD build gaawr2 creates a compressed source package such as gaawr2_0.0.1.tar.gz.
