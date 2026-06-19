@@ -22,13 +22,16 @@ Files included:
 * **[MCQs.md](MCQs.md)** — Markdown source containing the generated MCQs.
 * **[MCQs.R](MCQs.R)** — R script that randomly selects questions and generates a 10-question `MCQs.md`.
 
-A Mermaid flow:
+A Mermaid flowchart:
 
 <div class="mermaid">
-graph LR
-A[Auxiliary Files] --> B[MCQs.R]
-B --> C[MCQs.md]
-C --> D[MCQs.docx via Pandoc]
+flowchart LR
+    Q["A*, E*, L*, N*"]
+    M["MCQs.md"]
+    D["MCQs.docx"]
+
+    Q -- MCQs.R --> M
+    M -- pandoc --> D
 </div>
 
 [^files]:
