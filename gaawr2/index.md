@@ -1,7 +1,4 @@
----
-layout: default
-title: MCQs (gaawr2 learning set)
----
+# MCQs (gaawr2 learning set)
 
 The MCQs are based on the HSTalks presentation accompanying the R package **gaawr2**:
 
