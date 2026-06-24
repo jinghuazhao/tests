@@ -40,6 +40,7 @@
 #' frequencies may be known in advance. In that case, the pooled
 #' design matrix can be supplied directly through `x`.
 #'
+#' @export
 #' @return
 #' An object of class `"htest"` containing:
 #'
@@ -51,8 +52,7 @@
 #' @references
 #' \insertRef{chow60}{gap}
 #'
-#' @seealso
-#' [htr()]
+#' @seealso [`htr`]
 #'
 #' @examples
 #' \dontrun{
