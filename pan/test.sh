@@ -8,3 +8,24 @@ gcc -shared -L${HPC_WORK}/R-4.1.0/lib -L${HPC_WORK}/lib -o pan.so \
     package_native_routine_registration_skeleton.o pan.o -lgfortran -lm -lquadmath -L${HPC_WORK}/R-4.1.0/lib -lR
 
 R --vanilla <test.R > test.log
+
+gfortran -shared -g -O0 -fPIC \
+  -fcheck=all \
+  -fbounds-check \
+  -fbacktrace \
+  -Wall -Wextra \
+  -ffpe-trap=zero,invalid,overflow \
+  -finit-real=snan \
+  pan.f -o pan.so
+
+gfortran \
+    -shared -g -O0 -fPIC \
+    -fsanitize=address \
+    -fno-omit-frame-pointer \
+    pan.f -o pan.so
+
+gfortran -g -O0 -fPIC -shared \
+    -fcheck=all \
+    -fbacktrace \
+    -ffixed-line-length-none \
+    pan.f -o pan.so

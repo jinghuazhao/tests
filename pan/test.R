@@ -1,6 +1,7 @@
 dyn.load("pan.so")
 source("pan.R")
 YData <- read.csv('YData.csv', header = TRUE)
+YData <- YData[order(YData$ID, YData$time), ]
 N <- dim(YData)[1] ; P <- dim(YData)[2]
 X <- cbind(YData$Type.t == 2, YData$Type.t == 3, YData$Type.t == 4, YData$time)
 # YData : A dataset. 
