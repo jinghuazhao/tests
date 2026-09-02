@@ -6,6 +6,7 @@ Command history is ~/.python_history for interactive Python sessions, while use 
 
 * AI and ML for Coders in PyTorch, <https://github.com/lmoroney/PyTorch-Book-FIles>
 * Build a Text-to-Image Generator (from Scratch): With transformers and diffusions, <https://github.com/markhliu/txt2img>
+* Build with Claude Code, <https://github.com/PacktPublishing/Build-with-Claude-Code>
 * Deep Learning Crash Course, <https://github.com/DeepTrackAI/DeepLearningCrashCourse>
 * Deep Learning with Python, 3e, <https://github.com/fchollet/deep-learning-with-python-notebooks>
 * Generative AI with Python and PyTorch, 2e, <https://github.com/PacktPublishing/Generative-AI-with-Python-and-PyTorch-Second-Edition>
