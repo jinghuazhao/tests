@@ -5,7 +5,7 @@ GitHub code, <https://github.com/jinghuazhao/tests/blob/main/AI/python/>
 Command history is ~/.python_history for interactive Python sessions, while use of Python virtural environment is shown in MDL.sh[^MDL].
 
 * AI and ML for Coders in PyTorch, <https://github.com/lmoroney/PyTorch-Book-FIles>
-8 Building Agentic AI Systems, <https://github.com/PacktPublishing/Building-Agentic-AI-Systems>
+* Building Agentic AI Systems, <https://github.com/PacktPublishing/Building-Agentic-AI-Systems>
 * Build a Text-to-Image Generator (from Scratch): With transformers and diffusions, <https://github.com/markhliu/txt2img>
 * Build with Claude Code, <https://github.com/PacktPublishing/Build-with-Claude-Code>
 * Deep Learning Crash Course, <https://github.com/DeepTrackAI/DeepLearningCrashCourse>
