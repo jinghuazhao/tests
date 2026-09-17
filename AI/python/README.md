@@ -2,10 +2,9 @@
 
 GitHub code, <https://github.com/jinghuazhao/tests/blob/main/AI/python/>
 
-Command history is ~/.python_history for interactive Python sessions, while use of Python virtural environment is shown in MDL.sh[^MDL].
+Command history is ~/.python_history for interactive Python sessions, while use of Python virtual environment is shown in MDL.sh[^MDL].
 
 * AI and ML for Coders in PyTorch, <https://github.com/lmoroney/PyTorch-Book-FIles>
-* Building Agentic AI Systems, <https://github.com/PacktPublishing/Building-Agentic-AI-Systems>
 * Build a Text-to-Image Generator (from Scratch): With transformers and diffusions, <https://github.com/markhliu/txt2img>
 * Build with Claude Code, <https://github.com/PacktPublishing/Build-with-Claude-Code>
 * Deep Learning Crash Course, <https://github.com/DeepTrackAI/DeepLearningCrashCourse>
@@ -16,6 +15,11 @@ Command history is ~/.python_history for interactive Python sessions, while use 
 * Math for Deep Learning, <https://github.com/rkneusel9/MathForDeepLearning>
 * Practical Deep Learning, 2e, <https://github.com/rkneusel9/PracticalDeepLearning2E>
 * Ultimate Neural Network Programming with Python[^fork], <https://github.com/OrangeAVA/Ultimate-Neural-Network-Programming-with-Python>
+
+## Agentic AI
+
+* Building Agentic AI Systems, <https://github.com/PacktPublishing/Building-Agentic-AI-Systems>
+* Mastering Multi-agent Systems with Azure OpenAI (also with C#), <https://github.com/Apress/Mastering_Multi-Agent_Systems_with_Azure_OpenAI>
 
 ## .ipynb
 
