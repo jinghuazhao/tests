@@ -25,6 +25,7 @@ A repository to share problems under development.
     module load ceuadmin/Pi
     ollama launch pi --yes --model kimi-k2.5:cloud -- run.md
     ```
+- SDBench, <https://microsoft.github.io/sdbench/>
 - Supplementary materials in Python. <https://jinghuazhao.github.io/tests/AI/python>.
 - Water Margin riddles (《水浒》谜语). <https://jinghuazhao.github.io/tests/AI/>.
 
