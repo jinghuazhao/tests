@@ -1,12 +1,16 @@
-
+```r
 usethis::use_testthat(edition = 3)
+```
 
 This sets up the standard testing infrastructure, normally including:
 - tests/testthat.R
 - tests/testthat/
 - Config/testthat/edition: 3 in DESCRIPTION
 
+```bash
+git diff -- R/pbsize2.R ChangeLog
 R -q -e 'devtools::test()'
+```
 
 ```
 > devtools::test()
@@ -20,4 +24,8 @@ gap version 1.15.3
 >
 ```
 
-git diff -- R/pbsize2.R ChangeLog
+Alternatively,
+
+```r
+devtools::test(filter = "pbsize2")
+```
