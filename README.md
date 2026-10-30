@@ -14,6 +14,7 @@ A repository to share problems under development.
   <tbody></tbody>
 </table>
 
+- MedGemma, <https://jinghuazhao.github.io/tests/AI/MedGemma.html>
 - Pi agent project, <https://github.com/jinghuazhao/tests/tree/main/AI/pi-agent-project>.
     ```
     module load ceuadmin/ollama
@@ -27,7 +28,6 @@ A repository to share problems under development.
     ```
 - SDBench, <https://microsoft.github.io/sdbench/>
 - Supplementary materials in Python. <https://jinghuazhao.github.io/tests/AI/python>.
-- MedGemma, <https://jinghuazhao.github.io/tests/AI/MedGemma.html>
 - Water Margin riddles (《水浒》谜语). <https://jinghuazhao.github.io/tests/AI/WaterMargin.html>.
 
 ## 2. METAL
