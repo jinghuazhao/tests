@@ -9,12 +9,12 @@ python -m pip install --upgrade huggingface_hub
 hf auth login
 hf download bartowski/google_medgemma-27b-it-GGUF google_medgemma-27b-it-Q8_0.gguf --local-dir .
 hf download bartowski/google_medgemma-27b-it-GGUF mmproj-google_medgemma-27b-it-bf16.gguf --local-dir .
+module load ceuadmin/llama.cpp/0.8.0-cuda
 ```
 
 ## Text
 
 ```bash
-module load ceuadmin/llama.cpp/0.8.0-cuda
 llama cli \
   -m google_medgemma-27b-it-Q8_0.gguf \
   -p "What is a protein quantitative trait locus (pQTL)?" \
