@@ -128,6 +128,114 @@ Here's a description of the image:
 
 [ Prompt: 577.5 t/s | Generation: 22.9 t/s ]
 
+
+## Benchmark
+
+$ llama cli -m google_medgemma-27b-it-Q8_0.gguf -p "Aspirin" -n 300 -c 4096 -ngl 99
+
+```
+Loading model...
+
+▄▄ ▄▄
+██ ██
+██ ██  ▀▀█▄ ███▄███▄  ▀▀█▄    ▄████ ████▄ ████▄
+██ ██ ▄█▀██ ██ ██ ██ ▄█▀██    ██    ██ ██ ██ ██
+██ ██ ▀█▄██ ██ ██ ██ ▀█▄██ ██ ▀████ ████▀ ████▀
+                                    ██    ██
+                                    ▀▀    ▀▀
+
+build      : b10905-5210c7c5e
+model      : google_medgemma-27b-it-Q8_0.gguf
+ftype      : Q8_0
+modalities : text
+
+available commands:
+  /exit or Ctrl+C     stop or exit
+  /regen              regenerate the last response
+  /clear              clear the chat history
+  /read <file>        add a text file
+  /glob <pattern>     add text files using globbing pattern
+```
+
+```
+> Aspirin
+```
+
+Aspirin is a very common medication with a long history. Here's a breakdown of key information about it:
+
+**What it is:**
+
+*   **Chemical Name:** Acetylsalicylic acid (ASA)
+*   **Drug Class:** Salicylate, Nonsteroidal Anti-inflammatory Drug (NSAID)
+
+**Common Uses:**
+
+*   **Pain Relief (Analgesic):** Effective for mild to moderate pain like headaches, muscle aches, toothaches, menstrual cramps, and arthritis pain.
+*   **Fever Reduction (Antipyretic):** Helps lower body temperature during fevers.
+*   **Inflammation Reduction (Anti-inflammatory):** Used to reduce inflammation associated with conditions like arthritis, sprains, and strains.
+*   **Antiplatelet Agent:** Low doses are used to prevent blood clots, reducing the risk of heart attack and stroke in certain individuals.
+
+**How it Works:**
+
+*   Aspirin works by inhibiting the production of prostaglandins, which are substances in the body that contribute to pain, fever, and inflammation.
+*   At low doses, it specifically inhibits an enzyme called cyclooxygenase (COX-1) in platelets, preventing them from sticking together and forming clots.
+
+**Dosages:**
+
+*   Dosages vary depending on the reason for use.
+    *   **Pain/Fever/Inflammation:** Typically 325-650 mg every 4-6
+
+[ Prompt: 63.6 t/s | Generation: 26.4 t/s ]
+
+```
+> repurpose
+```
+
+The word "repurpose" means to use something for a purpose other than the one for which it was originally intended. It often implies finding a new, useful function for an item that might otherwise be discarded or considered obsolete.
+
+Here are some examples and aspects of repurposing:
+
+*   **Upcycling:** This is a specific type of repurposing where an item is transformed into something of higher value or quality. For example, turning old jeans into a tote bag or pallets into furniture.
+*   **Creative Reuse:** Finding new uses for old or discarded materials.
+*   **Sustainability:** Repurposing is often motivated by environmental concerns, as it reduces waste and the need to manufacture new products.
+*   **Cost Savings:** Using existing items in new ways can be more economical than buying new ones.
+*   **Innovation:** Repurposing can lead to creative solutions and new product ideas.
+
+**Examples of Repurposing:**
+
+*   Using an old t-shirt as cleaning rags.
+*   Turning a glass jar into a vase or pencil holder.
+*   Using old tires as planters.
+*   Repurposing shipping containers into homes or offices.
+*   Using a ladder as a bookshelf.
+*   Using coffee grounds as fertilizer.
+*   Repurposing food scraps into stock.
+*   In software, repurposing existing code or modules for a new application.
+
+**Synonyms:**
+
+*   Reuse
+*
+
+[ Prompt: 932.0 t/s | Generation: 26.3 t/s ]
+
+```
+> repurpose of aspirin
+```
+
+While aspirin is primarily known for its pain relief, fever reduction, anti-inflammatory, and antiplatelet properties, people have explored and sometimes found limited evidence for other potential uses, often referred to as "repurposing." It's crucial to note that many of these are not well-established, lack strong scientific evidence, or are considered experimental. **Always consult a doctor before using aspirin for any purpose other than its approved indications.**
+
+Here are some potential (though often unproven or weakly supported) repurposing ideas for aspirin:
+
+**Medical/Therapeutic:**
+
+*   **Cancer Prevention/Treatment (Adjunctive):** Some studies have suggested a possible role for aspirin in reducing the risk or progression of certain cancers (e.g., colorectal cancer), often used alongside conventional treatments. However, the evidence is complex, and long-term risks (like bleeding) need careful consideration. *This is a major area of ongoing research, but not a standard recommended use.*
+*   **Warts/Skin Conditions:** High doses of aspirin (sometimes crushed and mixed with substances) have been anecdotally used for warts or other skin issues, potentially due to its salicylic acid component. *Effectiveness is questionable, and potential skin irritation is a concern.*
+*   **Improving IVF Outcomes:** Some research suggests low-dose aspirin might improve the chances of pregnancy in women undergoing IVF, possibly by improving uterine blood flow. *Evidence is still emerging.*
+*   **Preventing
+
+[ Prompt: 979.0 t/s | Generation: 26.1 t/s ]
+
 ## Reference
 
 Sellergren, A. et al. An open vision-language model for diverse medical applications. *Nature Medicine* **32**, 3695–3704 (2026). https://doi.org/10.1038/s41591-026-04626-w
