@@ -1,3 +1,4 @@
+```
  $ llama cli \
 >   -m openai_gpt-oss-120b-Q4_K_M/openai_gpt-oss-120b-Q4_K_M-00001-of-00002.gguf \
 >   --jinja \
@@ -34,6 +35,7 @@ available commands:
 
 
 > Explain the difference between Mendelian randomisation and colocalisation in pQTL analysis. Give a practical example.
+```
 
 [Start thinking]
 
