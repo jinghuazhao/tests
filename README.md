@@ -15,6 +15,7 @@ A repository to share problems under development.
 </table>
 
 - MedGemma, <https://jinghuazhao.github.io/tests/AI/MedGemma.html>
+- OpenAI-GPT-OSS-120B, <https://jinghuazhao.github.io/tests/AI/scripts/OpenAI-GPT-OSS-120B.html>
 - Pi agent project, <https://github.com/jinghuazhao/tests/tree/main/AI/pi-agent-project>.
     ```
     module load ceuadmin/ollama
