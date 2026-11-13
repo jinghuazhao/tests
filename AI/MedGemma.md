@@ -40,7 +40,7 @@ Loading model...
 build      : b0-unknown
 model      : google_medgemma-27b-it-Q8_0.gguf
 ftype      : Q8_0
-modalities : text
+modalities : text, vision, video
 
 available commands:
   /exit or Ctrl+C     stop or exit
@@ -48,25 +48,27 @@ available commands:
   /clear              clear the chat history
   /read <file>        add a text file
   /glob <pattern>     add text files using globbing pattern
+  /image <file>       add an image file
+  /video <file>       add a video file
 
 
 
 > What is a protein quantitative trait locus (pQTL)?
 ```
 
-A protein quantitative trait locus (pQTL) is a region in the genome that is associated with variation in the abundance of a specific protein. It's essentially a genetic locus influencing the level of a protein in a biological sample, typically blood plasma or serum.
+A protein quantitative trait locus (pQTL) is a region of the genome associated with variation in the abundance of a specific protein in a population. It's a specific type of quantitative trait locus (QTL) where the trait being measured is the level of a protein, rather than a more traditional phenotypic trait like height, weight, or disease susceptibility.
 
-Here's a breakdown of the key concepts:
+Here's a breakdown:
 
-*   **Quantitative Trait:** A trait that varies continuously, rather than falling into discrete categories. Examples include height, weight, blood pressure, and protein levels.
-*   **Locus (plural: loci):** The specific position of a gene or genetic marker on a chromosome.
-*   **QTL (Quantitative Trait Locus):** A region of the genome that is statistically associated with variation in a quantitative trait. QTL mapping is a method used to identify these regions.
-*   **Protein:** A large biomolecule, essential for many biological roles, including catalyzing metabolic reactions, DNA replication, transport, and structural support.
-*   **pQTL (Protein Quantitative Trait Locus):**  Combines the concepts. It identifies genomic regions (QTLs) that influence the *amount* (abundance or concentration) of a *specific protein* (p).
+*   **Quantitative Trait Locus (QTL):** A region of DNA that is linked to variation in a quantitative trait. Quantitative traits are measurable characteristics that show continuous variation (e.g., height, blood pressure, yield in agriculture) and are influenced by multiple genes and environmental factors. QTL mapping is used to identify these regions.
+*   **Protein:** A large biomolecule, essential for many biological processes, consisting of one or more long chains of amino acids.
+*   **pQTL (Protein Quantitative Trait Locus):** Combines the concepts. It's a genomic region that influences the *amount* or *abundance* of a particular protein within a population.
 
-**In simpler terms:** Imagine you measure the level of a certain protein in many people's blood. You notice that the levels vary significantly. A pQTL is a specific stretch of DNA that, when you look at it across these people, seems
+**Key Characteristics and Implications of pQTLs:**
 
-[ Prompt: 138.7 t/s | Generation: 22.9 t/s ]
+1.  **Linkage:** pQTLs are typically identified through statistical linkage analysis, comparing the abundance of a protein with genetic markers across individuals in a population (often experimental crosses or populations with known genetic relationships). A significant association suggests the protein gene or a nearby regulatory element is located within the pQTL region
+
+[ Prompt: 15.7 t/s | Generation: 26.7 t/s ]
 
 ## Vision
 
