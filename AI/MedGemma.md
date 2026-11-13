@@ -9,15 +9,14 @@ python -m pip install --upgrade huggingface_hub
 hf auth login
 hf download bartowski/google_medgemma-27b-it-GGUF google_medgemma-27b-it-Q8_0.gguf --local-dir .
 hf download bartowski/google_medgemma-27b-it-GGUF mmproj-google_medgemma-27b-it-bf16.gguf --local-dir .
+module load ceuadmin/llama.cpp/0.9.0-cuda
 ```
 
-## multimodal applications
+## Text
 
 ```bash
-module load ceuadmin/llama.cpp/0.9.0-cuda
 llama cli \
   -m google_medgemma-27b-it-Q8_0.gguf \
-  --mmproj mmproj-google_medgemma-27b-it-bf16.gguf \
   -p "What is a protein quantitative trait locus (pQTL)?" \
   -n 300 \
   -c 65536 \
@@ -40,7 +39,7 @@ Loading model...
 build      : b0-unknown
 model      : google_medgemma-27b-it-Q8_0.gguf
 ftype      : Q8_0
-modalities : text, vision, video
+modalities : text
 
 available commands:
   /exit or Ctrl+C     stop or exit
@@ -48,27 +47,26 @@ available commands:
   /clear              clear the chat history
   /read <file>        add a text file
   /glob <pattern>     add text files using globbing pattern
-  /image <file>       add an image file
-  /video <file>       add a video file
 
 
 
 > What is a protein quantitative trait locus (pQTL)?
 ```
 
-A protein quantitative trait locus (pQTL) is a region of the genome associated with variation in the abundance of a specific protein in a population. It's a specific type of quantitative trait locus (QTL) where the trait being measured is the level of a protein, rather than a more traditional phenotypic trait like height, weight, or disease susceptibility.
+A protein quantitative trait locus (pQTL) is a region of the genome that influences the abundance (quantity) of a specific protein. It's essentially the genetic basis for the variation observed in protein levels within a population.
 
-Here's a breakdown:
+Here's a breakdown of the concept:
 
-*   **Quantitative Trait Locus (QTL):** A region of DNA that is linked to variation in a quantitative trait. Quantitative traits are measurable characteristics that show continuous variation (e.g., height, blood pressure, yield in agriculture) and are influenced by multiple genes and environmental factors. QTL mapping is used to identify these regions.
-*   **Protein:** A large biomolecule, essential for many biological processes, consisting of one or more long chains of amino acids.
-*   **pQTL (Protein Quantitative Trait Locus):** Combines the concepts. It's a genomic region that influences the *amount* or *abundance* of a particular protein within a population.
+*   **Quantitative Trait Locus (QTL):** A QTL is a region of DNA associated with a quantitative trait. A quantitative trait is a measurable characteristic that shows continuous variation, like height, weight, yield, or in this case, protein abundance.  QTLs are identified through statistical linkage analysis, typically using experimental crosses (e.g., between different strains of mice or different varieties of plants).
+*   **Protein:** Proteins are the workhorses of the cell, carrying out a vast array of functions. Their levels are tightly regulated and can significantly impact cellular processes and organismal phenotypes.
+*   **pQTL (Protein Quantitative Trait Locus):** Combines the concepts. It identifies specific genomic regions (QTLs) that are genetically linked to variations in the amount of a particular protein.  This means that differences in the DNA sequence within this region contribute to the differences in how much of that protein is produced or degraded.
 
-**Key Characteristics and Implications of pQTLs:**
+**Key characteristics of pQTLs:**
 
-1.  **Linkage:** pQTLs are typically identified through statistical linkage analysis, comparing the abundance of a protein with genetic markers across individuals in a population (often experimental crosses or populations with known genetic relationships). A significant association suggests the protein gene or a nearby regulatory element is located within the pQTL region
+1.  **Genetic Basis of Protein Variation:** They provide a genetic explanation for why protein levels differ among individuals in a population.
+2.  **Linkage Disequilibrium:** The
 
-[ Prompt: 15.7 t/s | Generation: 26.7 t/s ]
+[ Prompt: 160.0 t/s | Generation: 26.7 t/s ]
 
 ## Vision
 
