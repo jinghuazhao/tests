@@ -1,0 +1,13 @@
+Solo export migration report
+Site URL: https://jinghuazhao.github.io/tests/zetianmiaomu/
+Images copied: 16
+HTML/CSS files changed: 5
+
+Still requiring manual review:
+- Contact/newsletter controls have no submission backend in the static export.
+- The map section is a placeholder; add an Amap link or independent embed.
+- Check all video URLs and every page in a browser.
+- Google Fonts remains an external font dependency.
+- Any unresolved external image URLs listed below need attention.
+
+
